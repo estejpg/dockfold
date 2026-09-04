@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ payload: 
   const { payload } = await params;
   const profile = getProfile(payload);
   if (!profile) return { title: "Dock not found" };
-  return { title: `${profile.name}'s Dock`, description: `${profile.name} keeps ${profile.apps.map((app) => app.name).join(", ")} close.` };
+  return { title: "Legacy shared Dock", robots: { index: false, follow: false }, referrer: "no-referrer" };
 }
 
 export default async function DockPage({ params }: { params: Promise<{ payload: string }> }) {

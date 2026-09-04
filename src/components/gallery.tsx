@@ -1,14 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { Search } from "lucide-react";
+import { Search, Download, ArrowUpRight } from "lucide-react";
 import { useDeferredValue, useMemo, useState } from "react";
 import { AppIcon } from "@/components/app-icon";
 import { BrandMark } from "@/components/brand-mark";
 import { DockStrip } from "@/components/dock-strip";
 import { ShareDialog } from "@/components/share-dialog";
 import { appCatalog, galleryProfiles, topApps } from "@/lib/apps";
-import { encodeDock } from "@/lib/manifest";
+import { ThemeToggle } from "./theme-toggle";
 import type { Category } from "@/lib/types";
 
 const filters: Array<"All" | Category> = ["All", "Design", "Development", "Writing", "Music"];
@@ -28,30 +28,33 @@ export function Gallery() {
   return (
     <>
       <header className="site-header">
-        <Link className="wordmark" href="/"><BrandMark />Dockfold</Link>
+        <Link className="wordmark" href="/"><BrandMark />DockFold</Link>
         <nav aria-label="Primary navigation">
-          <Link className="nav-active" href="/">Discover</Link>
-          <a href="#top-apps">Top apps</a>
+          <Link className="nav-active" href="/">Examples</Link>
           <Link href="/how-it-works">How it works</Link>
         </nav>
-        <button className="header-cta" type="button" onClick={() => setShareOpen(true)}>Share your Dock</button>
+        <div className="header-actions"><ThemeToggle /><a className="button button-dark" href="/downloads/DockFold.zip" aria-label="Download for Mac"><Download size={16} /> Download for Mac</a></div>
       </header>
 
       <main>
         <section className="intro-shell">
           <div className="intro-heading">
-            <h1>The apps people<br />keep close.</h1>
-            <p>Real Docks from designers, developers, and creators.</p>
+            <h1>The apps you keep close.</h1>
+            <p>Capture your Mac Dock. Share a little of how you work.</p>
+            <div className="hero-actions"><button className="button button-dark" onClick={() => setShareOpen(true)}>Share your Dock</button><span>macOS 14+ · No account needed</span></div>
           </div>
+          <div className="hero-dock"><DockStrip apps={[appCatalog.safari, appCatalog.figma, appCatalog.notion, appCatalog.terminal, appCatalog.spotify]} /></div>
+        </section>
+        <section className="examples-intro" id="examples"><h2>A few Docks to explore</h2><p>Illustrative examples. Your shared Docks stay unlisted.</p>
           <div className="intro-controls">
             <label className="search-control">
               <Search size={17} />
-              <span className="sr-only">Search Docks</span>
-              <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search people or apps" />
+              <span className="sr-only">Search example Docks</span>
+              <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search Docks or apps" />
             </label>
             <div className="filters" role="group" aria-label="Filter by discipline">
               {filters.map((filter) => (
-                <button key={filter} type="button" className={filter === activeFilter ? "filter-active" : ""} onClick={() => setActiveFilter(filter)}>{filter}</button>
+                <button key={filter} type="button" aria-pressed={filter === activeFilter} className={filter === activeFilter ? "filter-active" : ""} onClick={() => setActiveFilter(filter)}>{filter}</button>
               ))}
             </div>
           </div>
@@ -59,7 +62,7 @@ export function Gallery() {
 
         <section className="directory-shell">
           <div className="profile-list" aria-live="polite">
-            <div className="list-heading"><span>{filteredProfiles.length} Docks</span><span>Latest first</span></div>
+            <p className="sr-only">{filteredProfiles.length} examples</p>
             {filteredProfiles.length ? filteredProfiles.map((profile) => (
               <article className="profile-row" key={profile.slug}>
                 <div className="profile-copy">
@@ -68,7 +71,7 @@ export function Gallery() {
                     <p className="profile-role">{profile.role}</p>
                     <p className="profile-note">{profile.note}</p>
                   </div>
-                  <Link href={`/d/${encodeDock(profile)}`}>Open Dock <span aria-hidden="true">↗</span></Link>
+                  <Link href={`/examples/${profile.slug}`}>Open example <ArrowUpRight size={14} /></Link>
                 </div>
                 <div className={`dock-stage stage-${profile.backdrop}`}>
                   <DockStrip apps={profile.apps} />
@@ -80,24 +83,22 @@ export function Gallery() {
           </div>
 
           <aside className="top-apps" id="top-apps">
-            <div className="top-apps-heading"><h2>Most docked</h2><span>Community index</span></div>
+            <div className="top-apps-heading"><h2>In these examples</h2></div>
             <ol>
               {topApps.map(([key, count], index) => {
                 const app = appCatalog[key];
                 return <li key={key}><span className="rank">{String(index + 1).padStart(2, "0")}</span><AppIcon app={app} size={32} /><span className="app-name">{app.name}</span><span className="app-count">{count.toLocaleString()}</span></li>;
               })}
-            </ol>
+            </ol><p className="sample-note">From 4 sample Docks</p>
           </aside>
         </section>
 
         <section className="method-strip">
-          <p>One small Mac helper.</p>
-          <h2>Your pinned apps become a portable link—reviewed by you, stored nowhere.</h2>
-          <Link href="/how-it-works">See how capture works <span aria-hidden="true">↗</span></Link>
+<div><h2>A small window into your workflow.</h2><p>Review locally. Create an unlisted link. Delete it whenever you like.</p></div><Link href="/how-it-works">How it works <ArrowUpRight size={16} /></Link>
         </section>
       </main>
 
-      <footer><span>Dockfold</span><span>Built in the open · Icons via macOSicons</span><span>2026</span></footer>
+      <footer><span>DockFold</span><a href="https://www.estejpg.com/">Made by estejpg</a><span><a href="https://github.com/estejpg/dockfold">Source</a> · <Link href="/privacy">Privacy</Link></span></footer>
       <ShareDialog open={shareOpen} onClose={() => setShareOpen(false)} />
     </>
   );

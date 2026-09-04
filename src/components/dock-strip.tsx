@@ -6,7 +6,7 @@ export function DockStrip({ apps, compact = false }: { apps: DockApp[]; compact?
     <div className={compact ? "dock-strip dock-strip-compact" : "dock-strip"} aria-label="Pinned applications">
       {apps.map((app, index) => (
         <div className="dock-app" key={`${app.bundleIdentifier ?? app.name}-${index}`}>
-          <span className="dock-tooltip">{app.name}</span>
+          <span className="dock-tooltip" aria-hidden="true">{app.name}</span>
           <AppIcon app={app} size={compact ? 42 : 54} />
         </div>
       ))}

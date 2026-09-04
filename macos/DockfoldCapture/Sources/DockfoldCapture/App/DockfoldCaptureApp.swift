@@ -14,11 +14,11 @@ struct DockfoldCaptureApp: App {
     @State private var store = CaptureStore()
 
     var body: some Scene {
-        WindowGroup("Dockfold Capture", id: "capture") {
+        Window("DockFold", id: "capture") {
             ContentView(store: store)
-                .frame(minWidth: 620, minHeight: 560)
+                .frame(minWidth: 700, minHeight: 560)
         }
-        .defaultSize(width: 720, height: 680)
+        .defaultSize(width: 760, height: 680)
         .commands {
             CommandGroup(after: .newItem) {
                 Button("Scan Dock") { store.scan() }

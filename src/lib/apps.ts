@@ -19,9 +19,9 @@ export const galleryProfiles: GalleryProfile[] = [
   {
     slug: "mina-park",
     v: 1,
-    name: "Mina Park",
-    role: "Product designer",
-    note: "I sketch, prototype, and test. These apps keep the loop calm.",
+    name: "Design desk",
+    role: "Product design",
+    note: "Sketch, prototype, and stay in the loop.",
     category: "Design",
     backdrop: "sky",
     publishedAt: "2026-09-02",
@@ -30,9 +30,9 @@ export const galleryProfiles: GalleryProfile[] = [
   {
     slug: "theo-martins",
     v: 1,
-    name: "Theo Martins",
-    role: "Independent developer",
-    note: "Tiny tools, shipped daily. The Dock only keeps what earns a place.",
+    name: "Build & ship",
+    role: "Development",
+    note: "Code, test, ship, repeat.",
     category: "Development",
     backdrop: "night",
     publishedAt: "2026-09-01",
@@ -41,9 +41,9 @@ export const galleryProfiles: GalleryProfile[] = [
   {
     slug: "june-walker",
     v: 1,
-    name: "June Walker",
-    role: "Writer & researcher",
-    note: "Long reads, deep notes, and a quieter place to think.",
+    name: "Reading room",
+    role: "Writing",
+    note: "Write, research, and keep notes.",
     category: "Writing",
     backdrop: "paper",
     publishedAt: "2026-08-29",
@@ -52,23 +52,22 @@ export const galleryProfiles: GalleryProfile[] = [
   {
     slug: "samir-rao",
     v: 1,
-    name: "Samir Rao",
-    role: "Creative technologist",
-    note: "Code, visuals, and sound. A compact toolkit for interactive work.",
+    name: "After hours",
+    role: "Music",
+    note: "Listen, discover, and collect.",
     category: "Music",
     backdrop: "ink",
     publishedAt: "2026-08-26",
-    apps: apps("arc", "vscode", "figma", "spotify", "terminal", "obsidian"),
+    apps: apps("spotify", "safari", "obsidian"),
   },
 ];
 
-export const topApps = [
-  ["notion", 1284], ["vscode", 1172], ["figma", 1103], ["slack", 986], ["chrome", 951],
-  ["spotify", 867], ["arc", 712], ["obsidian", 628], ["terminal", 612], ["safari", 589],
-] as const;
+export const topApps: [string, number][] = Object.keys(appCatalog)
+  .map(key => [key, galleryProfiles.filter(profile => profile.apps.some(app => app.bundleIdentifier === appCatalog[key].bundleIdentifier)).length] as [string, number])
+  .sort((a, b) => b[1] - a[1] || appCatalog[a[0]].name.localeCompare(appCatalog[b[0]].name)).slice(0, 5);
 
 export function resolveIcon(app: DockApp) {
-  if (app.iconKey && appCatalog[app.iconKey]) return appCatalog[app.iconKey].icon;
+  if (app.iconKey && Object.hasOwn(appCatalog, app.iconKey)) return appCatalog[app.iconKey].icon;
   const match = Object.values(appCatalog).find((item) => item.bundleIdentifier === app.bundleIdentifier || item.name.toLowerCase() === app.name.toLowerCase());
   return match?.icon;
 }

@@ -1,0 +1,9 @@
+macos/
+assets/
+docs/
+script/
+tests/
+dist/
+.git/
+*.log
+.env*

@@ -6,7 +6,7 @@ struct SettingsView: View {
     var body: some View {
         Form {
             TextField("Dockfold website", text: $baseURL, prompt: Text("https://dockfold.vercel.app"))
-            Text("The helper opens this website with the reviewed manifest encoded in the URL.")
+            Text("The selected apps open in your browser for review. A profile is stored only after you choose Create unlisted link. Use HTTPS, or HTTP on localhost for development.")
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }

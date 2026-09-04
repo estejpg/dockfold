@@ -10,9 +10,9 @@ struct AppRow: View {
                 Image(nsImage: AppIconResolver.image(for: app))
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 36, height: 36)
+                    .frame(width: 40, height: 40)
                 VStack(alignment: .leading, spacing: 3) {
-                    Text(app.name).fontWeight(.medium)
+                    Text(app.name).fontWeight(.medium).lineLimit(1)
                     Text(app.bundleIdentifier ?? "Bundle identifier unavailable")
                         .font(.caption2)
                         .foregroundStyle(.secondary)
@@ -21,6 +21,6 @@ struct AppRow: View {
             }
         }
         .toggleStyle(.checkbox)
-        .padding(.vertical, 5)
+        .padding(.vertical, 7)
     }
 }

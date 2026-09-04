@@ -1,0 +1,14 @@
+import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
+export const metadata = { title: 'Privacy & sharing' };
+export default function PrivacyPage() {
+  return <main className="narrow-page privacy-page"><Link href="/" className="back-link"><ArrowLeft size={16} /> DockFold</Link><h1>Know what you share.</h1>
+    <p>DockFold captures the apps pinned in your Mac Dock. The Mac app reads your Dock and lets you review the list. It does not modify your Dock or send background analytics.</p>
+    <h2>Before you create a link</h2><p>The handoff includes selected app names and bundle identifiers in the URL fragment (the part after #). Your browser reads that fragment locally; it is not sent with the page request. Browser history, browser extensions, and browser sync may still have access to it. Saved capture files contain the same information. Local paths and icon files are excluded.</p>
+    <h2>When you choose to share</h2><p>Creating an unlisted link sends your selected app names, identifiers, profile name, role, note, and discipline to DockFold. A private Vercel Blob store holds the profile, creation date, and a hash of its deletion key. Only the website’s server accesses the store. Anyone with the public profile link can read the profile; unlisted links are not confidential or password protected.</p>
+    <h2>Deleting your Dock</h2><p>The management link contains a separate secret deletion key. We save it in this browser and offer a downloadable copy. Keep it private. Deleting removes the stored profile and disables its link. It does not remove screenshots, copies others made, or information already visible in an open browser tab. Without the key, there is no account-based recovery.</p>
+    <h2>Hosting and browser storage</h2><p>Vercel processes network requests and may retain infrastructure logs, including addresses and request paths, under its policies. App details are sent in the publication request body. DockFold does not intentionally log profile contents or deletion keys. A bounded private counter uses salted address hashes to limit publishing abuse. Hashes reset with a new daily bucket; no raw address is stored in that counter. Your browser also saves your appearance preference and deletion keys.</p>
+    <h2>Older links and examples</h2><p>Older /d/ links contain their entire profile in the URL, which reaches the server and may appear in logs or history. They cannot be revoked because the data is carried in the link itself. Newly created links use revocable storage instead. Docks displayed on the home page are illustrative examples, not community submissions.</p>
+    <p>Questions or requests: <a href="https://github.com/estejpg/dockfold/issues">DockFold support</a>. Please do not post a deletion key or private information in a public issue.</p>
+  </main>;
+}

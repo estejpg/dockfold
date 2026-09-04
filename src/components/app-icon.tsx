@@ -7,7 +7,7 @@ export function AppIcon({ app, size = 54 }: { app: DockApp; size?: number }) {
   if (!icon) {
     return (
       <span className="app-icon-fallback" style={{ width: size, height: size }} aria-label={app.name}>
-        {app.name.slice(0, 1).toUpperCase()}
+        {Array.from(app.name)[0]?.toUpperCase()}
       </span>
     );
   }

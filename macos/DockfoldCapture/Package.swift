@@ -11,6 +11,7 @@ let package = Package(
         .executableTarget(
             name: "DockfoldCapture",
             path: "Sources/DockfoldCapture"
-        )
+        ),
+        .testTarget(name: "DockfoldCaptureTests", dependencies: ["DockfoldCapture"])
     ]
 )

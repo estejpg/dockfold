@@ -2,7 +2,6 @@ node_modules/
 .next/
 .vercel/
 dist/
-public/downloads/*.zip
 .DS_Store
 *.log
 *.tsbuildinfo
@@ -10,3 +9,5 @@ assets/icns/source-pages/
 assets/icns/tmp.*
 icon-contact-sheet.png
 macos/DockfoldCapture/.build/
+.env*
+!.env.example
