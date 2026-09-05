@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { ArrowUpRight, Copy } from "lucide-react";
 import { byId, shareURL, customizeURL, type Dock } from "../lib/dock";
-import { REQUEST_URL } from "../lib/requests";
 import { DockStrip } from "./common";
 export function SharedDock({
   dock,
@@ -61,69 +60,6 @@ export function SharedDock({
     </main>
   );
 }
-export function Contribute() {
-  return (
-    <main id="main" tabIndex={-1} className="reading-page">
-      <h1>Bring an app to the collection.</h1>
-      <p>
-        Start with its name and website. A clear PNG of the icon helps us add it
-        sooner.
-      </p>
-      <ol className="guide-steps">
-        <li>
-          <h2>Find the app</h2>
-          <p>
-            Open Finder → Applications. Select the app, then choose Get Info or
-            press <kbd>⌘ I</kbd>.
-          </p>
-        </li>
-        <li>
-          <h2>Copy its icon</h2>
-          <p>
-            Click the small app icon at the top-left of the Get Info window.
-            Press <kbd>⌘ C</kbd> to copy it.
-          </p>
-        </li>
-        <li>
-          <h2>Open it in Preview</h2>
-          <p>
-            Open Preview, then choose File → New from Clipboard or press{" "}
-            <kbd>⌘ N</kbd>. If several sizes appear, select the largest image in
-            the thumbnail sidebar.
-          </p>
-        </li>
-        <li>
-          <h2>Export a PNG</h2>
-          <p>
-            Choose File → Export (or right-click the selected thumbnail and
-            choose Export As). Select PNG and keep transparency enabled. A
-            square image at 512 × 512 pixels or larger works well.
-          </p>
-        </li>
-        <li>
-          <h2>Add it to the request</h2>
-          <p>
-            Open a new request—or an existing one for that app—and drag the PNG
-            into the icon field or a comment. Include the app’s website and
-            where the icon came from.
-          </p>
-        </li>
-      </ol>
-      <p className="fine-print">
-        Icon export options can vary by macOS version and app. If export is
-        unavailable, submit the app’s website without an icon.
-      </p>
-      <a
-        className="button button-dark"
-        href={REQUEST_URL}
-        target="_blank"
-        rel="noreferrer"
-      >
-        Request an app <ArrowUpRight size={16} />
-      </a>
-    </main>
-  );
-}
 export function Privacy() {
   return (
     <main id="main" tabIndex={-1} className="reading-page">
@@ -165,11 +101,29 @@ export function Privacy() {
         closes. Requests, attached icons, comments, and reactions follow
         GitHub’s own privacy policy and account controls.
       </p>
+      <h2>Icon uploads go to a private inbox</h2>
+      <p>
+        The Contribute an icon form sends the PNG, app name, official website,
+        icon source, and optional notes to DockFold’s private Vercel Blob
+        storage. Files stay on your device until you select Submit icon.
+        DockFold validates and re-encodes the PNG to remove embedded metadata.
+        No account or email address is collected by this form.
+      </p>
+      <p>
+        Esteban and authorized project maintainers can review submissions in
+        Vercel. Approved icons and app details may be published in the public
+        catalog and GitHub repository; submission notes stay private. Uploads do
+        not create public issues or votes. Pending files are retained until
+        reviewed, and maintainers delete reviewed or rejected submissions from
+        the inbox. Keep personal information out of the optional notes.
+      </p>
       <h2>Hosting</h2>
       <p>
-        Vercel hosts the static website and may retain ordinary request logs.
-        DockFold adds no analytics, tracking cookies, or advertising scripts.
-        Fonts and catalog icons are served with the site.
+        Vercel hosts the website, upload endpoint, and private icon storage, and
+        may retain ordinary request logs, including network addresses. Upload
+        rate limits help prevent abuse. DockFold adds no analytics, tracking
+        cookies, or advertising scripts. Fonts and catalog icons are served with
+        the site.
       </p>
       <p>
         <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">

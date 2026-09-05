@@ -1,4 +1,4 @@
-# Static deployment and operations
+# Deployment and operations
 
 ## Vercel
 
@@ -7,8 +7,11 @@ Project: `dockfold` in `estejpgs-projects`.
 - Framework: Vite (explicit in `vercel.json`).
 - Install: `npm ci`; build: `npm run build`; output: `dist`.
 - Runtime used for builds: Node 24.
-- Website environment variables: **none**.
-- Function, database, OAuth, email, storage, and Notion configuration: **none required**.
+- Upload function: `/api/icon-submissions`, Node runtime; source in `api/` and `server/`.
+- Private Blob store: `dockfold-icons` (`store_b6vTim2xA3883Lbw`), region `sfo1`, connected to production, preview and development.
+- Server environment variable: `ICON_INBOX_STORE_ID=store_b6vTim2xA3883Lbw`. The Blob SDK uses Vercel's rotating OIDC credentials. Store connection variables are managed by Vercel; never prefix them with `VITE_`.
+- No database, visitor login, email service, or Notion configuration.
+- Firewall rule **Limit icon uploads**: POST paths beginning with `/api/icon-submissions`, 10 requests per IP per 600 seconds, fixed window, 429 on excess. Vercel counters are regional. Keep this rule enabled before accepting uploads.
 
 ```sh
 npx vercel link --project dockfold --yes
@@ -17,7 +20,7 @@ npx vercel deploy --yes
 npx vercel deploy --prod --yes
 ```
 
-The repository includes the complete optimized catalog icons. Future Git deployments do not depend on files from a personal computer. Configure a static fallback to `index.html` for Home, Latest, Submit, and curated detail paths on other hosts. Vercel already has this fallback. Old fragment share links remain readable. Security headers limit scripts, fonts, images, and connections to the site and the GitHub API. Share fragments are never required by a server route.
+The repository includes the complete optimized catalog icons. Future Git deployments do not depend on files from a personal computer. Configure a static fallback to `index.html` for Home, Latest, Submit, and curated detail paths on other hosts. Vercel already has this fallback. Old fragment share links remain readable. Security headers limit scripts, fonts, images, and connections to the site and the GitHub API. The static rewrite excludes `/api/`, so uploads reach the function. Selected image previews use local data URLs. Share fragments are never required by a server route.
 
 If connecting Vercel to GitHub, select `estejpg/dockfold`, repository root, Vite, and `main` for production. GitHub Actions checks tests, lint, and the production build on pull requests and main.
 
@@ -47,15 +50,17 @@ Browser draft key: `dockfold:draft:v2`. Theme key: `dockfold:theme`. Request cac
 
 Static sharing intentionally replaces the earlier deletion-key model. Explain this limitation wherever sharing is offered: saved copies of a link cannot be revoked. Do not add sensitive content to Dock names or notes.
 
-## Earlier prototype storage
+## Icon inbox operations
 
-A private Vercel Blob store named `dockfold-profiles` (`store_SzyAIkscjAOc2j03`) was provisioned while the earlier backend approach was being tested. The static release contains no Blob SDK or calls and needs no credentials. Vercel's CLI refuses agent-driven deletion of a store and requires the account owner to confirm interactively. Remove that unused store in Vercel Storage, or run the command below yourself after confirming its name and ownership:
+[Open the private inbox](https://vercel.com/estejpgs-projects/~/stores/blob/store_b6vTim2xA3883Lbw) → Manage Blobs → `submissions`. Each folder has `icon.png` and `details.json`. Only authorized Vercel maintainers can view/download them. Preview/test uploads use `preview/submissions`. There is no email notification: check this inbox for arrivals. Review, publish approved catalog additions through GitHub, then delete the reviewed folder's files. See [maintaining icons](maintaining-icons.md).
 
-```sh
-npx vercel blob delete-store store_SzyAIkscjAOc2j03
-```
+The form sends multipart data only on Submit. Both layers enforce a 2 MB PNG and square dimensions from 256 to 2048px. The server bounds the request stream, verifies PNG bytes, fully decodes/re-encodes the image with a pixel limit, strips embedded metadata, validates app details, and never fetches provided URLs. The endpoint has no read/list method. Files use private access; neither Blob URLs nor credentials appear in receipts. SHA-256 paths make identical retries reuse a submission. The form reports success only after both image and details are saved. A storage failure retains the form for retry; a failure between writes can leave one orphan image for maintainer cleanup.
 
-This is housekeeping for an unused prototype resource, not a requirement for the static website.
+Local full-stack testing: use Node 24, `npx vercel env pull .env.local`, then `npx vercel dev --listen 3105`. Local origins are restricted to `http://localhost:3105` and `http://127.0.0.1:3105`; local uploads use the preview prefix. `npm run dev` remains a frontend-only preview. Never commit `.env.local`.
+
+For a new custom domain, verify that it matches `VERCEL_PROJECT_PRODUCTION_URL`, or add that exact origin in `api/icon-submissions.ts` and redeploy. Do not allow arbitrary origins. Inspect Vercel Firewall and storage usage if the inbox attracts spam. The endpoint is anonymous: the honeypot, file checks, and IP limit reduce abuse but do not identify contributors. Blob storage and function usage follow the Vercel plan's included allowances and limits.
+
+The earlier `dockfold-profiles` store (`store_SzyAIkscjAOc2j03`) is separate and is not used by this inbox. Its contents and deletion restrictions were left untouched.
 
 ## Reference documentation
 

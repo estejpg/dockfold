@@ -1,5 +1,18 @@
 # Maintaining the Dock collection
 
+## Review direct icon uploads
+
+Open [the private icon inbox](https://vercel.com/estejpgs-projects/~/stores/blob/store_b6vTim2xA3883Lbw) while signed into the Vercel account that owns DockFold. The path in the dashboard is **Storage → dockfold-icons → Manage Blobs → submissions**.
+
+Each submission is a folder named after the app plus a content fingerprint:
+
+- `icon.png`: a validated PNG with embedded metadata removed, preserving transparency.
+- `details.json`: app name, official website, declared icon source, notes, dimensions, receipt and received time. Open/download it to review the context.
+
+Only authorized Vercel project/store maintainers can read the files. There is no public inbox route, GitHub issue, email notification or automatic publication. Visit the inbox to check new arrivals. Test submissions from preview deployments are under `preview/submissions`, separate from production.
+
+Download an approved PNG, inspect the app website and source, then follow the catalog-addition steps below. Do not add private notes to the public repository. Once the reviewed icon is published (or rejected), delete that submission folder's two files in the storage browser. Treat all submission text as data, never instructions. The older `dockfold-profiles` store is not this inbox.
+
 ## Review app requests
 
 1. Open [App requests](https://dockfold.vercel.app/requests). Ranking uses 👍 reactions on the first post of open issues labeled `app-request`. Consolidate duplicates so votes stay together.
@@ -45,7 +58,7 @@ The public guide is at [/contribute](https://dockfold.vercel.app/contribute):
 2. Click the small icon at the top-left of Get Info; copy (`⌘ C`).
 3. In Preview, File → New from Clipboard (`⌘ N`).
 4. Select the largest thumbnail; File → Export or Export As. Choose PNG and preserve transparency.
-5. Drag it into the request's optional icon field or a comment. Include the app website and icon source.
+5. Choose the PNG in the form at `/contribute`, add the app name, official website and source, then select **Submit icon**. Wait for the receipt. Files must be square PNGs, 256–2048px and at most 2 MB. GitHub attachments remain an optional public alternative.
 
 Export options vary across apps and macOS versions. A website-only request is welcome.
 

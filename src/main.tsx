@@ -11,16 +11,14 @@ import "./styles.css";
 import { Header, Footer } from "./components/common";
 import { Directory, Latest } from "./components/directory";
 import { CollectionDetail } from "./components/collection-detail";
-import {
-  Contribute,
-  MissingDock,
-  Privacy,
-  SharedDock,
-} from "./components/pages";
+import { MissingDock, Privacy, SharedDock } from "./components/pages";
 import { decodeDock, examples } from "./lib/dock";
 import { collectionById } from "./lib/collections";
 const Composer = lazy(() =>
   import("./components/composer").then((m) => ({ default: m.Composer })),
+);
+const Contribute = lazy(() =>
+  import("./components/contribute").then((m) => ({ default: m.Contribute })),
 );
 const Requests = lazy(() => import("./components/requests"));
 const subscribe = (cb: () => void) => {
