@@ -1,9 +1,33 @@
 [
   {
-    "id": "antigravity-ide",
-    "name": "Antigravity IDE",
-    "category": "Development",
-    "icon": "/app-icons/curated/antigravity-ide.webp"
+    "id": "acrobat",
+    "name": "Acrobat",
+    "category": "Research & writing",
+    "icon": "/app-icons/curated/acrobat.webp"
+  },
+  {
+    "id": "acrobat-distiller",
+    "name": "Acrobat Distiller",
+    "category": "Research & writing",
+    "icon": "/app-icons/curated/acrobat-distiller.webp"
+  },
+  {
+    "id": "activity-monitor",
+    "name": "Activity Monitor",
+    "category": "Utilities",
+    "icon": "/app-icons/curated/activity-monitor.webp"
+  },
+  {
+    "id": "affinity",
+    "name": "Affinity",
+    "category": "Design",
+    "icon": "/app-icons/curated/affinity.webp"
+  },
+  {
+    "id": "airport-utility",
+    "name": "AirPort Utility",
+    "category": "Utilities",
+    "icon": "/app-icons/curated/airport-utility.webp"
   },
   {
     "id": "antigravity",
@@ -12,10 +36,22 @@
     "icon": "/app-icons/curated/antigravity.webp"
   },
   {
+    "id": "antigravity-ide",
+    "name": "Antigravity IDE",
+    "category": "Development",
+    "icon": "/app-icons/curated/antigravity-ide.webp"
+  },
+  {
     "id": "app-store",
     "name": "App Store",
     "category": "Essentials",
     "icon": "/app-icons/curated/app-store.webp"
+  },
+  {
+    "id": "apps",
+    "name": "Apps",
+    "category": "Essentials",
+    "icon": "/app-icons/curated/apps.webp"
   },
   {
     "id": "arc",
@@ -36,10 +72,40 @@
     "icon": "/app-icons/curated/atat.webp"
   },
   {
+    "id": "attune",
+    "name": "Attune",
+    "category": "Productivity",
+    "icon": "/app-icons/curated/attune.webp"
+  },
+  {
+    "id": "audio-midi-setup",
+    "name": "Audio MIDI Setup",
+    "category": "Music",
+    "icon": "/app-icons/curated/audio-midi-setup.webp"
+  },
+  {
+    "id": "automator",
+    "name": "Automator",
+    "category": "Utilities",
+    "icon": "/app-icons/curated/automator.webp"
+  },
+  {
+    "id": "bartender-pro",
+    "name": "Bartender Pro",
+    "category": "Utilities",
+    "icon": "/app-icons/curated/bartender-pro.webp"
+  },
+  {
     "id": "bitrig",
     "name": "Bitrig",
     "category": "Development",
     "icon": "/app-icons/curated/bitrig.webp"
+  },
+  {
+    "id": "bluetooth-file-exchange",
+    "name": "Bluetooth File Exchange",
+    "category": "Utilities",
+    "icon": "/app-icons/curated/bluetooth-file-exchange.webp"
   },
   {
     "id": "books",
@@ -48,10 +114,22 @@
     "icon": "/app-icons/curated/books.webp"
   },
   {
+    "id": "calculator",
+    "name": "Calculator",
+    "category": "Essentials",
+    "icon": "/app-icons/curated/calculator.webp"
+  },
+  {
     "id": "calendar",
     "name": "Calendar",
     "category": "Essentials",
     "icon": "/app-icons/curated/calendar.webp"
+  },
+  {
+    "id": "canva",
+    "name": "Canva",
+    "category": "Design",
+    "icon": "/app-icons/curated/canva.webp"
   },
   {
     "id": "capcut",
@@ -60,16 +138,22 @@
     "icon": "/app-icons/curated/capcut.webp"
   },
   {
+    "id": "chatgpt",
+    "name": "ChatGPT",
+    "category": "AI",
+    "icon": "/app-icons/curated/chatgpt.webp"
+  },
+  {
     "id": "chatgpt-atlas",
     "name": "ChatGPT Atlas",
     "category": "Browsers",
     "icon": "/app-icons/curated/chatgpt-atlas.webp"
   },
   {
-    "id": "chatgpt",
-    "name": "ChatGPT",
-    "category": "AI",
-    "icon": "/app-icons/curated/chatgpt.webp"
+    "id": "chess",
+    "name": "Chess",
+    "category": "Gaming",
+    "icon": "/app-icons/curated/chess.webp"
   },
   {
     "id": "claude",
@@ -78,10 +162,40 @@
     "icon": "/app-icons/curated/claude.webp"
   },
   {
+    "id": "cleanmymac",
+    "name": "CleanMyMac",
+    "category": "Utilities",
+    "icon": "/app-icons/curated/cleanmymac.webp"
+  },
+  {
+    "id": "clearvpn",
+    "name": "ClearVPN",
+    "category": "Utilities",
+    "icon": "/app-icons/curated/clearvpn.webp"
+  },
+  {
+    "id": "clock",
+    "name": "Clock",
+    "category": "Essentials",
+    "icon": "/app-icons/curated/clock.webp"
+  },
+  {
+    "id": "clop",
+    "name": "Clop",
+    "category": "Utilities",
+    "icon": "/app-icons/curated/clop.webp"
+  },
+  {
     "id": "coast-local",
     "name": "Coast Local",
     "category": "Utilities",
     "icon": "/app-icons/curated/coast-local.webp"
+  },
+  {
+    "id": "colorsync-utility",
+    "name": "ColorSync Utility",
+    "category": "Design",
+    "icon": "/app-icons/curated/colorsync-utility.webp"
   },
   {
     "id": "comet",
@@ -90,10 +204,46 @@
     "icon": "/app-icons/curated/comet.webp"
   },
   {
-    "id": "dia-early-birds",
-    "name": "Dia (Early Birds)",
-    "category": "Browsers",
-    "icon": "/app-icons/curated/dia-early-birds.webp"
+    "id": "console",
+    "name": "Console",
+    "category": "Utilities",
+    "icon": "/app-icons/curated/console.webp"
+  },
+  {
+    "id": "contacts",
+    "name": "Contacts",
+    "category": "Essentials",
+    "icon": "/app-icons/curated/contacts.webp"
+  },
+  {
+    "id": "craft",
+    "name": "Craft",
+    "category": "Research & writing",
+    "icon": "/app-icons/curated/craft.webp"
+  },
+  {
+    "id": "creative-cloud",
+    "name": "Creative Cloud",
+    "category": "Design",
+    "icon": "/app-icons/curated/creative-cloud.webp"
+  },
+  {
+    "id": "cursor",
+    "name": "Cursor",
+    "category": "Development",
+    "icon": "/app-icons/curated/cursor.webp"
+  },
+  {
+    "id": "davinci-resolve",
+    "name": "DaVinci Resolve",
+    "category": "Photo & video",
+    "icon": "/app-icons/curated/davinci-resolve.webp"
+  },
+  {
+    "id": "dayflow",
+    "name": "Dayflow",
+    "category": "Productivity",
+    "icon": "/app-icons/curated/dayflow.webp"
   },
   {
     "id": "dia",
@@ -102,10 +252,46 @@
     "icon": "/app-icons/curated/dia.webp"
   },
   {
+    "id": "dia-early-birds",
+    "name": "Dia (Early Birds)",
+    "category": "Browsers",
+    "icon": "/app-icons/curated/dia-early-birds.webp"
+  },
+  {
+    "id": "dictionary",
+    "name": "Dictionary",
+    "category": "Research & writing",
+    "icon": "/app-icons/curated/dictionary.webp"
+  },
+  {
+    "id": "digital-color-meter",
+    "name": "Digital Color Meter",
+    "category": "Design",
+    "icon": "/app-icons/curated/digital-color-meter.webp"
+  },
+  {
     "id": "discord",
     "name": "Discord",
     "category": "Communication",
     "icon": "/app-icons/curated/discord.webp"
+  },
+  {
+    "id": "disk-utility",
+    "name": "Disk Utility",
+    "category": "Utilities",
+    "icon": "/app-icons/curated/disk-utility.webp"
+  },
+  {
+    "id": "downie",
+    "name": "Downie",
+    "category": "Photo & video",
+    "icon": "/app-icons/curated/downie.webp"
+  },
+  {
+    "id": "facetime",
+    "name": "FaceTime",
+    "category": "Communication",
+    "icon": "/app-icons/curated/facetime.webp"
   },
   {
     "id": "figma",
@@ -114,16 +300,40 @@
     "icon": "/app-icons/curated/figma.webp"
   },
   {
+    "id": "find-my",
+    "name": "Find My",
+    "category": "Essentials",
+    "icon": "/app-icons/curated/find-my.webp"
+  },
+  {
     "id": "finder",
     "name": "Finder",
     "category": "Essentials",
     "icon": "/app-icons/curated/finder.webp"
   },
   {
+    "id": "font-book",
+    "name": "Font Book",
+    "category": "Design",
+    "icon": "/app-icons/curated/font-book.webp"
+  },
+  {
     "id": "framer",
     "name": "Framer",
     "category": "Design",
     "icon": "/app-icons/curated/framer.webp"
+  },
+  {
+    "id": "freeform",
+    "name": "Freeform",
+    "category": "Design",
+    "icon": "/app-icons/curated/freeform.webp"
+  },
+  {
+    "id": "games",
+    "name": "Games",
+    "category": "Gaming",
+    "icon": "/app-icons/curated/games.webp"
   },
   {
     "id": "gemini",
@@ -138,6 +348,36 @@
     "icon": "/app-icons/curated/github.webp"
   },
   {
+    "id": "google-docs",
+    "name": "Google Docs",
+    "category": "Research & writing",
+    "icon": "/app-icons/curated/google-docs.webp"
+  },
+  {
+    "id": "google-drive",
+    "name": "Google Drive",
+    "category": "Productivity",
+    "icon": "/app-icons/curated/google-drive.webp"
+  },
+  {
+    "id": "google-sheets",
+    "name": "Google Sheets",
+    "category": "Productivity",
+    "icon": "/app-icons/curated/google-sheets.webp"
+  },
+  {
+    "id": "google-slides",
+    "name": "Google Slides",
+    "category": "Productivity",
+    "icon": "/app-icons/curated/google-slides.webp"
+  },
+  {
+    "id": "grapher",
+    "name": "Grapher",
+    "category": "Utilities",
+    "icon": "/app-icons/curated/grapher.webp"
+  },
+  {
     "id": "grok-bot",
     "name": "Grok Bot",
     "category": "AI",
@@ -150,16 +390,58 @@
     "icon": "/app-icons/curated/hermes.webp"
   },
   {
+    "id": "home",
+    "name": "Home",
+    "category": "Essentials",
+    "icon": "/app-icons/curated/home.webp"
+  },
+  {
     "id": "illustrator",
     "name": "Illustrator",
     "category": "Design",
     "icon": "/app-icons/curated/illustrator.webp"
   },
   {
+    "id": "image-capture",
+    "name": "Image Capture",
+    "category": "Photo & video",
+    "icon": "/app-icons/curated/image-capture.webp"
+  },
+  {
+    "id": "image-playground",
+    "name": "Image Playground",
+    "category": "AI",
+    "icon": "/app-icons/curated/image-playground.webp"
+  },
+  {
+    "id": "intellij-idea",
+    "name": "IntelliJ IDEA",
+    "category": "Development",
+    "icon": "/app-icons/curated/intellij-idea.webp"
+  },
+  {
+    "id": "iphone-mirroring",
+    "name": "iPhone Mirroring",
+    "category": "Utilities",
+    "icon": "/app-icons/curated/iphone-mirroring.webp"
+  },
+  {
+    "id": "journal",
+    "name": "Journal",
+    "category": "Research & writing",
+    "icon": "/app-icons/curated/journal.webp"
+  },
+  {
     "id": "keeby",
     "name": "Keeby",
     "category": "Utilities",
     "icon": "/app-icons/curated/keeby.webp"
+  },
+  {
+    "id": "keynote",
+    "name": "Keynote",
+    "category": "Productivity",
+    "icon": "/app-icons/curated/keynote.webp"
   },
   {
     "id": "kimi",
@@ -180,6 +462,12 @@
     "icon": "/app-icons/curated/lightroom.webp"
   },
   {
+    "id": "lungo",
+    "name": "Lungo",
+    "category": "Utilities",
+    "icon": "/app-icons/curated/lungo.webp"
+  },
+  {
     "id": "mail",
     "name": "Mail",
     "category": "Essentials",
@@ -190,6 +478,12 @@
     "name": "Manus",
     "category": "AI",
     "icon": "/app-icons/curated/manus.webp"
+  },
+  {
+    "id": "maps",
+    "name": "Maps",
+    "category": "Essentials",
+    "icon": "/app-icons/curated/maps.webp"
   },
   {
     "id": "markdown-preview",
@@ -210,10 +504,34 @@
     "icon": "/app-icons/curated/minimax.webp"
   },
   {
+    "id": "mission-control",
+    "name": "Mission Control",
+    "category": "Utilities",
+    "icon": "/app-icons/curated/mission-control.webp"
+  },
+  {
+    "id": "modrinth-app",
+    "name": "Modrinth App",
+    "category": "Gaming",
+    "icon": "/app-icons/curated/modrinth-app.webp"
+  },
+  {
+    "id": "moonlock",
+    "name": "Moonlock",
+    "category": "Utilities",
+    "icon": "/app-icons/curated/moonlock.webp"
+  },
+  {
     "id": "music",
     "name": "Music",
     "category": "Music",
     "icon": "/app-icons/curated/music.webp"
+  },
+  {
+    "id": "news",
+    "name": "News",
+    "category": "Essentials",
+    "icon": "/app-icons/curated/news.webp"
   },
   {
     "id": "notes",
@@ -228,10 +546,34 @@
     "icon": "/app-icons/curated/notion.webp"
   },
   {
+    "id": "numbers",
+    "name": "Numbers",
+    "category": "Productivity",
+    "icon": "/app-icons/curated/numbers.webp"
+  },
+  {
+    "id": "obsidian",
+    "name": "Obsidian",
+    "category": "Research & writing",
+    "icon": "/app-icons/curated/obsidian.webp"
+  },
+  {
+    "id": "opal",
+    "name": "Opal",
+    "category": "Productivity",
+    "icon": "/app-icons/curated/opal.webp"
+  },
+  {
     "id": "opencode",
     "name": "OpenCode",
     "category": "Development",
     "icon": "/app-icons/curated/opencode.webp"
+  },
+  {
+    "id": "pages",
+    "name": "Pages",
+    "category": "Research & writing",
+    "icon": "/app-icons/curated/pages.webp"
   },
   {
     "id": "paper",
@@ -240,10 +582,40 @@
     "icon": "/app-icons/curated/paper.webp"
   },
   {
+    "id": "passwords",
+    "name": "Passwords",
+    "category": "Essentials",
+    "icon": "/app-icons/curated/passwords.webp"
+  },
+  {
+    "id": "permute",
+    "name": "Permute",
+    "category": "Photo & video",
+    "icon": "/app-icons/curated/permute.webp"
+  },
+  {
     "id": "perplexity",
     "name": "Perplexity",
     "category": "AI",
     "icon": "/app-icons/curated/perplexity.webp"
+  },
+  {
+    "id": "phone",
+    "name": "Phone",
+    "category": "Communication",
+    "icon": "/app-icons/curated/phone.webp"
+  },
+  {
+    "id": "photo-booth",
+    "name": "Photo Booth",
+    "category": "Photo & video",
+    "icon": "/app-icons/curated/photo-booth.webp"
+  },
+  {
+    "id": "photos",
+    "name": "Photos",
+    "category": "Photo & video",
+    "icon": "/app-icons/curated/photos.webp"
   },
   {
     "id": "photoshop",
@@ -252,10 +624,40 @@
     "icon": "/app-icons/curated/photoshop.webp"
   },
   {
+    "id": "pixelmator-pro",
+    "name": "Pixelmator Pro",
+    "category": "Photo & video",
+    "icon": "/app-icons/curated/pixelmator-pro.webp"
+  },
+  {
+    "id": "podcasts",
+    "name": "Podcasts",
+    "category": "Music",
+    "icon": "/app-icons/curated/podcasts.webp"
+  },
+  {
     "id": "premiere",
     "name": "Premiere",
     "category": "Photo & video",
     "icon": "/app-icons/curated/premiere.webp"
+  },
+  {
+    "id": "preview",
+    "name": "Preview",
+    "category": "Photo & video",
+    "icon": "/app-icons/curated/preview.webp"
+  },
+  {
+    "id": "print-center",
+    "name": "Print Center",
+    "category": "Utilities",
+    "icon": "/app-icons/curated/print-center.webp"
+  },
+  {
+    "id": "quicktime-player",
+    "name": "QuickTime Player",
+    "category": "Photo & video",
+    "icon": "/app-icons/curated/quicktime-player.webp"
   },
   {
     "id": "qwen",
@@ -270,10 +672,40 @@
     "icon": "/app-icons/curated/raycast.webp"
   },
   {
+    "id": "reminders",
+    "name": "Reminders",
+    "category": "Productivity",
+    "icon": "/app-icons/curated/reminders.webp"
+  },
+  {
     "id": "resurf",
     "name": "Resurf",
     "category": "Research & writing",
     "icon": "/app-icons/curated/resurf.webp"
+  },
+  {
+    "id": "safari",
+    "name": "Safari",
+    "category": "Browsers",
+    "icon": "/app-icons/curated/safari.webp"
+  },
+  {
+    "id": "screen-sharing",
+    "name": "Screen Sharing",
+    "category": "Utilities",
+    "icon": "/app-icons/curated/screen-sharing.webp"
+  },
+  {
+    "id": "screenshot",
+    "name": "Screenshot",
+    "category": "Photo & video",
+    "icon": "/app-icons/curated/screenshot.webp"
+  },
+  {
+    "id": "sessionwatcher",
+    "name": "SessionWatcher",
+    "category": "Utilities",
+    "icon": "/app-icons/curated/sessionwatcher.webp"
   },
   {
     "id": "setapp",
@@ -282,10 +714,22 @@
     "icon": "/app-icons/curated/setapp.webp"
   },
   {
+    "id": "shortcuts",
+    "name": "Shortcuts",
+    "category": "Utilities",
+    "icon": "/app-icons/curated/shortcuts.webp"
+  },
+  {
     "id": "shotbase",
     "name": "Shotbase",
     "category": "Photo & video",
     "icon": "/app-icons/curated/shotbase.webp"
+  },
+  {
+    "id": "siri",
+    "name": "Siri",
+    "category": "AI",
+    "icon": "/app-icons/curated/siri.webp"
   },
   {
     "id": "slack",
@@ -300,16 +744,88 @@
     "icon": "/app-icons/curated/spotify.webp"
   },
   {
+    "id": "stickies",
+    "name": "Stickies",
+    "category": "Productivity",
+    "icon": "/app-icons/curated/stickies.webp"
+  },
+  {
+    "id": "stocks",
+    "name": "Stocks",
+    "category": "Essentials",
+    "icon": "/app-icons/curated/stocks.webp"
+  },
+  {
+    "id": "superwhisper",
+    "name": "superwhisper",
+    "category": "Utilities",
+    "icon": "/app-icons/curated/superwhisper.webp"
+  },
+  {
     "id": "surf",
     "name": "Surf",
     "category": "Browsers",
     "icon": "/app-icons/curated/surf.webp"
   },
   {
+    "id": "system-settings",
+    "name": "System Settings",
+    "category": "Essentials",
+    "icon": "/app-icons/curated/system-settings.webp"
+  },
+  {
     "id": "t3-code-nightly",
     "name": "T3 Code (Nightly)",
     "category": "Development",
     "icon": "/app-icons/curated/t3-code-nightly.webp"
+  },
+  {
+    "id": "terminal",
+    "name": "Terminal",
+    "category": "Development",
+    "icon": "/app-icons/curated/terminal.webp"
+  },
+  {
+    "id": "textedit",
+    "name": "TextEdit",
+    "category": "Research & writing",
+    "icon": "/app-icons/curated/textedit.webp"
+  },
+  {
+    "id": "time-machine",
+    "name": "Time Machine",
+    "category": "Utilities",
+    "icon": "/app-icons/curated/time-machine.webp"
+  },
+  {
+    "id": "tips",
+    "name": "Tips",
+    "category": "Essentials",
+    "icon": "/app-icons/curated/tips.webp"
+  },
+  {
+    "id": "tv",
+    "name": "TV",
+    "category": "Photo & video",
+    "icon": "/app-icons/curated/tv.webp"
+  },
+  {
+    "id": "voice-memos",
+    "name": "Voice Memos",
+    "category": "Music",
+    "icon": "/app-icons/curated/voice-memos.webp"
+  },
+  {
+    "id": "weather",
+    "name": "Weather",
+    "category": "Essentials",
+    "icon": "/app-icons/curated/weather.webp"
+  },
+  {
+    "id": "widgy",
+    "name": "Widgy",
+    "category": "Utilities",
+    "icon": "/app-icons/curated/widgy.webp"
   },
   {
     "id": "xcode",
@@ -328,11 +844,5 @@
     "name": "Zotero",
     "category": "Research & writing",
     "icon": "/app-icons/curated/zotero.webp"
-  },
-  {
-    "id": "superwhisper",
-    "name": "superwhisper",
-    "category": "Utilities",
-    "icon": "/app-icons/curated/superwhisper.webp"
   }
 ]

@@ -1,6 +1,6 @@
 # DockFold
 
-A compact directory of macOS Docks. Browse 18 curated starting points, or create and share a Dock from 56 bundled app icons and reviewed community additions.
+A compact directory of macOS Docks. Browse 18 curated starting points, or create and share a Dock from 141 bundled app icons and reviewed community additions.
 
 [Open DockFold](https://dockfold.vercel.app) · [App requests](https://dockfold.vercel.app/requests) · [Contribute an icon](https://dockfold.vercel.app/contribute)
 

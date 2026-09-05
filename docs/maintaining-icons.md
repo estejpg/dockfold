@@ -24,9 +24,9 @@ For recovery, use [Vercel Storage](https://vercel.com/estejpgs-projects/~/stores
 
 ## Maintain bundled apps and curated Docks
 
-The original 56 icons stay in `src/lib/catalog.json`; five legacy entries remain for old links. Keep IDs stable. New community apps use immutable `community-<request UUID>` identifiers. Do not copy private notes into source files.
+The 141 bundled icons stay in `src/lib/catalog.json`; five compatibility entries remain for old links. Safari, Obsidian and Terminal now also have supplied icons in the picker, using their original IDs. Keep IDs stable. New community apps use immutable `community-<request UUID>` identifiers. Do not copy private notes into source files.
 
-To regenerate the original supplied batch, use its complete source directory with the maintained `script/icon-sources.json` mapping:
+To regenerate the supplied batch, use its complete source directory with the maintained `script/icon-sources.json` mapping:
 
 ```sh
 npm run import:icons -- "/path/to/App Icons"
