@@ -78,7 +78,7 @@ export function Header({ route }: { route: string }) {
           {[
             ["/", "Home"],
             ["/latest", "Latest"],
-            ["/submit", "Submit"],
+            ["/contribute", "Submit"],
           ].map(([href, label]) => (
             <a
               key={href}
@@ -120,7 +120,7 @@ export function Footer() {
       <nav aria-label="Footer navigation">
         <a href="/">Home</a>
         <a href="/latest">Latest</a>
-        <a href="/submit">Submit</a>
+        <a href="/submit">Create your Dock</a>
         <a href="/requests">App requests</a>
         <a href="/contribute">Contribute an icon</a>
         <a href="/privacy">Privacy</a>

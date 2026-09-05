@@ -59,7 +59,7 @@ function Application() {
           {(dock) => <Composer key={hash} initial={dock} />}
         </CatalogGate>
       );
-      title = "Submit a Dock · DockFold";
+      title = "Create your Dock · DockFold";
     } else if (/^#\/example\/[0-3]$/.test(hash)) {
       page = <SharedDock dock={examples[Number(hash.at(-1))].dock} example />;
     } else if (hash === "#/examples") {
@@ -86,7 +86,7 @@ function Application() {
           )}
         </CatalogGate>
       );
-      title = "Submit a Dock · DockFold";
+      title = "Create your Dock · DockFold";
     } else if (path === "/review") {
       page = <Review />;
       title = "Review submissions · DockFold";
@@ -105,6 +105,7 @@ function Application() {
       page = <Requests />;
       title = "App requests · DockFold";
     } else if (path === "/contribute" || hash === "#/contribute") {
+      route = "/contribute";
       page = <Contribute />;
       title = "Contribute an icon · DockFold";
     } else if (path === "/privacy" || hash === "#/privacy") {
