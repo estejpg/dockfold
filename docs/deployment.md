@@ -23,9 +23,17 @@ Required server variables:
 
 Vercel supplies rotating OIDC Blob credentials. Managed integration keys remain server-side except the explicitly named Clerk publishable key. Never expose all environment variables through Vite. The configured reviewer email matches the verified Vercel owner. Its value is kept in server configuration.
 
+## Community availability
+
+`vite.config.ts` decides at build time whether the community pages ship. When both `DATABASE_URL` and `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` are present for the environment being built, the header shows Submit, the footer links to requests and contributions, and `/requests`, `/contribute`, `/review` and `/sign-in` render normally. When either is missing, those URLs show one "coming soon" page, the builder does not call the catalog endpoint, and the three API functions keep answering 503 for anything that reaches them. Values never reach the client; only the boolean and the publishable key do.
+
+Production on `main` is currently built without these variables, so it shows the curated directory and builder only. Adding the variables requires a redeploy to take effect.
+
 ## Before production activation
 
-**Do not merge this PR directly into production until these steps are complete.** Production remains on the previously released site while the PR is open.
+Production is deployed from `main`. The community pages stay hidden there until the steps below are complete; do not add production database or Clerk variables before they are.
+
+Clerk production instances require a custom domain for the Frontend API (`clerk.<your-domain>`); a `*.vercel.app` hostname cannot carry the needed CNAME. Either attach a custom domain to the project before activation, or deliberately accept running the development instance in production with its user limits and development-mode behaviour, and record that decision here.
 
 1. Configure the intended production Clerk domain/instance and production keys, with the same email-only settings and bot protection. Development test keys are not production authentication.
 2. Connect an isolated production Neon database/branch and run the committed migrations against its direct URL. Preview/development data must not become production requests or voters.

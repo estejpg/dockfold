@@ -13,11 +13,13 @@ import { Header, Footer } from "./components/common";
 import { Directory, Latest } from "./components/directory";
 import { CollectionDetail } from "./components/collection-detail";
 import {
+  CommunityUnavailable,
   MissingDock,
   PageFallback,
   Privacy,
   SharedDock,
 } from "./components/pages";
+import { communityEnabled } from "./lib/availability";
 import { examples } from "./lib/dock";
 import { CatalogGate } from "./components/catalog-gate";
 import { collectionById } from "./lib/collections";
@@ -34,6 +36,15 @@ const Authentication = lazy(() =>
     ),
   })),
 );
+// Pages that need the community service. Without it they share one notice
+// instead of loading forms and boards that can only fail.
+const communityRoutes = new Set([
+  "/requests",
+  "/contribute",
+  "/review",
+  "/sign-in",
+  "/sign-up",
+]);
 const subscribe = (cb: () => void) => {
   window.addEventListener("hashchange", cb);
   return () => window.removeEventListener("hashchange", cb);
@@ -147,6 +158,10 @@ function Application() {
       page = <Directory />;
       route = "/";
     } else page = <MissingDock />;
+    if (!communityEnabled && communityRoutes.has(route)) {
+      page = <CommunityUnavailable />;
+      title = "Coming soon · DockFold";
+    }
   } catch {
     page = <MissingDock />;
     title = "Dock not found · DockFold";

@@ -1,6 +1,7 @@
 import { Moon, Sun } from "lucide-react";
 import { useSyncExternalStore } from "react";
 import { byId, type App } from "../lib/dock";
+import { communityEnabled } from "../lib/availability";
 const subscribeTheme = (cb: () => void) => {
   window.addEventListener("dockfold-theme", cb);
   return () => window.removeEventListener("dockfold-theme", cb);
@@ -78,7 +79,7 @@ export function Header({ route }: { route: string }) {
           {[
             ["/", "Home"],
             ["/latest", "Latest"],
-            ["/contribute", "Submit"],
+            ...(communityEnabled ? [["/contribute", "Submit"]] : []),
           ].map(([href, label]) => (
             <a
               key={href}
@@ -121,8 +122,12 @@ export function Footer() {
         <a href="/">Home</a>
         <a href="/latest">Latest</a>
         <a href="/create">Create your Dock</a>
-        <a href="/requests">App requests</a>
-        <a href="/contribute">Contribute an icon</a>
+        {communityEnabled ? (
+          <>
+            <a href="/requests">App requests</a>
+            <a href="/contribute">Contribute an icon</a>
+          </>
+        ) : null}
         <a href="/privacy">Privacy</a>
         <a href="https://github.com/estejpg/dockfold">Source</a>
       </nav>

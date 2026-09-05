@@ -142,6 +142,26 @@ export function Privacy() {
     </main>
   );
 }
+export function CommunityUnavailable() {
+  return (
+    <main id="main" tabIndex={-1} className="reading-page">
+      <h1>Requests and contributions are coming soon.</h1>
+      <p>
+        DockFold is preparing its app request board, email voting and icon
+        review. Until then, browse the curated Docks or create and share your
+        own.
+      </p>
+      <div className="share-actions">
+        <a className="button button-dark" href="/">
+          Explore Docks
+        </a>
+        <a className="button" href="/create">
+          Create your Dock
+        </a>
+      </div>
+    </main>
+  );
+}
 export function PageFallback({
   className = "reading-page",
   heading,
