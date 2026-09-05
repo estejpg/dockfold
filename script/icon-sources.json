@@ -1,0 +1,338 @@
+[
+  {
+    "id": "antigravity-ide",
+    "name": "Antigravity IDE",
+    "category": "Development",
+    "source": "Antigravity IDE.png"
+  },
+  {
+    "id": "antigravity",
+    "name": "Antigravity",
+    "category": "Development",
+    "source": "Antigravity.png"
+  },
+  {
+    "id": "app-store",
+    "name": "App Store",
+    "category": "Essentials",
+    "source": "App Store.png"
+  },
+  {
+    "id": "arc",
+    "name": "Arc",
+    "category": "Browsers",
+    "source": "Arc.png"
+  },
+  {
+    "id": "aside",
+    "name": "Aside",
+    "category": "Browsers",
+    "source": "Aside.png"
+  },
+  {
+    "id": "atat",
+    "name": "AtAT",
+    "category": "Utilities",
+    "source": "AtAT.png"
+  },
+  {
+    "id": "bitrig",
+    "name": "Bitrig",
+    "category": "Development",
+    "source": "Bitrig.png"
+  },
+  {
+    "id": "books",
+    "name": "Books",
+    "category": "Essentials",
+    "source": "Books.png"
+  },
+  {
+    "id": "calendar",
+    "name": "Calendar",
+    "category": "Essentials",
+    "source": "Calendar.png"
+  },
+  {
+    "id": "capcut",
+    "name": "CapCut",
+    "category": "Photo & video",
+    "source": "CapCut.png"
+  },
+  {
+    "id": "chatgpt-atlas",
+    "name": "ChatGPT Atlas",
+    "category": "Browsers",
+    "source": "ChatGPT Atlas.png"
+  },
+  {
+    "id": "chatgpt",
+    "name": "ChatGPT",
+    "category": "AI",
+    "source": "ChatGPT.png"
+  },
+  {
+    "id": "claude",
+    "name": "Claude",
+    "category": "AI",
+    "source": "Claude.png"
+  },
+  {
+    "id": "coast-local",
+    "name": "Coast Local",
+    "category": "Utilities",
+    "source": "Coast Local.png"
+  },
+  {
+    "id": "comet",
+    "name": "Comet",
+    "category": "Browsers",
+    "source": "Comet.png"
+  },
+  {
+    "id": "dia-early-birds",
+    "name": "Dia (Early Birds)",
+    "category": "Browsers",
+    "source": "Dia (Early Birds).png"
+  },
+  {
+    "id": "dia",
+    "name": "Dia",
+    "category": "Browsers",
+    "source": "Dia.png"
+  },
+  {
+    "id": "discord",
+    "name": "Discord",
+    "category": "Communication",
+    "source": "Discord.png"
+  },
+  {
+    "id": "figma",
+    "name": "Figma",
+    "category": "Design",
+    "source": "Figma.png"
+  },
+  {
+    "id": "finder",
+    "name": "Finder",
+    "category": "Essentials",
+    "source": "Finder.png"
+  },
+  {
+    "id": "framer",
+    "name": "Framer",
+    "category": "Design",
+    "source": "Framer.png"
+  },
+  {
+    "id": "gemini",
+    "name": "Gemini",
+    "category": "AI",
+    "source": "Gemini.png"
+  },
+  {
+    "id": "github",
+    "name": "GitHub",
+    "category": "Development",
+    "source": "GitHub.png"
+  },
+  {
+    "id": "grok-bot",
+    "name": "Grok Bot",
+    "category": "AI",
+    "source": "Grok Bot.png"
+  },
+  {
+    "id": "hermes",
+    "name": "Hermes",
+    "category": "AI",
+    "source": "Hermes.png"
+  },
+  {
+    "id": "illustrator",
+    "name": "Illustrator",
+    "category": "Design",
+    "source": "Illustrator.png"
+  },
+  {
+    "id": "keeby",
+    "name": "Keeby",
+    "category": "Utilities",
+    "source": "Keeby.png"
+  },
+  {
+    "id": "kimi",
+    "name": "Kimi",
+    "category": "AI",
+    "source": "Kimi.png"
+  },
+  {
+    "id": "lazy",
+    "name": "Lazy",
+    "category": "Utilities",
+    "source": "Lazy.png"
+  },
+  {
+    "id": "lightroom",
+    "name": "Lightroom",
+    "category": "Photo & video",
+    "source": "Lightroom.png"
+  },
+  {
+    "id": "mail",
+    "name": "Mail",
+    "category": "Essentials",
+    "source": "Mail.png"
+  },
+  {
+    "id": "manus",
+    "name": "Manus",
+    "category": "AI",
+    "source": "Manus 6.40.06 PM.png"
+  },
+  {
+    "id": "markdown-preview",
+    "name": "Markdown Preview",
+    "category": "Research & writing",
+    "source": "Markdown Preview.png"
+  },
+  {
+    "id": "messages",
+    "name": "Messages",
+    "category": "Essentials",
+    "source": "Messages.png"
+  },
+  {
+    "id": "minimax",
+    "name": "Minimax",
+    "category": "AI",
+    "source": "Minimax.png"
+  },
+  {
+    "id": "music",
+    "name": "Music",
+    "category": "Music",
+    "source": "Music.png"
+  },
+  {
+    "id": "notes",
+    "name": "Notes",
+    "category": "Essentials",
+    "source": "Notes.png"
+  },
+  {
+    "id": "notion",
+    "name": "Notion",
+    "category": "Research & writing",
+    "source": "Notion.png"
+  },
+  {
+    "id": "opencode",
+    "name": "OpenCode",
+    "category": "Development",
+    "source": "OpenCode.png"
+  },
+  {
+    "id": "paper",
+    "name": "Paper",
+    "category": "Design",
+    "source": "Paper.png"
+  },
+  {
+    "id": "perplexity",
+    "name": "Perplexity",
+    "category": "AI",
+    "source": "Perplexity.png"
+  },
+  {
+    "id": "photoshop",
+    "name": "Photoshop",
+    "category": "Photo & video",
+    "source": "Photoshop.png"
+  },
+  {
+    "id": "premiere",
+    "name": "Premiere",
+    "category": "Photo & video",
+    "source": "Premiere.png"
+  },
+  {
+    "id": "qwen",
+    "name": "Qwen",
+    "category": "AI",
+    "source": "Qwen.png"
+  },
+  {
+    "id": "raycast",
+    "name": "Raycast",
+    "category": "Utilities",
+    "source": "Raycast.png"
+  },
+  {
+    "id": "resurf",
+    "name": "Resurf",
+    "category": "Research & writing",
+    "source": "Resurf.png"
+  },
+  {
+    "id": "setapp",
+    "name": "Setapp",
+    "category": "Utilities",
+    "source": "Setapp.png"
+  },
+  {
+    "id": "shotbase",
+    "name": "Shotbase",
+    "category": "Photo & video",
+    "source": "Shotbase.png"
+  },
+  {
+    "id": "slack",
+    "name": "Slack",
+    "category": "Communication",
+    "source": "Slack.png"
+  },
+  {
+    "id": "spotify",
+    "name": "Spotify",
+    "category": "Music",
+    "source": "Spotify.png"
+  },
+  {
+    "id": "surf",
+    "name": "Surf",
+    "category": "Browsers",
+    "source": "Surf.png"
+  },
+  {
+    "id": "t3-code-nightly",
+    "name": "T3 Code (Nightly)",
+    "category": "Development",
+    "source": "T3 Code (Nightly).png"
+  },
+  {
+    "id": "xcode",
+    "name": "Xcode",
+    "category": "Development",
+    "source": "Xcode.png"
+  },
+  {
+    "id": "zcode",
+    "name": "ZCode",
+    "category": "Development",
+    "source": "ZCode.png"
+  },
+  {
+    "id": "zotero",
+    "name": "Zotero",
+    "category": "Research & writing",
+    "source": "Zotero.png"
+  },
+  {
+    "id": "superwhisper",
+    "name": "superwhisper",
+    "category": "Utilities",
+    "source": "superwhisper.png"
+  }
+]

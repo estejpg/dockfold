@@ -26,7 +26,7 @@ body:
     id: icon
     attributes:
       label: App icon (optional)
-      description: Drag a square PNG here, ideally 512 × 512 or larger with transparency. Include where the icon came from. Instructions at https://dockfold.vercel.app/#/contribute.
+      description: Drag a square PNG here, ideally 512 × 512 or larger with transparency. Include where the icon came from. Instructions at https://dockfold.vercel.app/contribute.
   - type: textarea
     id: why
     attributes:

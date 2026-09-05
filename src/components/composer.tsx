@@ -12,25 +12,21 @@ import {
   byId,
   catalog,
   DRAFT_KEY,
-  encodeDock,
+  shareURL,
   MAX_APPS,
   moveApp,
   readDraft,
   type Dock,
 } from "../lib/dock";
 import { AppIcon, DockStrip } from "./common";
-const filters = [
-  "All",
-  "Design",
-  "Development",
-  "Writing",
-  "Music",
-  "Browsers",
-];
+import { submissionURL } from "../lib/submission";
+const filters = ["All apps", ...new Set(catalog.map((app) => app.category))];
 export function Composer({ initial }: { initial?: Dock }) {
+  const [previousDraft] = useState(() => (initial ? readDraft() : null));
+  const [canUndo, setCanUndo] = useState(Boolean(initial));
   const [dock, setDock] = useState<Dock>(() => initial ?? readDraft());
   const [query, setQuery] = useState(""),
-    [filter, setFilter] = useState("All");
+    [filter, setFilter] = useState("All apps");
   const [saved, setSaved] = useState(true),
     [link, setLink] = useState(""),
     [notice, setNotice] = useState("");
@@ -47,7 +43,7 @@ export function Composer({ initial }: { initial?: Dock }) {
     () =>
       catalog.filter(
         (app) =>
-          (filter === "All" || app.category === filter) &&
+          (filter === "All apps" || app.category === filter) &&
           app.name.toLowerCase().includes(query.trim().toLowerCase()),
       ),
     [filter, query],
@@ -79,10 +75,29 @@ export function Composer({ initial }: { initial?: Dock }) {
     }
   }
   return (
-    <main id="main">
+    <main id="main" tabIndex={-1} className="submit-page">
       <section className="page-intro">
-        <h1>The apps you keep close.</h1>
-        <p>Pick your apps. Put them in order. Share your Dock.</p>
+        <h1>Submit a Dock</h1>
+        <p>
+          Build your own setup, share it with a friend, or suggest it for the
+          collection.
+        </p>
+        <p className="fine-print">
+          A share link is unlisted. Collection submissions are reviewed on
+          GitHub.
+        </p>
+        {canUndo && previousDraft?.a.length ? (
+          <button
+            type="button"
+            className="text-button"
+            onClick={() => {
+              change(previousDraft);
+              setCanUndo(false);
+            }}
+          >
+            Restore my previous draft
+          </button>
+        ) : null}
       </section>
       <div className="workspace">
         <section className="catalog-panel" aria-labelledby="catalog-title">
@@ -100,17 +115,19 @@ export function Composer({ initial }: { initial?: Dock }) {
               type="search"
             />
           </label>
-          <div className="filters" role="group" aria-label="Filter apps">
-            {filters.map((item) => (
-              <button
-                type="button"
-                key={item}
-                aria-pressed={filter === item}
-                onClick={() => setFilter(item)}
-              >
-                {item}
-              </button>
-            ))}
+          <div className="catalog-filter">
+            <label htmlFor="catalog-category">Category</label>
+            <select
+              id="catalog-category"
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
+            >
+              {filters.map((item) => (
+                <option key={item} value={item}>
+                  {item}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="app-grid" aria-label="Available apps">
             {visible.map((app) => (
@@ -141,7 +158,7 @@ export function Composer({ initial }: { initial?: Dock }) {
                 className="text-button"
                 onClick={() => {
                   setQuery("");
-                  setFilter("All");
+                  setFilter("All apps");
                 }}
               >
                 Show all apps
@@ -150,7 +167,7 @@ export function Composer({ initial }: { initial?: Dock }) {
           ) : null}
           <p className="catalog-foot">
             Missing an app?{" "}
-            <a href="#/requests">
+            <a href="/requests">
               Request it or vote for what comes next. <ArrowUpRight size={16} />
             </a>
           </p>
@@ -223,10 +240,18 @@ export function Composer({ initial }: { initial?: Dock }) {
             className="dock-details"
             onSubmit={(e) => {
               e.preventDefault();
-              setLink(
-                `${location.origin}${location.pathname}#/dock/${encodeDock({ ...dock, n: dock.n.trim(), t: dock.t.trim() })}`,
-              );
-              setNotice("Your share link is ready.");
+              try {
+                setLink(
+                  shareURL({ ...dock, n: dock.n.trim(), t: dock.t.trim() }),
+                );
+                setNotice("Your share link is ready.");
+              } catch (error) {
+                setNotice(
+                  error instanceof Error
+                    ? error.message
+                    : "Could not create the link.",
+                );
+              }
             }}
           >
             <label htmlFor="dock-name">Give it a name</label>
@@ -277,6 +302,22 @@ export function Composer({ initial }: { initial?: Dock }) {
                   </button>
                   <a className="button" href={link}>
                     View Dock <ArrowUpRight size={15} />
+                  </a>
+                </div>
+                <div className="collection-submit">
+                  <h3>Worth sharing with everyone?</h3>
+                  <p>
+                    Send this Dock to the collection. You can review your
+                    submission on GitHub before posting it.
+                  </p>
+                  <a
+                    className="text-button"
+                    target="_blank"
+                    rel="noreferrer"
+                    href={submissionURL(dock, link)}
+                  >
+                    Suggest for the collection <ArrowUpRight size={14} />
+                    <span className="sr-only"> on GitHub, opens a new tab</span>
                   </a>
                 </div>
               </div>

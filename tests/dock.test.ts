@@ -19,7 +19,7 @@ const dock = {
 };
 test("share links preserve Unicode, choices and order", () =>
   assert.deepEqual(decodeDock(encodeDock(dock)), dock));
-test("catalog IDs are unique and every local PNG exists", () => {
+test("catalog IDs are unique and every local icon exists", () => {
   assert.equal(new Set(catalog.map((a) => a.id)).size, catalog.length);
   for (const app of catalog) {
     assert.match(app.id, /^[a-z0-9-]+$/);

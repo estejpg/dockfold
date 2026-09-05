@@ -1,7 +1,10 @@
 import catalogData from "./catalog.json";
+import legacyCatalog from "./legacy-catalog.json";
 export const catalog = catalogData;
 export type App = (typeof catalog)[number];
-export const byId = new Map(catalog.map((app) => [app.id, app]));
+export const byId = new Map(
+  [...legacyCatalog, ...catalog].map((app) => [app.id, app]),
+);
 export type Dock = { v: 2; a: string[]; n: string; t: string };
 export const DRAFT_KEY = "dockfold:draft:v2";
 export const MAX_APPS = 40;
@@ -36,10 +39,15 @@ export function parseDock(value: unknown, allowEmpty = false): Dock {
 }
 export function encodeDock(dock: Dock) {
   const bytes = new TextEncoder().encode(JSON.stringify(parseDock(dock)));
-  return btoa(Array.from(bytes, (b) => String.fromCharCode(b)).join(""))
+  const encoded = btoa(
+    Array.from(bytes, (b) => String.fromCharCode(b)).join(""),
+  )
     .replaceAll("+", "-")
     .replaceAll("/", "_")
     .replace(/=+$/, "");
+  if (encoded.length > 4096)
+    throw new Error("This Dock is too large to share.");
+  return encoded;
 }
 export function decodeDock(payload: string): Dock {
   if (
@@ -62,7 +70,9 @@ export function decodeDock(payload: string): Dock {
 export function readDraft(): Dock {
   try {
     const saved = localStorage.getItem(DRAFT_KEY);
-    return saved ? parseDock(JSON.parse(saved), true) : emptyDock();
+    return saved && saved.length <= 4096
+      ? parseDock(JSON.parse(saved), true)
+      : emptyDock();
   } catch {
     return emptyDock();
   }
@@ -113,3 +123,10 @@ export const examples: { dock: Dock; category: string }[] = [
     },
   },
 ];
+
+export function shareURL(dock: Dock, origin: string = location.origin) {
+  return `${origin}/dock#dock=${encodeDock(dock)}`;
+}
+export function customizeURL(dock: Dock) {
+  return `/submit#dock=${encodeDock(dock)}`;
+}

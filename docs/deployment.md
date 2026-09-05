@@ -17,26 +17,29 @@ npx vercel deploy --yes
 npx vercel deploy --prod --yes
 ```
 
-The repository includes the complete catalog PNGs. Future Git deployments do not depend on files from a personal computer. Hash routes work on any static host; the Vercel fallback also handles old paths with an explanatory page. Security headers limit scripts, fonts, images, and connections to the site and the GitHub API. Share fragments are never required by a server route.
+The repository includes the complete optimized catalog icons. Future Git deployments do not depend on files from a personal computer. Configure a static fallback to `index.html` for Home, Latest, Submit, and curated detail paths on other hosts. Vercel already has this fallback. Old fragment share links remain readable. Security headers limit scripts, fonts, images, and connections to the site and the GitHub API. Share fragments are never required by a server route.
 
 If connecting Vercel to GitHub, select `estejpg/dockfold`, repository root, Vite, and `main` for production. GitHub Actions checks tests, lint, and the production build on pull requests and main.
 
 ## Launch checks
 
-- Start with no browser data: no apps selected, Create share link disabled.
+- Home shows 18 curated Docks in six groups; search by an app name and try each category.
+- Latest uses real addition dates. All 18 launch Docks share the launch date.
+- Open Submit with no browser data: no apps selected, Create share link disabled.
 - Select apps; reorder and remove them; reload to confirm the local draft.
 - Name the Dock; create a link; open it in a different browser with no local data.
-- Copy a shared Dock with Make it yours; confirm only the new local draft changes.
+- Copy a curated/shared Dock with Make it yours; Restore my previous draft recovers the prior nonempty draft.
 - Check phone widths, keyboard focus, light/dark mode, and reduced motion.
 - Open App requests; verify real GitHub responses or its clear fallback.
 - Open Request an app; verify the live GitHub form has app name, website, and optional icon fields. Do not submit a fake request to test it.
+- Create a share link, open Suggest for the collection, and verify GitHub prefills the full fragment URL, name, and note. The `dock-submission` label and template must exist on the default branch. Do not post a fake submission.
 - Verify that a real request’s first-post 👍 reaction changes its ranking after Refresh votes.
 
 ## GitHub API behavior
 
-Only `#/requests` fetches GitHub. The client reads open issues with the `app-request` label in pages of 100, up to 500, rejects malformed entries, excludes pull requests, and renders titles as plain text. Request URLs are constructed from the fixed repository and a validated issue number. It never renders issue bodies, attached images, remote HTML, or an arbitrary supplied URL.
+Only `/requests` fetches GitHub. The client reads open issues with the `app-request` label in pages of 100, up to 500, rejects malformed entries, excludes pull requests, and renders titles as plain text. Request URLs are constructed from the fixed repository and a validated issue number. It never renders issue bodies, attached images, remote HTML, or an arbitrary supplied URL.
 
-The leaderboard counts the `+1` reaction, not all reaction types. Ties follow issue creation order. Cache freshness is five minutes; Refresh votes explicitly fetches again. Public reads are unauthenticated, so GitHub rate limits apply to the visitor’s address. A failure shows an error, keeps any prior results with a stale-data label, and offers a direct GitHub link. It does not invent counts or claim a vote was recorded on DockFold.
+The leaderboard counts the `+1` reaction, not all reaction types. Ties follow issue creation order. Cache freshness is five minutes; Refresh votes explicitly fetches again. Public reads are unauthenticated, so GitHub rate limits apply to the visitor’s address. A ten-second deadline cancels a stalled fetch. Pagination deduplicates issue numbers; future-dated cache entries are rejected. A failure shows an error, keeps any prior results with a stale-data label, and offers a direct GitHub link. It does not invent counts or claim a vote was recorded on DockFold.
 
 ## Data and recovery
 

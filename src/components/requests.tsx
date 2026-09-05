@@ -34,7 +34,7 @@ export default function Requests() {
       request.name.toLowerCase().includes(query.trim().toLowerCase()),
     ) ?? [];
   return (
-    <main id="main" className="requests-page">
+    <main id="main" tabIndex={-1} className="requests-page">
       <section className="page-intro">
         <h1>What belongs in the Dock next?</h1>
         <p>
@@ -50,7 +50,7 @@ export default function Requests() {
             Request an app <ArrowUpRight size={16} />
             <span className="sr-only"> on GitHub, opens a new tab</span>
           </a>
-          <a className="text-button" href="#/contribute">
+          <a className="text-button" href="/contribute">
             Have an icon to contribute? <ArrowUpRight size={16} />
           </a>
         </div>
@@ -180,7 +180,7 @@ export default function Requests() {
           Add the app’s website and, if you have it, a PNG of its icon to your
           request. Esteban reviews requests and adds icons to the collection.
         </p>
-        <a href="#/contribute" className="text-button">
+        <a href="/contribute" className="text-button">
           How to export an app icon <ArrowUpRight size={16} />
         </a>
       </section>

@@ -9,87 +9,94 @@ import { createRoot } from "react-dom/client";
 import "@fontsource-variable/inter";
 import "./styles.css";
 import { Header, Footer } from "./components/common";
-import { Composer } from "./components/composer";
+import { Directory, Latest } from "./components/directory";
+import { CollectionDetail } from "./components/collection-detail";
 import {
   Contribute,
-  Examples,
   MissingDock,
   Privacy,
   SharedDock,
 } from "./components/pages";
 import { decodeDock, examples } from "./lib/dock";
+import { collectionById } from "./lib/collections";
+const Composer = lazy(() =>
+  import("./components/composer").then((m) => ({ default: m.Composer })),
+);
 const Requests = lazy(() => import("./components/requests"));
 const subscribe = (cb: () => void) => {
   window.addEventListener("hashchange", cb);
   return () => window.removeEventListener("hashchange", cb);
 };
 function Application() {
-  const route = useSyncExternalStore(
-    subscribe,
-    () => window.location.hash || "#/",
-  );
+  const hash = useSyncExternalStore(subscribe, () => location.hash);
+  const path = location.pathname.replace(/\/$/, "") || "/";
+  let route = path;
   let page: ReactNode;
-  let title = "DockFold — The apps you keep close";
+  let title = "DockFold — A curated collection of macOS Docks";
   try {
-    if (location.pathname !== "/" && location.pathname !== "/index.html")
-      page = <MissingDock />;
-    else if (route === "#/") page = <Composer />;
-    else if (route.startsWith("#/build/"))
-      page = <Composer key={route} initial={decodeDock(route.slice(8))} />;
-    else if (route.startsWith("#/dock/")) {
-      page = <SharedDock key={route} dock={decodeDock(route.slice(7))} />;
+    // Old fragment links remain readable after the directory gains ordinary page URLs.
+    if (hash.startsWith("#/dock/")) {
+      route = "/dock";
+      page = <SharedDock dock={decodeDock(hash.slice(7))} />;
       title = "A shared Dock · DockFold";
-    } else if (route === "#/examples") {
-      page = <Examples />;
-      title = "Example Docks · DockFold";
-    } else if (/^#\/example\/[0-3]$/.test(route))
+    } else if (hash.startsWith("#/build/")) {
+      route = "/submit";
+      page = <Composer key={hash} initial={decodeDock(hash.slice(8))} />;
+      title = "Submit a Dock · DockFold";
+    } else if (/^#\/example\/[0-3]$/.test(hash)) {
+      page = <SharedDock dock={examples[Number(hash.at(-1))].dock} example />;
+    } else if (hash === "#/examples") {
+      page = <Directory />;
+      route = "/";
+    } else if (path === "/dock" && hash.startsWith("#dock=")) {
+      page = <SharedDock dock={decodeDock(hash.slice(6))} />;
+      title = "A shared Dock · DockFold";
+    } else if (path === "/submit") {
       page = (
-        <SharedDock
-          key={route}
-          dock={examples[Number(route.at(-1))].dock}
-          example
+        <Composer
+          key={hash}
+          initial={
+            hash.startsWith("#dock=") ? decodeDock(hash.slice(6)) : undefined
+          }
         />
       );
-    else if (route === "#/requests") {
-      page = (
-        <Suspense
-          fallback={
-            <main id="main" className="reading-page">
-              <p role="status">Loading app requests…</p>
-            </main>
-          }
-        >
-          <Requests />
-        </Suspense>
-      );
+      title = "Submit a Dock · DockFold";
+    } else if (path === "/latest") {
+      page = <Latest />;
+      title = "Latest additions · DockFold";
+    } else if (path.startsWith("/docks/")) {
+      const item = collectionById.get(path.slice(7));
+      page = item ? <CollectionDetail item={item} /> : <MissingDock />;
+      title = item ? `${item.title} · DockFold` : "Dock not found · DockFold";
+    } else if (path === "/requests" || hash === "#/requests") {
+      route = "/requests";
+      page = <Requests />;
       title = "App requests · DockFold";
-    } else if (route === "#/contribute") {
+    } else if (path === "/contribute" || hash === "#/contribute") {
       page = <Contribute />;
       title = "Contribute an icon · DockFold";
-    } else if (route === "#/privacy") {
+    } else if (path === "/privacy" || hash === "#/privacy") {
       page = <Privacy />;
       title = "Privacy · DockFold";
+    } else if (
+      (path === "/" || path === "/index.html") &&
+      (!hash || hash === "#/")
+    ) {
+      page = <Directory />;
+      route = "/";
     } else page = <MissingDock />;
   } catch {
     page = <MissingDock />;
+    title = "Dock not found · DockFold";
   }
   useEffect(() => {
     document.title = title;
-    window.scrollTo({ top: 0, behavior: "instant" });
-    const frame = requestAnimationFrame(() => {
-      const main = document.querySelector<HTMLElement>("main");
-      main?.setAttribute("tabindex", "-1");
-      const heading = main?.querySelector<HTMLElement>("h1");
-      heading?.setAttribute("tabindex", "-1");
-      heading?.focus({ preventScroll: true });
-    });
-    return () => cancelAnimationFrame(frame);
-  }, [route, title]);
+  }, [title]);
   return (
     <>
       <a
-        className="skip-link"
         href="#main"
+        className="skip-link"
         onClick={(e) => {
           e.preventDefault();
           document.querySelector<HTMLElement>("main")?.focus();
@@ -98,7 +105,15 @@ function Application() {
         Skip to content
       </a>
       <Header route={route} />
-      {page}
+      <Suspense
+        fallback={
+          <main id="main" tabIndex={-1} className="reading-page">
+            <p role="status">Loading…</p>
+          </main>
+        }
+      >
+        {page}
+      </Suspense>
       <Footer />
     </>
   );
