@@ -1,10 +1,38 @@
 [
   {
-    "id": "antigravity-ide",
-    "source": "Antigravity IDE.png",
-    "sha256": "a2ddf8a63db9adf43d46022b388d218fe37587dfed3a5ede76dd069f230219a4",
+    "id": "acrobat",
+    "source": "Acrobat.png",
+    "sha256": "18d81b01fd46e5b750a3785bc370c4f6e9bb8fa961865b93b4a6fda765f58da2",
     "sourceWidth": 1024,
     "sourceHeight": 1024
+  },
+  {
+    "id": "acrobat-distiller",
+    "source": "Acrobat Distiller.png",
+    "sha256": "0571a78b9f858e859c788f250d7b62d91d78147d225a993acb13f74f8e8a7640",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "activity-monitor",
+    "source": "Activity Monitor.png",
+    "sha256": "b7d88a2b58f6e2785cf2e442543f9834bb2ca9897e29014ca06fac83c6020758",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "affinity",
+    "source": "Affinity.png",
+    "sha256": "aed70482019726bbeb61c4af60667985d5b6bc54307dac1586fe2ce35ac6b8c9",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "airport-utility",
+    "source": "AirPort Utility.png",
+    "sha256": "b0517b314d0ef581ed4cc864c3ac7190327f9e7e691597f0a103d48728f74751",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
   },
   {
     "id": "antigravity",
@@ -14,11 +42,25 @@
     "sourceHeight": 1024
   },
   {
+    "id": "antigravity-ide",
+    "source": "Antigravity IDE.png",
+    "sha256": "a2ddf8a63db9adf43d46022b388d218fe37587dfed3a5ede76dd069f230219a4",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
     "id": "app-store",
     "source": "App Store.png",
     "sha256": "14abb405033c6b79fc849a27a9905a14059b5ba5aa965977727b66b9d4ffa7ac",
     "sourceWidth": 1024,
     "sourceHeight": 1024
+  },
+  {
+    "id": "apps",
+    "source": "Apps.png",
+    "sha256": "c9bb4057f3f057b1fb0b2a331e63dbd4b6d35e9a4d6b1fc08d6da1c982daea31",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
   },
   {
     "id": "arc",
@@ -42,11 +84,46 @@
     "sourceHeight": 1024
   },
   {
+    "id": "attune",
+    "source": "Attune.png",
+    "sha256": "cf45a0a57c775ec7a0833d67d58e2fbd57ac8cfad0f9d84aaabea9b10a4531dd",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "audio-midi-setup",
+    "source": "Audio MIDI Setup.png",
+    "sha256": "747525cc83a0a6856f70ad91434ca8735a0ba939cafa24a0c7839a5efd60fa91",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "automator",
+    "source": "Automator.png",
+    "sha256": "429e0c222ff30e9dff76fc52c086e7ac058a3afd8599feffd836f1c7ae37167e",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "bartender-pro",
+    "source": "Bartender Pro.png",
+    "sha256": "a85e6ae588324c9ec8cd58a1a8f8bcb8f7206783466c7f815fd8589cfbcf57f0",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
     "id": "bitrig",
-    "source": "Bitrig.png",
+    "source": "BitRig.png",
     "sha256": "02674d33c903af4c6cc4253d6a4583900dae8666dd79513b619d29046eab092f",
     "sourceWidth": 1024,
     "sourceHeight": 1024
+  },
+  {
+    "id": "bluetooth-file-exchange",
+    "source": "Bluetooth File Exchange.png",
+    "sha256": "ed32ebab35a7c63a534188a0423fbbc2c383ff5a913f1b0460d023cc99033d0a",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
   },
   {
     "id": "books",
@@ -56,9 +133,23 @@
     "sourceHeight": 1024
   },
   {
+    "id": "calculator",
+    "source": "Calculator.png",
+    "sha256": "a8af3d27fd6d4092a1930398a917ec0bf4b56d373e8cd486ba7f282eee660a84",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
     "id": "calendar",
     "source": "Calendar.png",
     "sha256": "accb5fe601e21ec59be505975f27a13c9246d756f2a680d5b1c2bd276986f0ab",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "canva",
+    "source": "Canva.png",
+    "sha256": "702bc64e72f25a8c1752e6d564ebf74e9804f789994d15e9c20ddbe1ea86607c",
     "sourceWidth": 1024,
     "sourceHeight": 1024
   },
@@ -70,6 +161,13 @@
     "sourceHeight": 1024
   },
   {
+    "id": "chatgpt",
+    "source": "ChatGPT.png",
+    "sha256": "d3cb6a1b8107de9c9e843549b8b02ccdaa6307857812213a9001c2c6c97bb1ed",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
     "id": "chatgpt-atlas",
     "source": "ChatGPT Atlas.png",
     "sha256": "24255a3f0623295ca0d7e7fe4a5d62b56c9514895b60f322123980cac6c04735",
@@ -77,11 +175,11 @@
     "sourceHeight": 1024
   },
   {
-    "id": "chatgpt",
-    "source": "ChatGPT.png",
-    "sha256": "d3cb6a1b8107de9c9e843549b8b02ccdaa6307857812213a9001c2c6c97bb1ed",
-    "sourceWidth": 1024,
-    "sourceHeight": 1024
+    "id": "chess",
+    "source": "Chess.png",
+    "sha256": "aa8160e348c22900ee0e15b5aa401b0ec0275c21cc3c546fd2197d686e858dbd",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
   },
   {
     "id": "claude",
@@ -91,11 +189,46 @@
     "sourceHeight": 1024
   },
   {
+    "id": "cleanmymac",
+    "source": "CleanMyMac.png",
+    "sha256": "cc678617fc49df49fa47e6655a50bd5b5ed4eb5d241c871c583ba013986b9e69",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "clearvpn",
+    "source": "ClearVPN.png",
+    "sha256": "88e911a529783ac4c8486897fb15a360526a85fc8de54a7dea69fbb096f6049f",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "clock",
+    "source": "Clock.png",
+    "sha256": "c00ee185cb9c8ea47286b7114c66a3ea24636b532d7716eb6bfe3006562ce06c",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "clop",
+    "source": "Clop.png",
+    "sha256": "859ec86777e97c975a728200a1bfb6f6ce6bb530ba5b5fdb2b2c4f39488b7355",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
     "id": "coast-local",
     "source": "Coast Local.png",
     "sha256": "312de5c302662ac98905e89d4fe655a46c038346dca9570ec92cc57174cc0222",
     "sourceWidth": 1024,
     "sourceHeight": 1024
+  },
+  {
+    "id": "colorsync-utility",
+    "source": "ColorSync Utility.png",
+    "sha256": "5b9c5de18c2aa5ccb5cac3e1d98634b88b1c75d627805006ee50d71ef618ceaa",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
   },
   {
     "id": "comet",
@@ -105,9 +238,51 @@
     "sourceHeight": 1024
   },
   {
-    "id": "dia-early-birds",
-    "source": "Dia (Early Birds).png",
-    "sha256": "b9a7f37a9b111ed01fde961fc3e67dd0f0430ed77dead1eac237c5787d823c1e",
+    "id": "console",
+    "source": "Console.png",
+    "sha256": "4f77770f63d875e01801badfc5464a77d0b2f69a7ba7301e8885275a64a9a3a8",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "contacts",
+    "source": "Contacts.png",
+    "sha256": "7acd37e92e4181d437dfbefd2a0a63809faef777e43c8c3a2a18e9d68097260b",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "craft",
+    "source": "Craft.png",
+    "sha256": "a7ee06368240ee58a2bd80932ac65107e4c7afbe0f8149dd2c2a4cfea97a4b7c",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "creative-cloud",
+    "source": "Creative Cloud.png",
+    "sha256": "736fea2d04a13dd91e2dcbb9e4760f5cbfc5985a4cacf59f046f0e1040b834d3",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "cursor",
+    "source": "Cursor.png",
+    "sha256": "5cffd3404dc44ebb227c1490325333b489b01b8bd14611aefadb8b2336dbc785",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "davinci-resolve",
+    "source": "DaVinci Resolve.png",
+    "sha256": "cd1ce79001d4fdbb7609690953a0a1c2197a9dd9fc9b89daa0be4678338ee21f",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "dayflow",
+    "source": "Dayflow.png",
+    "sha256": "5b797ec94f2843d168e3ca7c1697f9f140142c2f6d28a82859d57db18055d329",
     "sourceWidth": 1024,
     "sourceHeight": 1024
   },
@@ -119,9 +294,51 @@
     "sourceHeight": 1024
   },
   {
+    "id": "dia-early-birds",
+    "source": "Dia (Early Birds).png",
+    "sha256": "b9a7f37a9b111ed01fde961fc3e67dd0f0430ed77dead1eac237c5787d823c1e",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "dictionary",
+    "source": "Dictionary.png",
+    "sha256": "ec4c2366d37deadd4e26918d9fe6226b39970a7a768205a7f96a0c20066730d0",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "digital-color-meter",
+    "source": "Digital Color Meter.png",
+    "sha256": "a9a9822850bc8e8a6975a9f272083167eadf7e3f6d599f9302d695689d2f3a40",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
     "id": "discord",
     "source": "Discord.png",
     "sha256": "bd667b18c6c96134280595a429ad846004483b26167e5a7923ad4b9fa11a147c",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "disk-utility",
+    "source": "Disk Utility.png",
+    "sha256": "de7b1319c6fb114b8409892b31b95054b6312cfbf616bc1584a967520b221d8c",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "downie",
+    "source": "Downie.png",
+    "sha256": "1335004b22ddcbe177adee9f937dfe59c4159547fa83fda85e978d5754189313",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "facetime",
+    "source": "FaceTime.png",
+    "sha256": "57d412fe99eedf699b80a4a32181aa7d0be9dfcba7d35b8ccb45bce53a0b4959",
     "sourceWidth": 1024,
     "sourceHeight": 1024
   },
@@ -133,6 +350,13 @@
     "sourceHeight": 1024
   },
   {
+    "id": "find-my",
+    "source": "FindMy.png",
+    "sha256": "f6576718caba6fb0a966cfaef076441f35633e3bd56a77ae634fab9169d3a04e",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
     "id": "finder",
     "source": "Finder.png",
     "sha256": "3e1642aabfa786e2609dea93b63c42da07d527c7499051e2109313455ea45938",
@@ -140,11 +364,32 @@
     "sourceHeight": 1024
   },
   {
+    "id": "font-book",
+    "source": "Font Book.png",
+    "sha256": "55a6666c966f0ccd009517bf051e0f5153fcc407fe779cc49568b2e48ab2c83b",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
     "id": "framer",
     "source": "Framer.png",
     "sha256": "70517fdefce8426bae6ad325215eb6350ad5402756ba364530aa9cb9e9e510a8",
     "sourceWidth": 1024,
     "sourceHeight": 1024
+  },
+  {
+    "id": "freeform",
+    "source": "Freeform.png",
+    "sha256": "0d6174fcd4bef8f66770b289936101d416f358ad1bf521b25cc09fdd85d8e6df",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "games",
+    "source": "Games.png",
+    "sha256": "b12b1971e1c50572edecb1806c6dd077ff00c6fa35637e71ec5216b4ecf64287",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
   },
   {
     "id": "gemini",
@@ -161,6 +406,41 @@
     "sourceHeight": 1024
   },
   {
+    "id": "google-docs",
+    "source": "Google Docs.png",
+    "sha256": "40f07562068d6d8e3fc60a885d7c677a8e26fce19553d04d6d8d7f34f3565694",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "google-drive",
+    "source": "Google Drive.png",
+    "sha256": "84e59e7a284b4a2f61a8342f771e8e35baa23affb67b5cc11851ddeead9137ec",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "google-sheets",
+    "source": "Google Sheets.png",
+    "sha256": "a0f0facb4e61dfeb8c32e01c2eafb032aafef33f67aeaca8def712ee3ff86141",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "google-slides",
+    "source": "Google Slides.png",
+    "sha256": "603f35c5f4e456d997eb830b76b9958ea3fcaab326e1739a1f6f6b7962e3d3b4",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "grapher",
+    "source": "Grapher.png",
+    "sha256": "c2be6943f9ac442cef8d28cdc74c523ba0d711877c763fc021ffb076fa3ab974",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
     "id": "grok-bot",
     "source": "Grok Bot.png",
     "sha256": "abff2a1d6e68550ff7467a9592ccf7f2e95f0dc3776a7234367b48db7296508b",
@@ -175,6 +455,13 @@
     "sourceHeight": 1024
   },
   {
+    "id": "home",
+    "source": "Home.png",
+    "sha256": "999a772fc2d1f86cd320bc601655a28c0e81bd1835600d2e70919981468ae8bf",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
     "id": "illustrator",
     "source": "Illustrator.png",
     "sha256": "4bd36d3dbeae5ec76bc118795d0606b2ee80607755880545e7d739766cd01771",
@@ -182,9 +469,51 @@
     "sourceHeight": 1024
   },
   {
+    "id": "image-capture",
+    "source": "Image Capture.png",
+    "sha256": "e1a3206608271266559a13ffc3c4f33f6071544a279ae7e89030f171473702b1",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "image-playground",
+    "source": "Image Playground.png",
+    "sha256": "d89ee9b595a9d06c0d691e611df99e738e5a724750b041e84a6ac1e2f0cee233",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "intellij-idea",
+    "source": "IntelliJ IDEA.png",
+    "sha256": "f4b5c979b1ca12e51fde17a9b8e762c2f6e07fe9ed8b02eaafc4f92d3445c93d",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "iphone-mirroring",
+    "source": "iPhone Mirroring.png",
+    "sha256": "dd9c427c07d711e950fdd2c9110e2e6939c2ac6db0393bcf2e8a6cdd497970f8",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "journal",
+    "source": "Journal.png",
+    "sha256": "4b1fb0dfb141d3efcf31062e9ed29ef333da3c29af8e0ef95f3f8968ba7105f3",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
     "id": "keeby",
     "source": "Keeby.png",
     "sha256": "eb35791015bd76220111a87ff08b495a224867cd4c5b40c5d2df6c070e77ecd8",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "keynote",
+    "source": "Keynote.png",
+    "sha256": "a13f7fa6cd2862b1f2e7d2e27e590d8bd0027d1647735ce063412f668c75a8e2",
     "sourceWidth": 1024,
     "sourceHeight": 1024
   },
@@ -210,6 +539,13 @@
     "sourceHeight": 1024
   },
   {
+    "id": "lungo",
+    "source": "Lungo.png",
+    "sha256": "4afaf26e31ce54e7aa360158a2f69eafe4c3dcb6c42443e32610ad571800a424",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
     "id": "mail",
     "source": "Mail.png",
     "sha256": "63cd7115c01b720c3f1e2c142e1b4fb9d77c656a837e25e04a47c9ce9813be84",
@@ -220,6 +556,13 @@
     "id": "manus",
     "source": "Manus 6.40.06 PM.png",
     "sha256": "e818f53b7178e02abe238087378f0e6d7bd4377ad117dbbfdf50fa1b7dc3c97f",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "maps",
+    "source": "Maps.png",
+    "sha256": "2f99d76ebcbaa670adf4c4f97401fd466f6e9c9bb6dbe971546c523419fbc069",
     "sourceWidth": 1024,
     "sourceHeight": 1024
   },
@@ -245,11 +588,39 @@
     "sourceHeight": 1024
   },
   {
+    "id": "mission-control",
+    "source": "Mission Control.png",
+    "sha256": "6292f06175a8f53e16d32e88a6fb22a649837ba88d46e63c744b155e7fc3caf9",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "modrinth-app",
+    "source": "Modrinth App.png",
+    "sha256": "b66a299695f5575e3b1fc4da7161d2aeb43ca9146b6a11192e7b42ccbcd2f876",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "moonlock",
+    "source": "Moonlock.png",
+    "sha256": "cc4b4cb972c5abf0aa91bf519e54936d3e996b07b062dd5254e71d723c5af153",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
     "id": "music",
     "source": "Music.png",
     "sha256": "cf25b21858df78dca8e51d78105673e8c72368f8d1e9d77e4b1b5032e21e318b",
     "sourceWidth": 1024,
     "sourceHeight": 1024
+  },
+  {
+    "id": "news",
+    "source": "News.png",
+    "sha256": "89548caf99c25bf3d983dcdc35cc27083d10612da7c1db2d1a5eca76f1e2de5c",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
   },
   {
     "id": "notes",
@@ -266,9 +637,37 @@
     "sourceHeight": 1024
   },
   {
+    "id": "numbers",
+    "source": "Numbers.png",
+    "sha256": "f53b966ec6d39540babe4d37968febea57e168c129ed27fb26c824ecf5777045",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "obsidian",
+    "source": "Obsidian.png",
+    "sha256": "a564240ce6112847c24e4e28405f2d8ec2e2c405ad0ff8dad5683a504ee04c1c",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "opal",
+    "source": "Opal.png",
+    "sha256": "6b938e45014ea41d14db5c87df0c3ff0c590f165df1ad1614fb4bdfc891493b0",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
     "id": "opencode",
     "source": "OpenCode.png",
     "sha256": "8a4fac43e37297116aba5f878451e50102f8b830e5f5f5dd2c30f36c47f2a33b",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "pages",
+    "source": "Pages.png",
+    "sha256": "d67c3d1b4b37e1d3fb77e68e6ee293506c92f8b958a4a628d6c5162b11df0342",
     "sourceWidth": 1024,
     "sourceHeight": 1024
   },
@@ -280,9 +679,44 @@
     "sourceHeight": 1024
   },
   {
+    "id": "passwords",
+    "source": "Passwords.png",
+    "sha256": "e09a6fed46e3c73d2589e6b0f33dbef9b95940d5a6f8e494eea5fb62210d1230",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "permute",
+    "source": "Permute.png",
+    "sha256": "289ec0b4bfe0804fae25736d953c17feb867467d0aaa84557a4af2b0c5b36923",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
     "id": "perplexity",
     "source": "Perplexity.png",
     "sha256": "519d7923406200197e5dbec49e21832a4d2c2fc3e9802e94d434fd19c476c881",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "phone",
+    "source": "Phone.png",
+    "sha256": "806d3596e39d0cd46f7b6c672beb7063b5605c939302e57c3b38e4dc8a834cee",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "photo-booth",
+    "source": "Photo Booth.png",
+    "sha256": "e652dfe94bb13b4c209799c0151eba3bf60ea6d3c8cdac3b49f6ae096d8dce7c",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "photos",
+    "source": "Photos.png",
+    "sha256": "2d97df9bb9996e106d1e2452d0c9fbfd79b80625566cab58e3979f2b4ace47e0",
     "sourceWidth": 1024,
     "sourceHeight": 1024
   },
@@ -294,11 +728,46 @@
     "sourceHeight": 1024
   },
   {
+    "id": "pixelmator-pro",
+    "source": "Pixelmator Pro.png",
+    "sha256": "d00edf789427eece2a0b58d53b10e92b161c9e0d61d148338c07ca0f2bea9244",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "podcasts",
+    "source": "Podcasts.png",
+    "sha256": "78da932bbc77a3ae89729b27c934315e95c850d451726092de9ce9b328bd9e32",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
     "id": "premiere",
     "source": "Premiere.png",
     "sha256": "acddf4bf7ad41d78b2bd655d792b54e447cebeeb3ae56b8fe7242f1962a6a0b5",
     "sourceWidth": 1024,
     "sourceHeight": 1024
+  },
+  {
+    "id": "preview",
+    "source": "Preview.png",
+    "sha256": "c97f647018f67d23847cd21509815a09f850d93bac7eb166995f2114a67cc4eb",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "print-center",
+    "source": "Print Center.png",
+    "sha256": "76f997a8b7bae595d1e0f4905419059a93443d28d5d68283dc30e4f3581d034b",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "quicktime-player",
+    "source": "QuickTime Player.png",
+    "sha256": "576aaa4132c02b4495c57b142c4b14a63af0cfa99488cd926ea9bca4dc842197",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
   },
   {
     "id": "qwen",
@@ -315,11 +784,46 @@
     "sourceHeight": 1024
   },
   {
+    "id": "reminders",
+    "source": "Reminders.png",
+    "sha256": "820e30d5fda7acdb0baa3aa6538c17ba6446398edb8930056e8720a6fe3e1b6a",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
     "id": "resurf",
     "source": "Resurf.png",
     "sha256": "5462135e464ec83dc0076f69ad4384729b0d4e9a194f3fc91cafe4eaddfb44f0",
     "sourceWidth": 1024,
     "sourceHeight": 1024
+  },
+  {
+    "id": "safari",
+    "source": "Safari.png",
+    "sha256": "49c82353a3d8e30bbd9dd51429f6d4ab020884926337c6dc4178f4f80850374e",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "screen-sharing",
+    "source": "Screen Sharing.png",
+    "sha256": "612f97675441564ad140a2361750247697b096ebe8ed4a6e295894e47799ea3c",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "screenshot",
+    "source": "Screenshot.png",
+    "sha256": "55dd523eebbca51eb8e8f8c9a97ce69b079b4b0d5522d0291398502398efe048",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "sessionwatcher",
+    "source": "SessionWatcher.png",
+    "sha256": "2a12365f17d7d9bff4857ee6a31247b69056b31bc36e7e1637708e280a17c9ac",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
   },
   {
     "id": "setapp",
@@ -329,11 +833,25 @@
     "sourceHeight": 1024
   },
   {
+    "id": "shortcuts",
+    "source": "Shortcuts.png",
+    "sha256": "f347211e50f6be78454957ed47ad28e0ad94c921c350370a41b5bb91782b8a91",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
     "id": "shotbase",
     "source": "Shotbase.png",
     "sha256": "9666e3d827d5d1ae7a88d002bebf0285119a6fcf97f637afc99c7f220e7d273a",
     "sourceWidth": 1024,
     "sourceHeight": 1024
+  },
+  {
+    "id": "siri",
+    "source": "Siri.png",
+    "sha256": "1fdad2007eb0174eabf942efa930d1ca0c9627918b8987941b2f8a0c972ead77",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
   },
   {
     "id": "slack",
@@ -350,9 +868,37 @@
     "sourceHeight": 1024
   },
   {
+    "id": "stickies",
+    "source": "Stickies.png",
+    "sha256": "99358cc4b90c43209c4672cedfac2136f76b34571cb000edd7824ea8e4c36dc1",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "stocks",
+    "source": "Stocks.png",
+    "sha256": "1a3bd46c10533b3f8ceacb2508858d6527133a37e68acd1342c507c482ab5de1",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "superwhisper",
+    "source": "superwhisper.png",
+    "sha256": "d1b7a9ca8cd216a855f9480320c3dcd8a02e489be7d63906851201803b842a53",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
     "id": "surf",
     "source": "Surf.png",
     "sha256": "4f42c311cf06630657d67342fb79a563b9eb0b4c4b5faa62debc6b35eb7a2ddf",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "system-settings",
+    "source": "System Settings.png",
+    "sha256": "54698a41b6ce615222a6f750c11da2bc3835a6bdfeb76f77fe5d648393215f42",
     "sourceWidth": 1024,
     "sourceHeight": 1024
   },
@@ -362,6 +908,62 @@
     "sha256": "2bd9e42853338d0e466a6a75e73f671b2573e107e310c482dd6e8da01f08fa2e",
     "sourceWidth": 1024,
     "sourceHeight": 1024
+  },
+  {
+    "id": "terminal",
+    "source": "Terminal.png",
+    "sha256": "f698a8c36598193cbe848b42b6936036cad604603b52170897a5e1be165fa88d",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "textedit",
+    "source": "TextEdit.png",
+    "sha256": "69a863fe554e10c8a2371b755331ff725cfa28f55e0842b9270542df090a07cf",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "time-machine",
+    "source": "Time Machine.png",
+    "sha256": "59fcad17850be9a5f8e4c5fb43c4a8ae3ede019d2efc649ca363af67bcf8dcfd",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "tips",
+    "source": "Tips.png",
+    "sha256": "ceacbde974c504a88570df89069b5305086f6327a84eb05e71de7ba9e5d22ec6",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "tv",
+    "source": "TV.png",
+    "sha256": "7e948d19f9a34681e0318823736c31e7fc3844315957a8b1f8383ff9ef75d3a1",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "voice-memos",
+    "source": "VoiceMemos.png",
+    "sha256": "bd10a4c966eb236ab25070583340f81a4973f50a41e4cfb53a3906c5c3b98254",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "weather",
+    "source": "Weather.png",
+    "sha256": "86de8f799450ff80b1fffa493850493fc0eea74691b40316b32926665a448580",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
+  },
+  {
+    "id": "widgy",
+    "source": "Widgy.png",
+    "sha256": "d0a66490015f135c761abc1b628e2e0c529c533cc91f8ff0f087b235fed7ebe4",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048
   },
   {
     "id": "xcode",
@@ -381,13 +983,6 @@
     "id": "zotero",
     "source": "Zotero.png",
     "sha256": "2df54a18860cd81e269a62498478869e2291056e4a07ffc0a80ec3a0563254ef",
-    "sourceWidth": 1024,
-    "sourceHeight": 1024
-  },
-  {
-    "id": "superwhisper",
-    "source": "superwhisper.png",
-    "sha256": "d1b7a9ca8cd216a855f9480320c3dcd8a02e489be7d63906851201803b842a53",
     "sourceWidth": 1024,
     "sourceHeight": 1024
   }

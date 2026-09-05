@@ -85,21 +85,20 @@ export function Privacy() {
         sensitive details out of the name and note. Browser history, synced
         bookmarks, and services you paste the link into may retain it.
       </p>
-      <h2>Collection submissions are public</h2>
+      <h2>App requests and votes</h2>
       <p>
-        Creating a share link does not add it to the collection. If you choose
-        “Suggest for the collection,” GitHub opens a submission you can review
-        before posting. Posted submissions and their Dock links are public.
-        Esteban reviews them before adding a Dock to Home and Latest.
+        Requests are sent to DockFold’s private review inbox. Esteban reviews
+        them before publishing an app name and official website on the public
+        leaderboard. Optional notes stay private. Creating or sharing a Dock
+        does not submit it to a public directory.
       </p>
-      <h2>App requests are public</h2>
       <p>
-        The App requests page loads public issues and vote counts directly from
-        GitHub. GitHub receives that request, including your network address.
-        The browser caches vote counts in session storage. Revisiting the board
-        refreshes them after five minutes; the cache may remain until the tab
-        closes. Requests, attached icons, comments, and reactions follow
-        GitHub’s own privacy policy and account controls.
+        Email sign-in is provided by Clerk for voting and owner access. Clerk
+        handles your email verification and session cookies. DockFold stores
+        your account identifier and app votes in Neon Postgres; it does not
+        publish your email or a list of voters. You can remove a vote using the
+        same button while the request is open. Only accounts authorized on the
+        server can access the review area.
       </p>
       <h2>Icon uploads go to a private inbox</h2>
       <p>
@@ -110,29 +109,35 @@ export function Privacy() {
         No account or email address is collected by this form.
       </p>
       <p>
-        Esteban and authorized project maintainers can review submissions in
-        Vercel. Approved icons and app details may be published in the public
-        catalog and GitHub repository; submission notes stay private. Uploads do
-        not create public issues or votes. Pending files are retained until
-        reviewed, and maintainers delete reviewed or rejected submissions from
-        the inbox. Keep personal information out of the optional notes.
+        Esteban reviews submissions in the private area on DockFold. Approved
+        app details and optimized icons become public when published. Original
+        PNGs and notes remain private in Vercel Blob; review records are stored
+        in Neon Postgres. Contributing an icon links it to an app request but
+        does not automatically publish either one. No email or account is
+        required to contribute. Keep personal information out of notes.
+      </p>
+      <p>
+        Review records and originals are retained for moderation and provenance,
+        including declined submissions. Contact Esteban through his website for
+        removal of a submission or account-related data. Published files may
+        remain in browser caches and copies others have saved.
       </p>
       <h2>Hosting</h2>
       <p>
         Vercel hosts the website, upload endpoint, and private icon storage, and
         may retain ordinary request logs, including network addresses. Upload
-        rate limits help prevent abuse. DockFold adds no analytics, tracking
-        cookies, or advertising scripts. Fonts and catalog icons are served with
-        the site.
+        rate limits help prevent abuse. Submission limits use a keyed digest of
+        the network address. Expired limits are removed as new submissions
+        arrive. DockFold adds no analytics or advertising scripts. Clerk loads
+        on community and sign-in pages; fonts and bundled catalog icons are
+        served with the site.
       </p>
       <p>
-        <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">
-          GitHub privacy policy
-        </a>{" "}
-        ·{" "}
+        <a href="https://clerk.com/legal/privacy">Clerk privacy policy</a> ·{" "}
         <a href="https://vercel.com/legal/privacy-policy">
           Vercel privacy policy
-        </a>
+        </a>{" "}
+        · <a href="https://neon.com/privacy-policy">Neon privacy policy</a>
       </p>
     </main>
   );

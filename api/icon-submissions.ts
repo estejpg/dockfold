@@ -1,5 +1,7 @@
 import { BlobNotFoundError, head, put } from "@vercel/blob";
 import { createSubmissionHandler } from "../server/icon-submissions.js";
+import { limitWrites, recordIcon } from "../server/community-service.js";
+import { origins } from "../server/http.js";
 
 const storeId = process.env.ICON_INBOX_STORE_ID;
 const handler = createSubmissionHandler(
@@ -25,19 +27,9 @@ const handler = createSubmissionHandler(
     },
   },
   {
-    origins: [
-      "https://dockfold.vercel.app",
-      ...[
-        process.env.VERCEL_URL,
-        process.env.VERCEL_BRANCH_URL,
-        process.env.VERCEL_PROJECT_PRODUCTION_URL,
-      ]
-        .filter(Boolean)
-        .map((host) => `https://${host}`),
-      ...(process.env.VERCEL_ENV === "development" || !process.env.VERCEL
-        ? ["http://localhost:3105", "http://127.0.0.1:3105"]
-        : []),
-    ],
+    origins: origins(),
+    before: limitWrites,
+    record: recordIcon,
     prefix:
       process.env.VERCEL_ENV === "production"
         ? "submissions"
@@ -45,6 +37,8 @@ const handler = createSubmissionHandler(
     configured: () =>
       !!(
         storeId &&
+        process.env.DATABASE_URL &&
+        process.env.CLERK_SECRET_KEY &&
         (process.env.VERCEL_OIDC_TOKEN || process.env.BLOB_READ_WRITE_TOKEN)
       ),
   },

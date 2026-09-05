@@ -1,9 +1,33 @@
 [
   {
-    "id": "antigravity-ide",
-    "name": "Antigravity IDE",
-    "category": "Development",
-    "source": "Antigravity IDE.png"
+    "id": "acrobat",
+    "name": "Acrobat",
+    "category": "Research & writing",
+    "source": "Acrobat.png"
+  },
+  {
+    "id": "acrobat-distiller",
+    "name": "Acrobat Distiller",
+    "category": "Research & writing",
+    "source": "Acrobat Distiller.png"
+  },
+  {
+    "id": "activity-monitor",
+    "name": "Activity Monitor",
+    "category": "Utilities",
+    "source": "Activity Monitor.png"
+  },
+  {
+    "id": "affinity",
+    "name": "Affinity",
+    "category": "Design",
+    "source": "Affinity.png"
+  },
+  {
+    "id": "airport-utility",
+    "name": "AirPort Utility",
+    "category": "Utilities",
+    "source": "AirPort Utility.png"
   },
   {
     "id": "antigravity",
@@ -12,10 +36,22 @@
     "source": "Antigravity.png"
   },
   {
+    "id": "antigravity-ide",
+    "name": "Antigravity IDE",
+    "category": "Development",
+    "source": "Antigravity IDE.png"
+  },
+  {
     "id": "app-store",
     "name": "App Store",
     "category": "Essentials",
     "source": "App Store.png"
+  },
+  {
+    "id": "apps",
+    "name": "Apps",
+    "category": "Essentials",
+    "source": "Apps.png"
   },
   {
     "id": "arc",
@@ -36,10 +72,40 @@
     "source": "AtAT.png"
   },
   {
+    "id": "attune",
+    "name": "Attune",
+    "category": "Productivity",
+    "source": "Attune.png"
+  },
+  {
+    "id": "audio-midi-setup",
+    "name": "Audio MIDI Setup",
+    "category": "Music",
+    "source": "Audio MIDI Setup.png"
+  },
+  {
+    "id": "automator",
+    "name": "Automator",
+    "category": "Utilities",
+    "source": "Automator.png"
+  },
+  {
+    "id": "bartender-pro",
+    "name": "Bartender Pro",
+    "category": "Utilities",
+    "source": "Bartender Pro.png"
+  },
+  {
     "id": "bitrig",
     "name": "Bitrig",
     "category": "Development",
-    "source": "Bitrig.png"
+    "source": "BitRig.png"
+  },
+  {
+    "id": "bluetooth-file-exchange",
+    "name": "Bluetooth File Exchange",
+    "category": "Utilities",
+    "source": "Bluetooth File Exchange.png"
   },
   {
     "id": "books",
@@ -48,10 +114,22 @@
     "source": "Books.png"
   },
   {
+    "id": "calculator",
+    "name": "Calculator",
+    "category": "Essentials",
+    "source": "Calculator.png"
+  },
+  {
     "id": "calendar",
     "name": "Calendar",
     "category": "Essentials",
     "source": "Calendar.png"
+  },
+  {
+    "id": "canva",
+    "name": "Canva",
+    "category": "Design",
+    "source": "Canva.png"
   },
   {
     "id": "capcut",
@@ -60,16 +138,22 @@
     "source": "CapCut.png"
   },
   {
+    "id": "chatgpt",
+    "name": "ChatGPT",
+    "category": "AI",
+    "source": "ChatGPT.png"
+  },
+  {
     "id": "chatgpt-atlas",
     "name": "ChatGPT Atlas",
     "category": "Browsers",
     "source": "ChatGPT Atlas.png"
   },
   {
-    "id": "chatgpt",
-    "name": "ChatGPT",
-    "category": "AI",
-    "source": "ChatGPT.png"
+    "id": "chess",
+    "name": "Chess",
+    "category": "Gaming",
+    "source": "Chess.png"
   },
   {
     "id": "claude",
@@ -78,10 +162,40 @@
     "source": "Claude.png"
   },
   {
+    "id": "cleanmymac",
+    "name": "CleanMyMac",
+    "category": "Utilities",
+    "source": "CleanMyMac.png"
+  },
+  {
+    "id": "clearvpn",
+    "name": "ClearVPN",
+    "category": "Utilities",
+    "source": "ClearVPN.png"
+  },
+  {
+    "id": "clock",
+    "name": "Clock",
+    "category": "Essentials",
+    "source": "Clock.png"
+  },
+  {
+    "id": "clop",
+    "name": "Clop",
+    "category": "Utilities",
+    "source": "Clop.png"
+  },
+  {
     "id": "coast-local",
     "name": "Coast Local",
     "category": "Utilities",
     "source": "Coast Local.png"
+  },
+  {
+    "id": "colorsync-utility",
+    "name": "ColorSync Utility",
+    "category": "Design",
+    "source": "ColorSync Utility.png"
   },
   {
     "id": "comet",
@@ -90,10 +204,46 @@
     "source": "Comet.png"
   },
   {
-    "id": "dia-early-birds",
-    "name": "Dia (Early Birds)",
-    "category": "Browsers",
-    "source": "Dia (Early Birds).png"
+    "id": "console",
+    "name": "Console",
+    "category": "Utilities",
+    "source": "Console.png"
+  },
+  {
+    "id": "contacts",
+    "name": "Contacts",
+    "category": "Essentials",
+    "source": "Contacts.png"
+  },
+  {
+    "id": "craft",
+    "name": "Craft",
+    "category": "Research & writing",
+    "source": "Craft.png"
+  },
+  {
+    "id": "creative-cloud",
+    "name": "Creative Cloud",
+    "category": "Design",
+    "source": "Creative Cloud.png"
+  },
+  {
+    "id": "cursor",
+    "name": "Cursor",
+    "category": "Development",
+    "source": "Cursor.png"
+  },
+  {
+    "id": "davinci-resolve",
+    "name": "DaVinci Resolve",
+    "category": "Photo & video",
+    "source": "DaVinci Resolve.png"
+  },
+  {
+    "id": "dayflow",
+    "name": "Dayflow",
+    "category": "Productivity",
+    "source": "Dayflow.png"
   },
   {
     "id": "dia",
@@ -102,10 +252,46 @@
     "source": "Dia.png"
   },
   {
+    "id": "dia-early-birds",
+    "name": "Dia (Early Birds)",
+    "category": "Browsers",
+    "source": "Dia (Early Birds).png"
+  },
+  {
+    "id": "dictionary",
+    "name": "Dictionary",
+    "category": "Research & writing",
+    "source": "Dictionary.png"
+  },
+  {
+    "id": "digital-color-meter",
+    "name": "Digital Color Meter",
+    "category": "Design",
+    "source": "Digital Color Meter.png"
+  },
+  {
     "id": "discord",
     "name": "Discord",
     "category": "Communication",
     "source": "Discord.png"
+  },
+  {
+    "id": "disk-utility",
+    "name": "Disk Utility",
+    "category": "Utilities",
+    "source": "Disk Utility.png"
+  },
+  {
+    "id": "downie",
+    "name": "Downie",
+    "category": "Photo & video",
+    "source": "Downie.png"
+  },
+  {
+    "id": "facetime",
+    "name": "FaceTime",
+    "category": "Communication",
+    "source": "FaceTime.png"
   },
   {
     "id": "figma",
@@ -114,16 +300,40 @@
     "source": "Figma.png"
   },
   {
+    "id": "find-my",
+    "name": "Find My",
+    "category": "Essentials",
+    "source": "FindMy.png"
+  },
+  {
     "id": "finder",
     "name": "Finder",
     "category": "Essentials",
     "source": "Finder.png"
   },
   {
+    "id": "font-book",
+    "name": "Font Book",
+    "category": "Design",
+    "source": "Font Book.png"
+  },
+  {
     "id": "framer",
     "name": "Framer",
     "category": "Design",
     "source": "Framer.png"
+  },
+  {
+    "id": "freeform",
+    "name": "Freeform",
+    "category": "Design",
+    "source": "Freeform.png"
+  },
+  {
+    "id": "games",
+    "name": "Games",
+    "category": "Gaming",
+    "source": "Games.png"
   },
   {
     "id": "gemini",
@@ -138,6 +348,36 @@
     "source": "GitHub.png"
   },
   {
+    "id": "google-docs",
+    "name": "Google Docs",
+    "category": "Research & writing",
+    "source": "Google Docs.png"
+  },
+  {
+    "id": "google-drive",
+    "name": "Google Drive",
+    "category": "Productivity",
+    "source": "Google Drive.png"
+  },
+  {
+    "id": "google-sheets",
+    "name": "Google Sheets",
+    "category": "Productivity",
+    "source": "Google Sheets.png"
+  },
+  {
+    "id": "google-slides",
+    "name": "Google Slides",
+    "category": "Productivity",
+    "source": "Google Slides.png"
+  },
+  {
+    "id": "grapher",
+    "name": "Grapher",
+    "category": "Utilities",
+    "source": "Grapher.png"
+  },
+  {
     "id": "grok-bot",
     "name": "Grok Bot",
     "category": "AI",
@@ -150,16 +390,58 @@
     "source": "Hermes.png"
   },
   {
+    "id": "home",
+    "name": "Home",
+    "category": "Essentials",
+    "source": "Home.png"
+  },
+  {
     "id": "illustrator",
     "name": "Illustrator",
     "category": "Design",
     "source": "Illustrator.png"
   },
   {
+    "id": "image-capture",
+    "name": "Image Capture",
+    "category": "Photo & video",
+    "source": "Image Capture.png"
+  },
+  {
+    "id": "image-playground",
+    "name": "Image Playground",
+    "category": "AI",
+    "source": "Image Playground.png"
+  },
+  {
+    "id": "intellij-idea",
+    "name": "IntelliJ IDEA",
+    "category": "Development",
+    "source": "IntelliJ IDEA.png"
+  },
+  {
+    "id": "iphone-mirroring",
+    "name": "iPhone Mirroring",
+    "category": "Utilities",
+    "source": "iPhone Mirroring.png"
+  },
+  {
+    "id": "journal",
+    "name": "Journal",
+    "category": "Research & writing",
+    "source": "Journal.png"
+  },
+  {
     "id": "keeby",
     "name": "Keeby",
     "category": "Utilities",
     "source": "Keeby.png"
+  },
+  {
+    "id": "keynote",
+    "name": "Keynote",
+    "category": "Productivity",
+    "source": "Keynote.png"
   },
   {
     "id": "kimi",
@@ -180,6 +462,12 @@
     "source": "Lightroom.png"
   },
   {
+    "id": "lungo",
+    "name": "Lungo",
+    "category": "Utilities",
+    "source": "Lungo.png"
+  },
+  {
     "id": "mail",
     "name": "Mail",
     "category": "Essentials",
@@ -190,6 +478,12 @@
     "name": "Manus",
     "category": "AI",
     "source": "Manus 6.40.06 PM.png"
+  },
+  {
+    "id": "maps",
+    "name": "Maps",
+    "category": "Essentials",
+    "source": "Maps.png"
   },
   {
     "id": "markdown-preview",
@@ -210,10 +504,34 @@
     "source": "Minimax.png"
   },
   {
+    "id": "mission-control",
+    "name": "Mission Control",
+    "category": "Utilities",
+    "source": "Mission Control.png"
+  },
+  {
+    "id": "modrinth-app",
+    "name": "Modrinth App",
+    "category": "Gaming",
+    "source": "Modrinth App.png"
+  },
+  {
+    "id": "moonlock",
+    "name": "Moonlock",
+    "category": "Utilities",
+    "source": "Moonlock.png"
+  },
+  {
     "id": "music",
     "name": "Music",
     "category": "Music",
     "source": "Music.png"
+  },
+  {
+    "id": "news",
+    "name": "News",
+    "category": "Essentials",
+    "source": "News.png"
   },
   {
     "id": "notes",
@@ -228,10 +546,34 @@
     "source": "Notion.png"
   },
   {
+    "id": "numbers",
+    "name": "Numbers",
+    "category": "Productivity",
+    "source": "Numbers.png"
+  },
+  {
+    "id": "obsidian",
+    "name": "Obsidian",
+    "category": "Research & writing",
+    "source": "Obsidian.png"
+  },
+  {
+    "id": "opal",
+    "name": "Opal",
+    "category": "Productivity",
+    "source": "Opal.png"
+  },
+  {
     "id": "opencode",
     "name": "OpenCode",
     "category": "Development",
     "source": "OpenCode.png"
+  },
+  {
+    "id": "pages",
+    "name": "Pages",
+    "category": "Research & writing",
+    "source": "Pages.png"
   },
   {
     "id": "paper",
@@ -240,10 +582,40 @@
     "source": "Paper.png"
   },
   {
+    "id": "passwords",
+    "name": "Passwords",
+    "category": "Essentials",
+    "source": "Passwords.png"
+  },
+  {
+    "id": "permute",
+    "name": "Permute",
+    "category": "Photo & video",
+    "source": "Permute.png"
+  },
+  {
     "id": "perplexity",
     "name": "Perplexity",
     "category": "AI",
     "source": "Perplexity.png"
+  },
+  {
+    "id": "phone",
+    "name": "Phone",
+    "category": "Communication",
+    "source": "Phone.png"
+  },
+  {
+    "id": "photo-booth",
+    "name": "Photo Booth",
+    "category": "Photo & video",
+    "source": "Photo Booth.png"
+  },
+  {
+    "id": "photos",
+    "name": "Photos",
+    "category": "Photo & video",
+    "source": "Photos.png"
   },
   {
     "id": "photoshop",
@@ -252,10 +624,40 @@
     "source": "Photoshop.png"
   },
   {
+    "id": "pixelmator-pro",
+    "name": "Pixelmator Pro",
+    "category": "Photo & video",
+    "source": "Pixelmator Pro.png"
+  },
+  {
+    "id": "podcasts",
+    "name": "Podcasts",
+    "category": "Music",
+    "source": "Podcasts.png"
+  },
+  {
     "id": "premiere",
     "name": "Premiere",
     "category": "Photo & video",
     "source": "Premiere.png"
+  },
+  {
+    "id": "preview",
+    "name": "Preview",
+    "category": "Photo & video",
+    "source": "Preview.png"
+  },
+  {
+    "id": "print-center",
+    "name": "Print Center",
+    "category": "Utilities",
+    "source": "Print Center.png"
+  },
+  {
+    "id": "quicktime-player",
+    "name": "QuickTime Player",
+    "category": "Photo & video",
+    "source": "QuickTime Player.png"
   },
   {
     "id": "qwen",
@@ -270,10 +672,40 @@
     "source": "Raycast.png"
   },
   {
+    "id": "reminders",
+    "name": "Reminders",
+    "category": "Productivity",
+    "source": "Reminders.png"
+  },
+  {
     "id": "resurf",
     "name": "Resurf",
     "category": "Research & writing",
     "source": "Resurf.png"
+  },
+  {
+    "id": "safari",
+    "name": "Safari",
+    "category": "Browsers",
+    "source": "Safari.png"
+  },
+  {
+    "id": "screen-sharing",
+    "name": "Screen Sharing",
+    "category": "Utilities",
+    "source": "Screen Sharing.png"
+  },
+  {
+    "id": "screenshot",
+    "name": "Screenshot",
+    "category": "Photo & video",
+    "source": "Screenshot.png"
+  },
+  {
+    "id": "sessionwatcher",
+    "name": "SessionWatcher",
+    "category": "Utilities",
+    "source": "SessionWatcher.png"
   },
   {
     "id": "setapp",
@@ -282,10 +714,22 @@
     "source": "Setapp.png"
   },
   {
+    "id": "shortcuts",
+    "name": "Shortcuts",
+    "category": "Utilities",
+    "source": "Shortcuts.png"
+  },
+  {
     "id": "shotbase",
     "name": "Shotbase",
     "category": "Photo & video",
     "source": "Shotbase.png"
+  },
+  {
+    "id": "siri",
+    "name": "Siri",
+    "category": "AI",
+    "source": "Siri.png"
   },
   {
     "id": "slack",
@@ -300,16 +744,88 @@
     "source": "Spotify.png"
   },
   {
+    "id": "stickies",
+    "name": "Stickies",
+    "category": "Productivity",
+    "source": "Stickies.png"
+  },
+  {
+    "id": "stocks",
+    "name": "Stocks",
+    "category": "Essentials",
+    "source": "Stocks.png"
+  },
+  {
+    "id": "superwhisper",
+    "name": "superwhisper",
+    "category": "Utilities",
+    "source": "superwhisper.png"
+  },
+  {
     "id": "surf",
     "name": "Surf",
     "category": "Browsers",
     "source": "Surf.png"
   },
   {
+    "id": "system-settings",
+    "name": "System Settings",
+    "category": "Essentials",
+    "source": "System Settings.png"
+  },
+  {
     "id": "t3-code-nightly",
     "name": "T3 Code (Nightly)",
     "category": "Development",
     "source": "T3 Code (Nightly).png"
+  },
+  {
+    "id": "terminal",
+    "name": "Terminal",
+    "category": "Development",
+    "source": "Terminal.png"
+  },
+  {
+    "id": "textedit",
+    "name": "TextEdit",
+    "category": "Research & writing",
+    "source": "TextEdit.png"
+  },
+  {
+    "id": "time-machine",
+    "name": "Time Machine",
+    "category": "Utilities",
+    "source": "Time Machine.png"
+  },
+  {
+    "id": "tips",
+    "name": "Tips",
+    "category": "Essentials",
+    "source": "Tips.png"
+  },
+  {
+    "id": "tv",
+    "name": "TV",
+    "category": "Photo & video",
+    "source": "TV.png"
+  },
+  {
+    "id": "voice-memos",
+    "name": "Voice Memos",
+    "category": "Music",
+    "source": "VoiceMemos.png"
+  },
+  {
+    "id": "weather",
+    "name": "Weather",
+    "category": "Essentials",
+    "source": "Weather.png"
+  },
+  {
+    "id": "widgy",
+    "name": "Widgy",
+    "category": "Utilities",
+    "source": "Widgy.png"
   },
   {
     "id": "xcode",
@@ -328,11 +844,5 @@
     "name": "Zotero",
     "category": "Research & writing",
     "source": "Zotero.png"
-  },
-  {
-    "id": "superwhisper",
-    "name": "superwhisper",
-    "category": "Utilities",
-    "source": "superwhisper.png"
   }
 ]

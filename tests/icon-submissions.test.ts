@@ -78,6 +78,29 @@ test("a valid PNG is saved with private review metadata and a receipt; retry is 
   assert.equal(files.size, 2);
 });
 
+test("a database failure after the files are stored remains retryable and never reports success early", async () => {
+  const { files, store } = setup();
+  let fail = true,
+    attempts = 0;
+  const handler = createSubmissionHandler(store, {
+    origins: [origin],
+    prefix: "test/submissions",
+    configured: () => true,
+    record: async (icon) => {
+      attempts++;
+      assert.match(icon.digest, /^[a-f0-9]{64}$/);
+      assert.ok(files.has(icon.path));
+      if (fail) throw new Error("Database unavailable");
+    },
+  });
+  assert.equal((await handler(request())).status, 503);
+  assert.equal(files.size, 2);
+  fail = false;
+  assert.equal((await handler(request())).status, 200);
+  assert.equal(attempts, 2);
+  assert.equal(files.size, 2);
+});
+
 test("methods, origins and unconfigured storage cannot upload or list the inbox", async () => {
   const { handler, files } = setup();
   assert.equal(

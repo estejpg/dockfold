@@ -12,7 +12,8 @@ import { Header, Footer } from "./components/common";
 import { Directory, Latest } from "./components/directory";
 import { CollectionDetail } from "./components/collection-detail";
 import { MissingDock, Privacy, SharedDock } from "./components/pages";
-import { decodeDock, examples } from "./lib/dock";
+import { examples } from "./lib/dock";
+import { CatalogGate } from "./components/catalog-gate";
 import { collectionById } from "./lib/collections";
 const Composer = lazy(() =>
   import("./components/composer").then((m) => ({ default: m.Composer })),
@@ -21,6 +22,16 @@ const Contribute = lazy(() =>
   import("./components/contribute").then((m) => ({ default: m.Contribute })),
 );
 const Requests = lazy(() => import("./components/requests"));
+const Review = lazy(() => import("./components/review"));
+const Authentication = lazy(() =>
+  import("./components/auth").then((module) => ({
+    default: ({ signUp }: { signUp: boolean }) => (
+      <module.AuthProvider>
+        <module.SignInPage signUp={signUp} />
+      </module.AuthProvider>
+    ),
+  })),
+);
 const subscribe = (cb: () => void) => {
   window.addEventListener("hashchange", cb);
   return () => window.removeEventListener("hashchange", cb);
@@ -35,11 +46,19 @@ function Application() {
     // Old fragment links remain readable after the directory gains ordinary page URLs.
     if (hash.startsWith("#/dock/")) {
       route = "/dock";
-      page = <SharedDock dock={decodeDock(hash.slice(7))} />;
+      page = (
+        <CatalogGate payload={hash.slice(7)}>
+          {(dock) => <SharedDock dock={dock!} />}
+        </CatalogGate>
+      );
       title = "A shared Dock · DockFold";
     } else if (hash.startsWith("#/build/")) {
       route = "/submit";
-      page = <Composer key={hash} initial={decodeDock(hash.slice(8))} />;
+      page = (
+        <CatalogGate payload={hash.slice(8)}>
+          {(dock) => <Composer key={hash} initial={dock} />}
+        </CatalogGate>
+      );
       title = "Submit a Dock · DockFold";
     } else if (/^#\/example\/[0-3]$/.test(hash)) {
       page = <SharedDock dock={examples[Number(hash.at(-1))].dock} example />;
@@ -47,18 +66,33 @@ function Application() {
       page = <Directory />;
       route = "/";
     } else if (path === "/dock" && hash.startsWith("#dock=")) {
-      page = <SharedDock dock={decodeDock(hash.slice(6))} />;
+      page = (
+        <CatalogGate payload={hash.slice(6)}>
+          {(dock) => <SharedDock dock={dock!} />}
+        </CatalogGate>
+      );
       title = "A shared Dock · DockFold";
     } else if (path === "/submit") {
       page = (
-        <Composer
-          key={hash}
-          initial={
-            hash.startsWith("#dock=") ? decodeDock(hash.slice(6)) : undefined
-          }
-        />
+        <CatalogGate
+          payload={hash.startsWith("#dock=") ? hash.slice(6) : undefined}
+          draft
+        >
+          {(dock) => (
+            <Composer
+              key={hash}
+              initial={hash.startsWith("#dock=") ? dock : undefined}
+            />
+          )}
+        </CatalogGate>
       );
       title = "Submit a Dock · DockFold";
+    } else if (path === "/review") {
+      page = <Review />;
+      title = "Review submissions · DockFold";
+    } else if (path === "/sign-in" || path === "/sign-up") {
+      page = <Authentication signUp={path === "/sign-up"} />;
+      title = "Sign in · DockFold";
     } else if (path === "/latest") {
       page = <Latest />;
       title = "Latest additions · DockFold";

@@ -1,11 +1,14 @@
 # DockFold
 
-React + Vite website with one Vercel upload function and a private Blob inbox. No database, native app, analytics, or client-side credentials.
+React/Vite on Vercel, Clerk email authentication, Neon Postgres/Drizzle, and private Vercel Blob icons.
 
-- Preserve stable catalog IDs: existing share links refer to them.
-- Validate URL fragments and browser storage as untrusted input. Do not render request bodies as HTML.
-- GitHub is loaded only on App requests. Icon submissions use the same-origin `/api/icon-submissions` endpoint. Never embed a credential in browser code.
-- Uploads are private, validated and reviewed manually. Never publish submissions automatically or fetch contributor-provided URLs.
-- Keep the upload endpoint behind the documented Vercel rate limit. Match file constraints on client and server.
-- Read README.md and docs/maintaining-icons.md for the app catalog and request workflow.
-- Run npm test, npm run lint, and npm run build for functional changes. Verify affected interactions in a browser, including mobile.
+- Preserve stable bundled, legacy and published catalog IDs. Retire apps from the picker without breaking shared Docks.
+- Validate URL fragments, local storage, request bodies and live catalog responses. Never render submitted HTML or fetch contributor-provided websites on the server.
+- Visitor workflows and routine moderation must not require GitHub.
+- Verify Clerk sessions and primary email on the server. Review and private-image reads require the server-controlled reviewer allowlist. Never trust browser roles or expose secret keys.
+- Original icons and notes stay private. Only deliberately published optimized icons become public.
+- Keep body limits, image validation, shared write limits and the Vercel upload firewall rule. Database uniqueness enforces one vote per account/app.
+- Use transactions and revision checks for review operations. A failed catalog load must not erase a draft.
+- Use explicit `.js` import extensions in deployed server modules.
+- Apply versioned Drizzle migrations to the intended development/preview database. Never change production, merge a PR or expose test accounts without authorization.
+- Read README.md and docs/deployment.md. Run npm test, npm run lint and npm run build for functional changes. Verify affected desktop/mobile flows and authenticated/unauthorized cases against real preview services.
