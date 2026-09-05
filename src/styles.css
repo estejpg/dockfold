@@ -212,21 +212,14 @@ svg {
   letter-spacing: -1px;
 }
 .brand-mark {
-  width: 23px;
-  height: 26px;
-  display: inline-grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3px;
-  padding: 4px;
-  border: 1.5px solid currentColor;
-  border-radius: 4px;
+  width: 28px;
+  height: 28px;
+  display: block;
+  flex-shrink: 0;
+  object-fit: contain;
 }
-.brand-mark span {
-  background: currentColor;
-  border-radius: 1px;
-}
-.brand-mark span:last-child {
-  transform: translateY(3px);
+[data-theme="dark"] .brand-mark {
+  filter: invert(1);
 }
 .site-header nav {
   display: flex;
@@ -1594,10 +1587,12 @@ kbd {
     height: 27px;
   }
   .brand-mark {
-    display: none;
+    width: 22px;
+    height: 22px;
   }
   .wordmark {
-    font-size: 23px;
+    font-size: 20px;
+    gap: 6px;
   }
   .collection-group {
     padding-inline: 13px;
