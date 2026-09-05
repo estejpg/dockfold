@@ -252,8 +252,10 @@ function RequestsPage() {
           </button>
         </div>
         <p className="board-help">
-          Sign in with email to add or remove your vote. One vote per account,
-          per app.
+          {account.isSignedIn
+            ? "Add or remove your vote below."
+            : "Sign in with email to add or remove your vote."}{" "}
+          One vote per account, per app.
         </p>
         <label className="search-control">
           <Search size={18} />
