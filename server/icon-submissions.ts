@@ -5,7 +5,7 @@ import {
   MAX_ICON_BYTES,
   MAX_ICON_SIZE,
   iconSizeError,
-} from "../src/lib/icon-upload";
+} from "../src/lib/icon-upload.js";
 
 export interface InboxStore {
   exists(path: string): Promise<boolean>;

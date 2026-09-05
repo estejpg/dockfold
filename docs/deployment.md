@@ -11,7 +11,7 @@ Project: `dockfold` in `estejpgs-projects`.
 - Private Blob store: `dockfold-icons` (`store_b6vTim2xA3883Lbw`), region `sfo1`, connected to production, preview and development.
 - Server environment variable: `ICON_INBOX_STORE_ID=store_b6vTim2xA3883Lbw`. The Blob SDK uses Vercel's rotating OIDC credentials. Store connection variables are managed by Vercel; never prefix them with `VITE_`.
 - No database, visitor login, email service, or Notion configuration.
-- Firewall rule **Limit icon uploads**: POST `/api/icon-submissions`, 10 requests per IP per 600 seconds, fixed window, 429 on excess. Vercel counters are regional. Keep this rule enabled before accepting uploads.
+- Firewall rule **Limit icon uploads**: POST paths beginning with `/api/icon-submissions`, 10 requests per IP per 600 seconds, fixed window, 429 on excess. Vercel counters are regional. Keep this rule enabled before accepting uploads.
 
 ```sh
 npx vercel link --project dockfold --yes
@@ -52,7 +52,7 @@ Static sharing intentionally replaces the earlier deletion-key model. Explain th
 
 ## Icon inbox operations
 
-[Open the private inbox](https://vercel.com/estejpgs-projects/~/stores/blob/store_b6vTim2xA3883Lbw) → Browser → `submissions`. Each folder has `icon.png` and `details.json`. Only authorized Vercel maintainers can view/download them. Preview/test uploads use `preview/submissions`. There is no email notification: check this inbox for arrivals. Review, publish approved catalog additions through GitHub, then delete the reviewed folder's files. See [maintaining icons](maintaining-icons.md).
+[Open the private inbox](https://vercel.com/estejpgs-projects/~/stores/blob/store_b6vTim2xA3883Lbw) → Manage Blobs → `submissions`. Each folder has `icon.png` and `details.json`. Only authorized Vercel maintainers can view/download them. Preview/test uploads use `preview/submissions`. There is no email notification: check this inbox for arrivals. Review, publish approved catalog additions through GitHub, then delete the reviewed folder's files. See [maintaining icons](maintaining-icons.md).
 
 The form sends multipart data only on Submit. Both layers enforce a 2 MB PNG and square dimensions from 256 to 2048px. The server bounds the request stream, verifies PNG bytes, fully decodes/re-encodes the image with a pixel limit, strips embedded metadata, validates app details, and never fetches provided URLs. The endpoint has no read/list method. Files use private access; neither Blob URLs nor credentials appear in receipts. SHA-256 paths make identical retries reuse a submission. The form reports success only after both image and details are saved. A storage failure retains the form for retry; a failure between writes can leave one orphan image for maintainer cleanup.
 

@@ -2,7 +2,7 @@
 
 ## Review direct icon uploads
 
-Open [the private icon inbox](https://vercel.com/estejpgs-projects/~/stores/blob/store_b6vTim2xA3883Lbw) while signed into the Vercel account that owns DockFold. The path in the dashboard is **Storage → dockfold-icons → Browser → submissions**.
+Open [the private icon inbox](https://vercel.com/estejpgs-projects/~/stores/blob/store_b6vTim2xA3883Lbw) while signed into the Vercel account that owns DockFold. The path in the dashboard is **Storage → dockfold-icons → Manage Blobs → submissions**.
 
 Each submission is a folder named after the app plus a content fingerprint:
 

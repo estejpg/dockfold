@@ -1,5 +1,5 @@
 import { BlobNotFoundError, head, put } from "@vercel/blob";
-import { createSubmissionHandler } from "../server/icon-submissions";
+import { createSubmissionHandler } from "../server/icon-submissions.js";
 
 const storeId = process.env.ICON_INBOX_STORE_ID;
 const handler = createSubmissionHandler(
