@@ -993,6 +993,229 @@ footer nav {
   max-width: 710px;
   padding-bottom: 40px;
 }
+.contribute-page {
+  max-width: 496px;
+  padding-bottom: 32px;
+}
+.contribute-intro {
+  margin: 5px 0 28px;
+}
+.contribute-intro h1 {
+  font-size: 20px;
+  letter-spacing: -0.025em;
+}
+.contribute-intro p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+.icon-form fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.icon-field {
+  margin-bottom: 24px;
+}
+.icon-field > label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.icon-field > label > span {
+  color: var(--faint);
+}
+.icon-field .optional-label {
+  font-weight: 400;
+  margin-left: 4px;
+}
+.icon-field > input,
+.icon-field > select,
+.icon-field > textarea {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  min-height: 42px;
+  padding: 10px 12px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.icon-field > textarea {
+  resize: vertical;
+  min-height: 96px;
+}
+.icon-field input::placeholder,
+.icon-field textarea::placeholder {
+  color: var(--faint);
+}
+.icon-field > textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+.icon-upload {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 18px;
+  border: 1px dashed var(--line-strong);
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--muted);
+  transition:
+    border-color 160ms ease-out,
+    background-color 160ms ease-out;
+}
+.icon-upload:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+.icon-upload.is-dragging {
+  border-color: var(--accent);
+  background: var(--tint);
+}
+.icon-upload > img {
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.icon-upload-copy {
+  min-width: 0;
+}
+.icon-upload-copy p {
+  font-size: 11px;
+  margin-top: 5px;
+  overflow-wrap: anywhere;
+}
+.icon-file-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  min-height: 26px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.icon-file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+}
+.icon-remove {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--soft);
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.field-help {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-top: 8px;
+}
+.contribute-page a:not(.button) {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.form-error {
+  font-size: 12px;
+  color: var(--danger);
+  line-height: 1.7;
+  margin-top: 8px;
+}
+.icon-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.upload-destination {
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+  margin-top: 4px;
+}
+.upload-destination h2 {
+  font-size: 12px;
+  margin-bottom: 7px;
+}
+.upload-destination p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 8px;
+}
+.icon-submit {
+  margin-top: 14px;
+  border-radius: 30px;
+  min-width: 112px;
+}
+.icon-export-guide {
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 24px;
+}
+.icon-export-guide > h2 {
+  font-size: 15px;
+}
+.icon-export-guide > p {
+  margin-top: 8px;
+  color: var(--muted);
+}
+.icon-export-guide .guide-steps h3 {
+  font-size: 13px;
+  margin-bottom: 7px;
+}
+.icon-export-guide .guide-steps p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.icon-success {
+  padding: 24px;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.icon-success h2 {
+  font-size: 16px;
+  margin-top: 12px;
+}
+.icon-success p {
+  color: var(--muted);
+  margin-top: 12px;
+  line-height: 1.75;
+}
+.icon-success .button {
+  margin-top: 20px;
+}
+@media (max-width: 600px) {
+  .icon-field > input,
+  .icon-field > select,
+  .icon-field > textarea {
+    font-size: 16px;
+  }
+  .icon-upload {
+    padding: 15px;
+    gap: 10px;
+  }
+  .icon-upload > img {
+    width: 48px;
+    height: 48px;
+  }
+}
 .reading-page h1 {
   margin: 7px 0 18px;
 }
