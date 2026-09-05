@@ -6,6 +6,7 @@ import {
   type ReactNode,
 } from "react";
 import { createRoot } from "react-dom/client";
+import { flushSync } from "react-dom";
 import "@fontsource-variable/inter";
 import "./styles.css";
 import { Header, Footer } from "./components/common";
@@ -15,12 +16,8 @@ import { MissingDock, Privacy, SharedDock } from "./components/pages";
 import { examples } from "./lib/dock";
 import { CatalogGate } from "./components/catalog-gate";
 import { collectionById } from "./lib/collections";
-const Composer = lazy(() =>
-  import("./components/composer").then((m) => ({ default: m.Composer })),
-);
-const Contribute = lazy(() =>
-  import("./components/contribute").then((m) => ({ default: m.Contribute })),
-);
+import { Composer } from "./components/composer";
+import { Contribute } from "./components/contribute";
 const Requests = lazy(() => import("./components/requests"));
 const Review = lazy(() => import("./components/review"));
 const Authentication = lazy(() =>
@@ -59,7 +56,7 @@ function Application() {
           {(dock) => <Composer key={hash} initial={dock} />}
         </CatalogGate>
       );
-      title = "Submit a Dock · DockFold";
+      title = "Create your Dock · DockFold";
     } else if (/^#\/example\/[0-3]$/.test(hash)) {
       page = <SharedDock dock={examples[Number(hash.at(-1))].dock} example />;
     } else if (hash === "#/examples") {
@@ -86,7 +83,7 @@ function Application() {
           )}
         </CatalogGate>
       );
-      title = "Submit a Dock · DockFold";
+      title = "Create your Dock · DockFold";
     } else if (path === "/review") {
       page = <Review />;
       title = "Review submissions · DockFold";
@@ -105,6 +102,7 @@ function Application() {
       page = <Requests />;
       title = "App requests · DockFold";
     } else if (path === "/contribute" || hash === "#/contribute") {
+      route = "/contribute";
       page = <Contribute />;
       title = "Contribute an icon · DockFold";
     } else if (path === "/privacy" || hash === "#/privacy") {
@@ -150,4 +148,6 @@ function Application() {
     </>
   );
 }
-createRoot(document.getElementById("root")!).render(<Application />);
+// Render the primary pages before the browser captures the incoming document.
+// Authentication stays lazy; normal navigation must not capture an empty shell.
+flushSync(() => createRoot(document.getElementById("root")!).render(<Application />));

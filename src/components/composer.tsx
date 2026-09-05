@@ -78,7 +78,7 @@ export function Composer({ initial }: { initial?: Dock }) {
   return (
     <main id="main" tabIndex={-1} className="submit-page">
       <section className="page-intro">
-        <h1>Submit a Dock</h1>
+        <h1>Create your Dock</h1>
         <p>Build your own setup and share it with a friend.</p>
         <p className="fine-print">
           Your share link is unlisted. No account needed.

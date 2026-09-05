@@ -259,6 +259,48 @@ main {
   padding: 0 24px;
   min-height: calc(100dvh - 230px);
 }
+/* A short fade and 5px settle, inspired by estejpg's route transitions. */
+@keyframes page-arrive {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes page-leave {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(5px); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+
+  main { view-transition-name: page-content; }
+  .site-header { view-transition-name: site-header; }
+
+  /* Also works on first arrival and in browsers without document transitions. */
+  :root:not([data-native-page-transition]):not([data-page-motion="off"]) main {
+    animation: page-arrive 180ms var(--ease) backwards;
+  }
+  ::view-transition-group(*) { animation: none; }
+  ::view-transition-old(root),
+  ::view-transition-new(root),
+  ::view-transition-old(site-header),
+  ::view-transition-new(site-header) { animation: none; }
+  ::view-transition-old(page-content) {
+    animation: page-leave 150ms var(--ease) both;
+  }
+  ::view-transition-new(page-content) {
+    animation: page-arrive 180ms var(--ease) both;
+  }
+}
+:root[data-page-motion="off"] main,
+:root[data-page-motion="off"]::view-transition-old(*),
+:root[data-page-motion="off"]::view-transition-new(*) {
+  animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none; }
+}
 .directory-intro {
   display: flex;
   align-items: center;
