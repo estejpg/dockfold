@@ -106,6 +106,14 @@ test("pointer navigation clears a cancelled keyboard-navigation marker", () => {
   assert.equal(navigation.skips(), 0);
 });
 
+test("pagereveal clears keyboard state when the skipped transition is absent", () => {
+  const { document, window, values, click } = setup();
+  click(0);
+  window.emit("pagereveal", { viewTransition: null });
+  assert.equal(values.size, 0);
+  assert.equal(document.documentElement.dataset.navigationInput, undefined);
+});
+
 test("browser back and forward keyboard chords skip motion", () => {
   const { document, window, transition } = setup();
   document.emit("keydown", {

@@ -78,8 +78,8 @@
   });
 
   function prepare(event) {
-    if (!event.viewTransition) return;
-    if (hasRecentKeyboardNavigation()) event.viewTransition.skipTransition();
+    if (event.viewTransition && hasRecentKeyboardNavigation())
+      event.viewTransition.skipTransition();
     // The incoming page owns cleanup so the marker survives the navigation.
     if (event.type === "pagereveal") clearKeyboardNavigation();
   }
