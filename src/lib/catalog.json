@@ -1,0 +1,62 @@
+[
+  {
+    "id": "safari",
+    "name": "Safari",
+    "category": "Browsers",
+    "icon": "/app-icons/safari.png"
+  },
+  {
+    "id": "figma",
+    "name": "Figma",
+    "category": "Design",
+    "icon": "/app-icons/figma.png"
+  },
+  {
+    "id": "notion",
+    "name": "Notion",
+    "category": "Writing",
+    "icon": "/app-icons/notion.png"
+  },
+  {
+    "id": "slack",
+    "name": "Slack",
+    "category": "Communication",
+    "icon": "/app-icons/slack.png"
+  },
+  {
+    "id": "chrome",
+    "name": "Google Chrome",
+    "category": "Browsers",
+    "icon": "/app-icons/chrome.png"
+  },
+  {
+    "id": "vscode",
+    "name": "Visual Studio Code",
+    "category": "Development",
+    "icon": "/app-icons/vscode.png"
+  },
+  {
+    "id": "arc",
+    "name": "Arc",
+    "category": "Browsers",
+    "icon": "/app-icons/arc.png"
+  },
+  {
+    "id": "obsidian",
+    "name": "Obsidian",
+    "category": "Writing",
+    "icon": "/app-icons/obsidian.png"
+  },
+  {
+    "id": "terminal",
+    "name": "Terminal",
+    "category": "Development",
+    "icon": "/app-icons/terminal.png"
+  },
+  {
+    "id": "spotify",
+    "name": "Spotify",
+    "category": "Music",
+    "icon": "/app-icons/spotify.png"
+  }
+]

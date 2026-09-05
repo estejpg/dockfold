@@ -18,9 +18,3 @@ jobs:
       - run: npm test
       - run: npm run lint
       - run: npm run build
-  macos:
-    runs-on: macos-15
-    steps:
-      - uses: actions/checkout@v4
-      - run: swift build --package-path macos/DockfoldCapture
-      - run: swift test --package-path macos/DockfoldCapture

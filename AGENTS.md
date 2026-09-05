@@ -1,9 +1,9 @@
-<!-- BEGIN:nextjs-agent-rules -->
+# DockFold
 
-# This is NOT the Next.js you know
+Static React + Vite website. No server functions, database, native app, analytics, or client-side credentials.
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
-
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
-
-<!-- END:nextjs-agent-rules -->
+- Preserve stable catalog IDs: existing share links refer to them.
+- Validate URL fragments and browser storage as untrusted input. Do not render request bodies as HTML.
+- GitHub is the only external data source, loaded when visitors open App requests. Never embed an API token in browser code.
+- Read README.md and docs/maintaining-icons.md for the app catalog and request workflow.
+- Run npm test, npm run lint, and npm run build for functional changes. Verify affected interactions in a browser, including mobile.

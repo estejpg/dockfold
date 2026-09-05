@@ -1,56 +1,61 @@
-# Dockfold
+# DockFold
 
-Dockfold is a privacy-first directory for sharing the apps pinned in a Mac Dock. It contains:
+A small, static website for building and sharing a Dock from a curated collection of Mac app icons.
 
-- a Next.js 16 site designed for Vercel;
-- a native SwiftUI capture helper built with Swift Package Manager;
-- a URL-encoded, versioned manifest format, so public profile links work without accounts or a database;
-- original `.icns` downloads from macOSicons and 512px PNG conversions for the demo directory.
+**[Open DockFold](https://dockfold.vercel.app)** · **[Request an app or vote](https://dockfold.vercel.app/#/requests)**
 
-Live site: [dockfold.vercel.app](https://dockfold.vercel.app)
+Pick apps, arrange them with the earlier/later controls, give the Dock a name, and create a share link. Drafts stay in the browser. Shared links carry the complete selection in the URL fragment; they work in another browser without an account or database. They are unlisted and **cannot be centrally revoked**.
 
-## Web app
+App requests, PNG attachments, and votes live in this repository’s GitHub Issues. The site reads public issues labeled `app-request` and ranks their first-post 👍 reactions. Visitors sign into GitHub to submit requests or vote. Only the App requests page contacts GitHub.
 
-```bash
-npm install
+## Stack
+
+React 19, Vite 7, TypeScript, Inter, and Lucide, deployed as static assets on Vercel. This follows estejpg-site’s React/Vite approach. No server functions, database, macOS helper, secrets, analytics, or Notion integration are needed.
+
+## Run locally
+
+Use Node 22.13+ or Node 24 (CI and Vercel use 24).
+
+```sh
+npm ci
 npm run dev
 ```
 
-The app is intentionally storage-free. A capture manifest opens at `/share?dock=<payload>`. After review, the user receives `/d/<payload>`, where the complete public profile is encoded as Base64URL JSON.
+Open the local address shown in the terminal. Stop with Control-C.
 
-## macOS capture helper
-
-Requirements: macOS 14+, Xcode Command Line Tools, and Swift 5.9+.
-
-```bash
-./script/build_and_run.sh
+```sh
+npm test
+npm run lint
+npm run build
+npm run preview
 ```
 
-The script builds the SwiftPM product, stages a real `dist/DockfoldCapture.app` bundle, and launches it. Optional modes: `--debug`, `--logs`, `--telemetry`, and `--verify`.
+The production site is in `dist/`. Host that directory on a static host, or deploy with Vercel. The `#/...` routes and share links require no application server.
 
-The helper executes `/usr/bin/defaults export com.apple.dock -`, parses only `persistent-apps`, resolves app names and bundle identifiers from installed bundles, presents every item for review, then opens the Dockfold site with the manifest encoded in the URL. It does not upload icon files or telemetry.
+## Maintain the collection
+
+See [the icon maintenance guide](docs/maintaining-icons.md). Add a reviewed PNG under `public/app-icons/` and one entry in `src/lib/catalog.json`. Keep IDs stable so existing links keep working. The available-app count, search, and category filters use this catalog.
+
+See [deployment and operations](docs/deployment.md) for the exact GitHub and Vercel setup, rate-limit behavior, and launch checks.
 
 ## Repository map
 
-```text
-src/                         Next.js App Router site
-macos/DockfoldCapture/       SwiftUI capture helper
-assets/icns/original/        Complete .icns source files
-public/app-icons/            Converted 512 × 512 PNGs
-docs/capture-architecture.md System rationale and threat model
-script/build_and_run.sh      Reproducible macOS build/run entrypoint
-```
+- `src/components/composer.tsx`: app picker, order controls, browser draft, and sharing.
+- `src/lib/dock.ts`: bounded, versioned share encoding and validation.
+- `src/lib/catalog.json`: curated apps; IDs are public link identifiers.
+- `src/components/requests.tsx`: public request leaderboard and failure states.
+- `src/lib/requests.ts`: validated GitHub reads, vote sorting, short-lived cache.
+- `.github/ISSUE_TEMPLATE/app-request.yml`: request form with optional icon attachment.
+- `src/components/pages.tsx`: examples, shared Docks, icon export instructions, privacy.
 
-## Verification
+## Scope and limitations
 
-```bash
-npm run typecheck
-npm run lint
-npm run build
-```
+The initial collection contains 10 apps. There are no user uploads directly to the site and no automatic inclusion of submitted icons. The maintainer reviews and publishes additions. Unknown or malformed shared app IDs show an explanatory error rather than loading arbitrary images. A link can contain up to 40 distinct catalog apps; names are limited to 60 characters and notes to 180.
 
-The Swift target must be compiled on macOS because SwiftUI and AppKit are unavailable on Linux.
+The public GitHub API has per-IP limits. Votes may be cached for five minutes. If GitHub is unavailable or limits a visitor, the site preserves previously loaded results and links to the GitHub board. Up to 500 open requests are loaded; larger boards show an explicit limit and an all-requests link. A GitHub account can add one 👍 reaction to each request; this is community feedback, not an abuse-proof identity system.
+
+Earlier native capture and private-storage work is outside the current launch architecture. The prototype was preserved in local git history before the static rebuild. Old `/d/` and `/p/` URLs are not current share links.
 
 ## Credits
 
-Dockfold is an independent implementation informed by the open-source DockHunt capture pattern. Demo icon files are downloaded from [macOSicons](https://macosicons.com/) and retain their source links in [ASSET_SOURCES.md](./ASSET_SOURCES.md).
+Design references: [estejpg](https://www.estejpg.com/), [Link Lowdown](https://www.linklowdown.com/), and [Digital Creator Club](https://digitalcreator.club/). Existing app icon sources remain documented in [ASSET_SOURCES.md](ASSET_SOURCES.md). Icons identify their respective apps; DockFold is independent of those developers.
