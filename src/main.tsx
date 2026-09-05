@@ -6,6 +6,7 @@ import {
   type ReactNode,
 } from "react";
 import { createRoot } from "react-dom/client";
+import { flushSync } from "react-dom";
 import "@fontsource-variable/inter";
 import "./styles.css";
 import { Header, Footer } from "./components/common";
@@ -15,12 +16,8 @@ import { MissingDock, Privacy, SharedDock } from "./components/pages";
 import { examples } from "./lib/dock";
 import { CatalogGate } from "./components/catalog-gate";
 import { collectionById } from "./lib/collections";
-const Composer = lazy(() =>
-  import("./components/composer").then((m) => ({ default: m.Composer })),
-);
-const Contribute = lazy(() =>
-  import("./components/contribute").then((m) => ({ default: m.Contribute })),
-);
+import { Composer } from "./components/composer";
+import { Contribute } from "./components/contribute";
 const Requests = lazy(() => import("./components/requests"));
 const Review = lazy(() => import("./components/review"));
 const Authentication = lazy(() =>
@@ -151,4 +148,6 @@ function Application() {
     </>
   );
 }
-createRoot(document.getElementById("root")!).render(<Application />);
+// Render the primary pages before the browser captures the incoming document.
+// Authentication stays lazy; normal navigation must not capture an empty shell.
+flushSync(() => createRoot(document.getElementById("root")!).render(<Application />));
