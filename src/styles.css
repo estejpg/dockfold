@@ -13,11 +13,8 @@
   --danger: #ae2936;
   --max: 1280px;
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --duration-press: 120ms;
   --duration-state: 150ms;
-  --duration-page-enter: 180ms;
-  --duration-page-exit: 150ms;
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
@@ -272,77 +269,6 @@ main {
   margin: auto;
   padding: 0 24px;
   min-height: calc(100dvh - 230px);
-}
-/*
- * Route motion mirrors estejpg.com: 5px of vertical travel, 1.5px of blur and
- * the same strong 180ms ease-out. The outbound phase is 150ms; the incoming
- * phase starts at 100ms so the seam overlaps briefly and completes in 280ms.
- * The route shell spans the viewport, preventing differently sized <main>
- * elements from stretching snapshots into the next page's column.
- */
-@view-transition {
-  navigation: auto;
-}
-.route-shell {
-  view-transition-name: route-shell;
-}
-.site-header {
-  view-transition-name: site-header;
-}
-@keyframes route-leave {
-  from {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    filter: blur(1.5px);
-    transform: translateY(5px);
-  }
-}
-@keyframes route-arrive {
-  from {
-    opacity: 0;
-    filter: blur(1.5px);
-    transform: translateY(5px);
-  }
-  to {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateY(0);
-  }
-}
-@keyframes route-fade-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-@keyframes route-fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-::view-transition-group(*) {
-  animation: none;
-}
-::view-transition-old(root),
-::view-transition-new(root),
-::view-transition-old(site-header),
-::view-transition-new(site-header) {
-  animation: none;
-}
-::view-transition-old(route-shell) {
-  animation: route-leave var(--duration-page-exit) var(--ease-out) both;
-}
-::view-transition-new(route-shell) {
-  animation: route-arrive var(--duration-page-enter) var(--ease-out) 100ms both;
-}
-@media (prefers-reduced-motion: reduce) {
-  ::view-transition-old(route-shell) {
-    animation: route-fade-out 100ms var(--ease-out) both;
-  }
-  ::view-transition-new(route-shell) {
-    animation: route-fade-in 120ms var(--ease-out) 70ms both;
-  }
 }
 .directory-intro {
   display: flex;

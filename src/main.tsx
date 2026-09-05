@@ -6,7 +6,6 @@ import {
   type ReactNode,
 } from "react";
 import { createRoot } from "react-dom/client";
-import { flushSync } from "react-dom";
 import "@fontsource-variable/inter";
 import "./styles.css";
 import { Header, Footer } from "./components/common";
@@ -23,8 +22,16 @@ import { communityEnabled } from "./lib/availability";
 import { examples } from "./lib/dock";
 import { CatalogGate } from "./components/catalog-gate";
 import { collectionById } from "./lib/collections";
-import { Composer } from "./components/composer";
-import { Contribute } from "./components/contribute";
+const Composer = lazy(() =>
+  import("./components/composer").then((module) => ({
+    default: module.Composer,
+  })),
+);
+const Contribute = lazy(() =>
+  import("./components/contribute").then((module) => ({
+    default: module.Contribute,
+  })),
+);
 const Requests = lazy(() => import("./components/requests"));
 const Review = lazy(() => import("./components/review"));
 const Authentication = lazy(() =>
@@ -55,8 +62,8 @@ function Application() {
   let route = path;
   let page: ReactNode;
   let title = "DockFold — A curated collection of macOS Docks";
-  // Lazy pages render their own heading while loading so a document transition
-  // lands on the right page instead of a placeholder.
+  // Lazy pages render their own heading while the chunk loads instead of
+  // collapsing the destination into a generic placeholder.
   let fallback: ReactNode = <PageFallback />;
   try {
     // Old fragment links remain readable after the directory gains ordinary page URLs.
@@ -182,14 +189,9 @@ function Application() {
         Skip to content
       </a>
       <Header route={route} />
-      {/* Full-width route shell keeps document-transition snapshots unscaled. */}
-      <div className="route-shell">
-        <Suspense fallback={fallback}>{page}</Suspense>
-        <Footer />
-      </div>
+      <Suspense fallback={fallback}>{page}</Suspense>
+      <Footer />
     </>
   );
 }
-// Render the primary pages before the browser captures the incoming document.
-// Authentication stays lazy; normal navigation must not capture an empty shell.
-flushSync(() => createRoot(document.getElementById("root")!).render(<Application />));
+createRoot(document.getElementById("root")!).render(<Application />);
