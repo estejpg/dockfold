@@ -27,13 +27,13 @@ Vercel supplies rotating OIDC Blob credentials. Managed integration keys remain 
 
 ## Community availability
 
-`vite.config.ts` decides at build time whether the community pages ship. When both `DATABASE_URL` and `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` are present for the environment being built, the header shows Submit, the footer links to requests and contributions, and `/requests`, `/contribute`, `/review` and `/sign-in` render normally. When either is missing, those URLs show one "coming soon" page, the builder does not call the catalog endpoint, and the three API functions keep answering 503 for anything that reaches them. Values never reach the client; only the boolean and the publishable key do.
+`vite.config.ts` decides at build time whether community actions are available. Submit always remains beside Home and Latest, and `/contribute` always renders the icon form to preserve the public layout; when the service is unavailable, the form is disabled and explains why. When both `DATABASE_URL` and `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` are present for the environment being built, the form activates, the footer links to requests and contributions, and `/requests`, `/review` and `/sign-in` render normally. When either is missing, those service-dependent URLs show one "coming soon" page, the builder does not call the catalog endpoint, and the three API functions keep answering 503 for anything that reaches them. Values never reach the client; only the boolean and the publishable key do.
 
 Production on `main` is currently built without these variables, so it shows the curated directory and builder only. Adding the variables requires a redeploy to take effect.
 
 ## Before production activation
 
-Production is deployed from `main`. The community pages stay hidden there until the steps below are complete; do not add production database or Clerk variables before they are.
+Production is deployed from `main`. Requests, voting and review stay hidden there until the steps below are complete; the public contribution form remains visible but disabled. Do not add production database or Clerk variables before they are.
 
 Clerk production instances require a custom domain for the Frontend API (`clerk.<your-domain>`); a `*.vercel.app` hostname cannot carry the needed CNAME. Either attach a custom domain to the project before activation, or deliberately accept running the development instance in production with its user limits and development-mode behaviour, and record that decision here.
 

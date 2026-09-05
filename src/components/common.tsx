@@ -79,7 +79,7 @@ export function Header({ route }: { route: string }) {
           {[
             ["/", "Home"],
             ["/latest", "Latest"],
-            ...(communityEnabled ? [["/contribute", "Submit"]] : []),
+            ["/contribute", "Submit"],
           ].map(([href, label]) => (
             <a
               key={href}

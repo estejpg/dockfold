@@ -5,6 +5,7 @@ import {
   MAX_ICON_BYTES,
   iconSizeError,
 } from "../lib/icon-upload";
+import { communityEnabled } from "../lib/availability";
 
 type SelectedIcon = {
   file: File;
@@ -139,6 +140,12 @@ export function Contribute() {
           Bring an app to the collection. Send its details and a clear PNG —
           we’ll take a look.
         </p>
+        {!communityEnabled ? (
+          <p className="submission-availability" role="status">
+            Icon submissions are temporarily unavailable. The form will open
+            when DockFold’s private review service is ready.
+          </p>
+        ) : null}
       </header>
 
       {receipt ? (
@@ -168,7 +175,7 @@ export function Contribute() {
         </div>
       ) : (
         <form className="icon-form" onSubmit={submit}>
-          <fieldset disabled={sending}>
+          <fieldset disabled={sending || !communityEnabled}>
             <div className="icon-field">
               <label htmlFor="app-name">
                 App name <span aria-hidden="true">*</span>
@@ -340,7 +347,11 @@ export function Contribute() {
               type="submit"
               disabled={checking}
             >
-              {sending ? "Submitting…" : "Submit icon"}
+              {!communityEnabled
+                ? "Submissions unavailable"
+                : sending
+                  ? "Submitting…"
+                  : "Submit icon"}
             </button>
             <p className="field-help">
               By submitting, you’re sharing this app icon for review and
