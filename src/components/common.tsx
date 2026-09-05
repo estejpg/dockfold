@@ -65,10 +65,13 @@ export function Header({ route }: { route: string }) {
     <header className="site-header">
       <div className="header-top">
         <a href="/" className="wordmark" aria-label="DockFold home">
-          <span className="brand-mark" aria-hidden="true">
-            <span />
-            <span />
-          </span>
+          <img
+            className="brand-mark"
+            src="/assets/link-icon.svg"
+            width={28}
+            height={28}
+            alt=""
+          />
           DockFold
         </a>
         <nav aria-label="Primary navigation">

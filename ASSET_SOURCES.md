@@ -1,5 +1,9 @@
 # Icon sources
 
+## DockFold identity
+
+The header mark uses the user-supplied `Link Icon.svg`, preserved as `public/assets/link-icon.svg`. The favicon uses the same geometry with light/dark color rules for browser-tab contrast. The original supplied file is unchanged. No image generation was used.
+
 ## Current supplied collection
 
 The user supplied 61 PNG files in an App Icons folder. The current picker uses 56 distinct app entries: four folder images were omitted and the byte-identical `iMessage.png` duplicate was consolidated into `Messages.png`. Named variants such as Dia / Dia (Early Birds) remain distinct.
