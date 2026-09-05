@@ -1,6 +1,6 @@
 # GitHub-free DockFold
 
-Status: implementation plan; provider setup is pending. This document does not mean the new workflows are live.
+Status: implementation in the open PR. Real Neon and Clerk services are provisioned for preview/development. Production activation remains separate; see deployment.md.
 
 ## Product scope
 
@@ -8,7 +8,7 @@ DockFold should let visitors create a Dock, share its profile, request apps, con
 
 The owner selected **email sign-in for voting**, with one vote per account per app. Public browsing, creating a Dock, sharing a profile, requesting an app and contributing an icon do not need visitor accounts. Owner review requires an authorized account.
 
-## Current implementation
+## Previous production implementation (before this PR)
 
 - **Create a Dock:** React picker using the bundled icon catalog; the draft is saved in browser storage.
 - **Share a profile:** a validated version-2 URL fragment carries the app identifiers, name and note. It is unlisted and works without a server-side profile or GitHub account. Copies cannot be centrally revoked.
@@ -28,7 +28,7 @@ Keep React, Vite, the current design, the existing share-link format and private
 - **Neon Postgres:** application requests, review status, published catalog records and votes. Use database constraints and transactions for uniqueness and concurrent actions.
 - **Vercel endpoints:** accept requests, list public requests, add/remove the signed-in account's vote, serve approved catalog icons and perform authorized review actions. Database credentials and private storage access remain server-side.
 
-The proposed setup uses Neon Free and Clerk Hobby, scoped to preview and development until the PR is ready for production review. Their marketplace setup currently requires the account owner to accept provider terms. Production activation must be checked before merging.
+The preview setup uses Neon Free and Clerk Hobby, scoped to preview and development until the PR is ready for production review. The owner accepted provider terms, and both services were provisioned successfully. Production activation must be checked before merging.
 
 ## Visitor flows
 

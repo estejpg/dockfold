@@ -7,7 +7,7 @@ import {
   Search,
   Trash2,
 } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import {
   byId,
   catalog,
@@ -19,9 +19,14 @@ import {
   type Dock,
 } from "../lib/dock";
 import { AppIcon, DockStrip } from "./common";
-import { submissionURL } from "../lib/submission";
-const filters = ["All apps", ...new Set(catalog.map((app) => app.category))];
+import {
+  catalogSnapshot,
+  loadCatalog,
+  subscribeCatalog,
+} from "../lib/live-catalog";
 export function Composer({ initial }: { initial?: Dock }) {
+  const catalogState = useSyncExternalStore(subscribeCatalog, catalogSnapshot);
+  const filters = ["All apps", ...new Set(catalog.map((app) => app.category))];
   const [previousDraft] = useState(() => (initial ? readDraft() : null));
   const [canUndo, setCanUndo] = useState(Boolean(initial));
   const [dock, setDock] = useState<Dock>(() => initial ?? readDraft());
@@ -39,14 +44,10 @@ export function Composer({ initial }: { initial?: Dock }) {
       setSaved(false);
     }
   }, [dock]);
-  const visible = useMemo(
-    () =>
-      catalog.filter(
-        (app) =>
-          (filter === "All apps" || app.category === filter) &&
-          app.name.toLowerCase().includes(query.trim().toLowerCase()),
-      ),
-    [filter, query],
+  const visible = catalog.filter(
+    (app) =>
+      (filter === "All apps" || app.category === filter) &&
+      app.name.toLowerCase().includes(query.trim().toLowerCase()),
   );
   function change(next: Dock) {
     setDock(next);
@@ -78,15 +79,13 @@ export function Composer({ initial }: { initial?: Dock }) {
     <main id="main" tabIndex={-1} className="submit-page">
       <section className="page-intro">
         <h1>Submit a Dock</h1>
-        <p>
-          Build your own setup, share it with a friend, or suggest it for the
-          collection.
-        </p>
+        <p>Build your own setup and share it with a friend.</p>
         <p className="fine-print">
-          A share link is unlisted. Collection submissions are reviewed on
-          GitHub.
+          Your share link is unlisted. No account needed.
         </p>
-        {canUndo && previousDraft?.a.length ? (
+        {canUndo &&
+        previousDraft?.a.length &&
+        previousDraft.a.every((id) => byId.has(id)) ? (
           <button
             type="button"
             className="text-button"
@@ -105,6 +104,17 @@ export function Composer({ initial }: { initial?: Dock }) {
             <h2 id="catalog-title">Choose your apps</h2>
             <span>{catalog.length} apps available</span>
           </div>
+          {catalogState.status === "error" ? (
+            <p className="fine-print">
+              Showing bundled apps. Recent additions couldn’t load.{" "}
+              <button
+                className="text-button"
+                onClick={() => void loadCatalog(true)}
+              >
+                Retry
+              </button>
+            </p>
+          ) : null}
           <label className="search-control">
             <Search size={18} />
             <span className="sr-only">Search apps</span>
@@ -302,22 +312,6 @@ export function Composer({ initial }: { initial?: Dock }) {
                   </button>
                   <a className="button" href={link}>
                     View Dock <ArrowUpRight size={15} />
-                  </a>
-                </div>
-                <div className="collection-submit">
-                  <h3>Worth sharing with everyone?</h3>
-                  <p>
-                    Send this Dock to the collection. You can review your
-                    submission on GitHub before posting it.
-                  </p>
-                  <a
-                    className="text-button"
-                    target="_blank"
-                    rel="noreferrer"
-                    href={submissionURL(dock, link)}
-                  >
-                    Suggest for the collection <ArrowUpRight size={14} />
-                    <span className="sr-only"> on GitHub, opens a new tab</span>
                   </a>
                 </div>
               </div>

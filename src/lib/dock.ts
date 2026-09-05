@@ -15,7 +15,11 @@ export const emptyDock = (): Dock => ({
   t: "",
 });
 
-export function parseDock(value: unknown, allowEmpty = false): Dock {
+export function parseDock(
+  value: unknown,
+  allowEmpty = false,
+  resolveApps = true,
+): Dock {
   if (!value || typeof value !== "object")
     throw new Error("This Dock link is incomplete.");
   const dock = value as Record<string, unknown>;
@@ -24,7 +28,12 @@ export function parseDock(value: unknown, allowEmpty = false): Dock {
     !Array.isArray(dock.a) ||
     dock.a.length > MAX_APPS ||
     (!allowEmpty && dock.a.length === 0) ||
-    !dock.a.every((id) => typeof id === "string" && byId.has(id)) ||
+    !dock.a.every(
+      (id) =>
+        typeof id === "string" &&
+        /^[a-z0-9-]{1,80}$/.test(id) &&
+        (!resolveApps || byId.has(id)),
+    ) ||
     new Set(dock.a).size !== dock.a.length ||
     typeof dock.n !== "string" ||
     dock.n.length > 60 ||
@@ -49,7 +58,7 @@ export function encodeDock(dock: Dock) {
     throw new Error("This Dock is too large to share.");
   return encoded;
 }
-export function decodeDock(payload: string): Dock {
+export function decodeDock(payload: string, resolveApps = true): Dock {
   if (
     payload.length > 4096 ||
     !/^[A-Za-z0-9_-]+$/.test(payload) ||
@@ -65,13 +74,15 @@ export function decodeDock(payload: string): Dock {
         Uint8Array.from(atob(padded), (c) => c.charCodeAt(0)),
       ),
     ),
+    false,
+    resolveApps,
   );
 }
 export function readDraft(): Dock {
   try {
     const saved = localStorage.getItem(DRAFT_KEY);
     return saved && saved.length <= 4096
-      ? parseDock(JSON.parse(saved), true)
+      ? parseDock(JSON.parse(saved), true, false)
       : emptyDock();
   } catch {
     return emptyDock();

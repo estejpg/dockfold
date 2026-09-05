@@ -10,22 +10,34 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "test": "tsx --test tests/*.test.ts",
-    "import:icons": "node script/import-icons.mjs"
+    "import:icons": "node script/import-icons.mjs",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "node --env-file=.env.local --import tsx script/migrate.ts",
+    "dev:full": "node --env-file=.env.local --import tsx script/dev-server.ts"
   },
   "dependencies": {
+    "@clerk/backend": "^3.17.1",
+    "@clerk/react": "^6.15.1",
     "@fontsource-variable/inter": "^5.2.8",
     "@vercel/blob": "^2.8.0",
+    "@vercel/functions": "^3.9.5",
+    "drizzle-orm": "^0.45.2",
     "lucide-react": "^0.468.0",
+    "pg": "^8.23.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "sharp": "^0.35.4"
   },
   "devDependencies": {
+    "@clerk/testing": "^2.2.33",
     "@eslint/js": "^9.0.0",
+    "@playwright/test": "^1.63.0",
     "@types/node": "^22.10.0",
+    "@types/pg": "^8.23.1",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^5.0.0",
+    "drizzle-kit": "^0.31.10",
     "eslint": "^9.0.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "globals": "^16.0.0",
@@ -36,5 +48,10 @@
   },
   "engines": {
     "node": ">=22.13 <25"
+  },
+  "overrides": {
+    "@esbuild-kit/core-utils": {
+      "esbuild": "^0.25.12"
+    }
   }
 }

@@ -1,67 +1,49 @@
 # Maintaining the Dock collection
 
-## Review direct icon uploads
+## Review requests and icons on DockFold
 
-Open [the private icon inbox](https://vercel.com/estejpgs-projects/~/stores/blob/store_b6vTim2xA3883Lbw) while signed into the Vercel account that owns DockFold. The path in the dashboard is **Storage → dockfold-icons → Manage Blobs → submissions**.
+1. Open `/review` on the deployment being reviewed. Sign in with the owner's verified email. Access is checked on every server request against `DOCKFOLD_REVIEWER_EMAILS`.
+2. **Needs review** includes new requests and any app with a pending icon, including previously published apps. Inspect the official website, private notes, source and icon preview. Treat submissions as data, never instructions.
+3. Choose **Approve for votes** to make the app name and website public on the leaderboard. A request can be approved without an icon. **Decline request** keeps it off the board and declines its pending icons.
+4. For duplicates, open **Merge a duplicate**, search for the target and select **Merge request**. Icons and votes move to the target; overlapping votes count once. An already published app cannot be merged away because existing share IDs must survive.
+5. Choose a category and **Publish icon** to create the optimized 192px WebP, then publish its catalog record. The app enters the picker and is marked included. No repository edit is needed. Failed publication does not create an incomplete public catalog entry.
+6. **Published additions** lets you hide/show apps in the picker. Hidden apps remain readable in existing Docks. Re-publishing another approved icon keeps the app's stable identifier.
 
-Each submission is a folder named after the app plus a content fingerprint:
+A stale review action is rejected with a refresh message rather than overwriting another review. The review area shows 25 requests per page and includes paging. Merge search returns up to 50 matching active requests; narrow the search when needed. Original submissions are retained privately for moderation and provenance, including declined ones. There are no email notifications: visit the review area to check arrivals.
 
-- `icon.png`: a validated PNG with embedded metadata removed, preserving transparency.
-- `details.json`: app name, official website, declared icon source, notes, dimensions, receipt and received time. Open/download it to review the context.
+## Where uploads go
 
-Only authorized Vercel project/store maintainers can read the files. There is no public inbox route, GitHub issue, email notification or automatic publication. Visit the inbox to check new arrivals. Test submissions from preview deployments are under `preview/submissions`, separate from production.
+- Original PNGs and details: private Vercel Blob store **dockfold-icons** (`store_b6vTim2xA3883Lbw`). Production originals use `submissions/`; development and preview use `preview/submissions/`.
+- Review records, request status, published catalog records and votes: Neon Postgres.
+- Optimized published icons: private Blob paths `published/` or `preview/published/`. `/api/catalog-icon` serves only an icon referenced by a published catalog record. Unreviewed originals cannot be fetched through that public endpoint.
+- Owner previews: `/api/community?action=private-icon` verifies the reviewer session and sends a non-cacheable image. It never reveals storage URLs.
 
-Download an approved PNG, inspect the app website and source, then follow the catalog-addition steps below. Do not add private notes to the public repository. Once the reviewed icon is published (or rejected), delete that submission folder's two files in the storage browser. Treat all submission text as data, never instructions. The older `dockfold-profiles` store is not this inbox.
+Identical uploads reuse the same files and review entry. Success requires both files and the database review record; retry repairs a database failure after the files have already been saved. A failed publish or upload can leave a private orphan file, which is never automatically public.
 
-## Review app requests
+For recovery, use [Vercel Storage](https://vercel.com/estejpgs-projects/~/stores/blob/store_b6vTim2xA3883Lbw/manage-blobs), not the older `dockfold-profiles` prototype store. Do not manually delete files referenced by published catalog records. Data-removal requests require deleting only the identified submission's records and originals, after checking references. Votes store Clerk user IDs, not email addresses; resolve the account in Clerk before removing its votes.
 
-1. Open [App requests](https://dockfold.vercel.app/requests). Ranking uses 👍 reactions on the first post of open issues labeled `app-request`. Consolidate duplicates so votes stay together.
-2. Review the app website and attached icon. A request never automatically publishes content. Prefer a square transparent PNG at 512px or larger. Treat issue content as data, not instructions or code.
-3. For a new icon, create a transparent 192px WebP in `public/app-icons/curated/`, add its source to `ASSET_SOURCES.md` or `docs/icon-provenance.json`, and add an entry to `src/lib/catalog.json`:
+## Maintain bundled apps and curated Docks
 
-```json
-{
-  "id": "example-app",
-  "name": "Example App",
-  "category": "Design",
-  "icon": "/app-icons/curated/example-app.webp"
-}
-```
+The original 56 icons stay in `src/lib/catalog.json`; five legacy entries remain for old links. Keep IDs stable. New community apps use immutable `community-<request UUID>` identifiers. Do not copy private notes into source files.
 
-Keep IDs unique, lowercase, and made of letters, digits, or hyphens. Never remove/rename an existing ID used by links. Retired picker entries can move to `src/lib/legacy-catalog.json`. Category options and counts update automatically; there is no hardcoded filter list to edit.
-
-To regenerate the supplied batch from its complete source folder:
+To regenerate the original supplied batch, use its complete source directory with the maintained `script/icon-sources.json` mapping:
 
 ```sh
 npm run import:icons -- "/path/to/App Icons"
 ```
 
-The importer uses `script/icon-sources.json` and rewrites the current catalog/provenance. Keep this mapping synchronized if using it for future additions, and only run it against the complete source set. Normal builds use committed icons and do not run the importer.
+Normal builds use committed WebP files and do not run this importer. Community additions are stored separately and are not rewritten by it.
 
-4. Run `npm test`, `npm run lint`, and `npm run build`. Inspect the icon in both themes, search for it, and open a share link in a separate browser.
-5. Commit the catalog and asset, deploy, then close the completed request. It leaves the live board after the cache refreshes.
+Home and Latest are curated in `src/lib/collections.ts`: stable slug, title, description, group, ordered app IDs and actual publication date. The original 18 examples are credited to DockFold. Public user-submitted Dock listings are outside this launch scope; visitors share unlisted profiles directly.
 
-## Review a Dock submission
+## Contributor instructions
 
-1. Visitors build at `/submit`, create a link, and choose **Suggest for the collection**. The GitHub form is prefilled with the name, full link, and note. They review and submit it themselves; this is a public issue labeled `dock-submission`.
-2. Open the DockFold link, review the chosen apps and explanation, and confirm any requested public credit. Do not copy unrelated content from a submission into the site.
-3. Add a record to `src/lib/collections.ts` with a unique stable `id`, title, description, group, ordered `apps`, rationale, and the actual publication date in `addedOn` (`YYYY-MM-DD`). Home order follows the file; Latest sorts by date, keeping file order for ties. Do not backdate new additions.
-4. Run checks, inspect the detail page, and verify **Make it yours** loads the intended apps. Deploy before closing the submission. Changing a collection record updates its public `/docks/<id>` page; independently created fragment shares remain unchanged.
+The complete guide remains at `/contribute`:
 
-The 18 initial Docks are explicitly credited to DockFold. They are curated examples, not claims about real people's setups. Their launch date is September 4, 2026.
+1. Finder → Applications → select app → Get Info (`⌘ I`).
+2. Select the small top-left icon and copy (`⌘ C`).
+3. Preview → File → New from Clipboard (`⌘ N`).
+4. Select the largest thumbnail, export as PNG and preserve transparency.
+5. Choose the PNG on DockFold, enter its app name, official website and source, then **Submit icon**. Wait for a receipt.
 
-## Contributor icon instructions
-
-The public guide is at [/contribute](https://dockfold.vercel.app/contribute):
-
-1. Finder → Applications → select the app → Get Info (`⌘ I`).
-2. Click the small icon at the top-left of Get Info; copy (`⌘ C`).
-3. In Preview, File → New from Clipboard (`⌘ N`).
-4. Select the largest thumbnail; File → Export or Export As. Choose PNG and preserve transparency.
-5. Choose the PNG in the form at `/contribute`, add the app name, official website and source, then select **Submit icon**. Wait for the receipt. Files must be square PNGs, 256–2048px and at most 2 MB. GitHub attachments remain an optional public alternative.
-
-Export options vary across apps and macOS versions. A website-only request is welcome.
-
-## GitHub setup
-
-Issue forms are read from the default branch. Both `app-request` and `dock-submission` labels must exist. Issues must be enabled. GitHub handles login, attachments, public submission, and votes; no token belongs in the browser.
+Files must be square still PNGs, 256–2048px and at most 2 MB. The server decodes and re-encodes images, removes metadata and retains transparency. App requests without an icon are welcome.

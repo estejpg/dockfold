@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import sharp from "sharp";
+import { HttpError } from "./http.js";
 import {
   ICON_SOURCES,
   MAX_ICON_BYTES,
@@ -82,6 +83,18 @@ export function createSubmissionHandler(
     origins: string[];
     prefix: string;
     configured: () => boolean;
+    before?: (request: Request) => Promise<void>;
+    record?: (icon: {
+      appName: string;
+      website: string;
+      source: string;
+      notes: string;
+      width: number;
+      height: number;
+      receipt: string;
+      digest: string;
+      path: string;
+    }) => Promise<void>;
   },
 ) {
   return async (request: Request) => {
@@ -110,6 +123,7 @@ export function createSubmissionHandler(
         503,
       );
     try {
+      await options.before?.(request);
       const form = await readForm(request);
       if (field(form, "company", 1000, false))
         throw new SubmissionError("Please leave the empty field blank.");
@@ -198,7 +212,15 @@ export function createSubmissionHandler(
           .slice(0, 50) || "app";
       const folder = `${options.prefix}/${slug}-${digest}`;
       const manifest = `${folder}/details.json`;
-      if (await store.exists(manifest)) return json({ receipt }, 200);
+      if (await store.exists(manifest)) {
+        await options.record?.({
+          ...details,
+          receipt,
+          digest,
+          path: `${folder}/icon.png`,
+        });
+        return json({ receipt }, 200);
+      }
       await store.save(`${folder}/icon.png`, image, "image/png");
       await store.save(
         manifest,
@@ -215,10 +237,16 @@ export function createSubmissionHandler(
         ),
         "application/json",
       );
+      await options.record?.({
+        ...details,
+        receipt,
+        digest,
+        path: `${folder}/icon.png`,
+      });
       // A receipt means both files are saved. Storage URLs and credentials never leave the server.
       return json({ receipt }, 201);
     } catch (error) {
-      if (error instanceof SubmissionError)
+      if (error instanceof SubmissionError || error instanceof HttpError)
         return json({ error: error.message }, error.status);
       console.error(
         "Icon submission storage failed",

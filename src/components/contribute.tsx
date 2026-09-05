@@ -5,7 +5,6 @@ import {
   MAX_ICON_BYTES,
   iconSizeError,
 } from "../lib/icon-upload";
-import { REQUEST_URL } from "../lib/requests";
 
 type SelectedIcon = {
   file: File;
@@ -152,7 +151,7 @@ export function Contribute() {
           </p>
           <p className="fine-print">
             Reference: {receipt}. This submission is private and isn’t a public
-            app request.
+            listing. It is linked to an app request for review.
           </p>
           <button
             className="button"
@@ -321,12 +320,14 @@ export function Contribute() {
               <h2>Where does it go?</h2>
               <p>
                 Your icon and app details go to DockFold’s private review inbox,
-                hosted on Vercel. Esteban reviews submissions before publishing
+                on DockFold. Esteban reviews submissions before publishing
                 approved icons. No account needed.
               </p>
               <p>
-                Uploads don’t create GitHub requests or votes.{" "}
-                <a href="/requests">Use App requests</a> for the public board.
+                We link the icon to the matching app request. Your original
+                upload and notes stay private.{" "}
+                <a href="/requests">App requests</a> shows the reviewed public
+                board.
               </p>
             </div>
             {error && (
@@ -400,12 +401,8 @@ export function Contribute() {
         </ol>
         <p className="field-help">
           Icon export options can vary by macOS version and app. If export is
-          unavailable,{" "}
-          <a href={REQUEST_URL} target="_blank" rel="noreferrer">
-            request the app on GitHub
-          </a>{" "}
-          without an icon. You can also attach a PNG to an existing GitHub
-          request if you prefer a public contribution.
+          unavailable, <a href="/requests#request-app">request the app</a>{" "}
+          without an icon. No account needed.
         </p>
       </section>
     </main>

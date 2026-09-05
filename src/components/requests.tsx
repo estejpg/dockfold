@@ -1,38 +1,220 @@
 import { ArrowUpRight, RefreshCw, Search, ThumbsUp } from "lucide-react";
-import { useEffect, useState } from "react";
-import {
-  BOARD_URL,
-  cachedBoard,
-  fetchBoard,
-  REPOSITORY,
-  REQUEST_URL,
-  type RequestBoard,
-} from "../lib/requests";
-export default function Requests() {
-  const [board, setBoard] = useState<RequestBoard | undefined>(cachedBoard),
-    [loading, setLoading] = useState(true),
-    [error, setError] = useState(""),
-    [query, setQuery] = useState(""),
-    [revision, setRevision] = useState(0);
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import { communityFetch, type PublicRequest } from "../lib/community";
+import { AccountControl, AuthProvider, useCommunityAccount } from "./auth";
+
+function RequestForm({ onSaved }: { onSaved: () => void }) {
+  const [busy, setBusy] = useState(false),
+    [error, setError] = useState("");
+  const [receipt, setReceipt] = useState<{
+    existing?: string;
+    existingName?: string;
+  } | null>(null);
+  const confirmation = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const controller = new AbortController();
-    setLoading(true);
+    if (receipt) confirmation.current?.focus();
+  }, [receipt]);
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    setBusy(true);
     setError("");
-    fetchBoard(controller.signal, revision > 0)
-      .then(setBoard)
-      .catch((e: unknown) => {
-        if (!controller.signal.aborted)
-          setError(e instanceof Error ? e.message : "Could not load requests.");
-      })
-      .finally(() => {
-        if (!controller.signal.aborted) setLoading(false);
-      });
-    return () => controller.abort();
-  }, [revision]);
-  const visible =
-    board?.requests.filter((request) =>
-      request.name.toLowerCase().includes(query.trim().toLowerCase()),
-    ) ?? [];
+    try {
+      setReceipt(await communityFetch("request", Object.fromEntries(form)));
+      onSaved();
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Please try again.");
+    } finally {
+      setBusy(false);
+    }
+  }
+  return (
+    <section
+      id="request-app"
+      className="community-form"
+      aria-labelledby="request-form-title"
+    >
+      <h2 id="request-form-title">Request an app</h2>
+      {receipt ? (
+        <div
+          className="submission-confirmation"
+          ref={confirmation}
+          tabIndex={-1}
+        >
+          <h3>
+            {receipt.existing
+              ? "This app is already on the list."
+              : "Thanks. Your request is in the inbox."}
+          </h3>
+          <p>
+            {receipt.existing
+              ? "You can vote for it or contribute an icon."
+              : "Esteban will review it before it appears on the leaderboard. You don’t need an icon to request an app."}
+          </p>
+          {receipt.existing ? (
+            <a
+              className="text-button"
+              href={`/requests?q=${encodeURIComponent(receipt.existingName || "")}#request-${receipt.existing}`}
+            >
+              View request
+            </a>
+          ) : null}
+          <button className="button" onClick={() => setReceipt(null)}>
+            Request another app
+          </button>
+        </div>
+      ) : (
+        <form onSubmit={submit}>
+          <p>
+            Check the list first, then suggest an app that’s missing. No account
+            needed.
+          </p>
+          <fieldset disabled={busy}>
+            <label>
+              App name
+              <input name="name" required maxLength={80} autoComplete="off" />
+            </label>
+            <label>
+              Official website
+              <input
+                name="website"
+                type="url"
+                required
+                maxLength={500}
+                placeholder="https://"
+              />
+            </label>
+            <label>
+              Anything we should know?{" "}
+              <span className="optional-label">Optional</span>
+              <textarea name="notes" maxLength={1000} rows={3} />
+            </label>
+            <div className="honeypot" aria-hidden="true">
+              <label>
+                Company
+                <input name="company" tabIndex={-1} autoComplete="off" />
+              </label>
+            </div>
+            <p className="fine-print">
+              Your notes stay private. Approved app names and websites appear on
+              the public list.
+            </p>
+            <button className="button button-dark" type="submit">
+              {busy ? "Sending…" : "Send request"}
+            </button>
+          </fieldset>
+          {error ? (
+            <p className="form-error" role="alert">
+              {error}
+            </p>
+          ) : null}
+        </form>
+      )}
+    </section>
+  );
+}
+
+function RequestsPage() {
+  const account = useCommunityAccount();
+  const [rows, setRows] = useState<PublicRequest[]>([]),
+    [loaded, setLoaded] = useState(false),
+    [busy, setBusy] = useState(true),
+    [error, setError] = useState("");
+  const [query, setQuery] = useState(() =>
+      (new URLSearchParams(location.search).get("q") || "").slice(0, 80),
+    ),
+    [offset, setOffset] = useState(0),
+    [more, setMore] = useState(false),
+    [revision, setRevision] = useState(0);
+  const [voting, setVoting] = useState<string | null>(null),
+    [notice, setNotice] = useState("");
+  useEffect(() => {
+    let cancelled = false;
+    setBusy(true);
+    setError("");
+    const timer = setTimeout(
+      () => {
+        communityFetch<{ requests: PublicRequest[]; more: boolean }>(
+          "board",
+          undefined,
+          undefined,
+          { q: query, offset: String(offset) },
+        )
+          .then((board) => {
+            if (!cancelled) {
+              setRows(board.requests);
+              setMore(board.more);
+              setLoaded(true);
+            }
+          })
+          .catch((e) => {
+            if (!cancelled) setError(e.message);
+          })
+          .finally(() => {
+            if (!cancelled) setBusy(false);
+          });
+      },
+      query ? 250 : 0,
+    );
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [query, offset, revision]);
+  async function vote(row: PublicRequest) {
+    if (!account.isSignedIn) {
+      location.assign("/sign-in");
+      return;
+    }
+    if (!account.account || voting) return;
+    setVoting(row.id);
+    setNotice("");
+    try {
+      const result = await communityFetch<{
+        id: string;
+        votes: number;
+        voted: boolean;
+      }>(
+        "vote",
+        { id: row.id, voted: !account.account.votes.includes(row.id) },
+        await account.getToken(),
+      );
+      account.setAccount((previous) =>
+        previous
+          ? {
+              ...previous,
+              votes: [
+                ...previous.votes.filter((id) => id !== row.id),
+                ...(result.voted ? [row.id] : []),
+              ],
+            }
+          : previous,
+      );
+      setRows((previous) =>
+        previous
+          .map((item) =>
+            item.id === row.id ? { ...item, votes: result.votes } : item,
+          )
+          .sort(
+            (a, b) =>
+              b.votes - a.votes ||
+              Date.parse(a.createdAt) - Date.parse(b.createdAt) ||
+              a.id.localeCompare(b.id),
+          ),
+      );
+      setNotice(
+        result.voted
+          ? `Vote saved for ${row.name}.`
+          : `Vote removed for ${row.name}.`,
+      );
+    } catch (e) {
+      setNotice(
+        e instanceof Error ? e.message : "Your vote couldn’t be saved.",
+      );
+    } finally {
+      setVoting(null);
+    }
+  }
   return (
     <main id="main" tabIndex={-1} className="requests-page">
       <section className="page-intro">
@@ -41,149 +223,154 @@ export default function Requests() {
           Request an app. Vote for your favorites. Help the collection grow.
         </p>
         <div className="intro-actions">
-          <a
-            className="button button-dark"
-            href={REQUEST_URL}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Request an app <ArrowUpRight size={16} />
-            <span className="sr-only"> on GitHub, opens a new tab</span>
+          <a className="button button-dark" href="#request-app">
+            Request an app
           </a>
           <a className="text-button" href="/contribute">
-            Have an icon to contribute? <ArrowUpRight size={16} />
+            Contribute an icon <ArrowUpRight size={16} />
           </a>
         </div>
-        <p className="fine-print">
-          Requests and votes use GitHub. An account is needed to contribute.
-        </p>
+        <div className="account-control">
+          <AccountControl />
+          {account.account?.reviewer ? (
+            <a href="/review" className="text-button">
+              Review submissions
+            </a>
+          ) : null}
+        </div>
       </section>
       <section className="request-board" aria-labelledby="requests-title">
         <div className="section-heading">
           <h2 id="requests-title">Most requested</h2>
           <button
             className="text-button refresh-button"
-            disabled={loading}
-            onClick={() => setRevision((r) => r + 1)}
+            disabled={busy}
+            onClick={() => setRevision((value) => value + 1)}
           >
             <RefreshCw size={15} />
-            {loading ? "Updating…" : "Refresh votes"}
+            {busy ? "Updating…" : "Refresh"}
           </button>
         </div>
         <p className="board-help">
-          Open a request and add a 👍 reaction to the first post to vote. One
-          vote per GitHub account.
+          Sign in with email to add or remove your vote. One vote per account,
+          per app.
         </p>
         <label className="search-control">
           <Search size={18} />
           <span className="sr-only">Search app requests</span>
           <input
             type="search"
+            maxLength={80}
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(event) => {
+              setQuery(event.target.value);
+              setOffset(0);
+            }}
             placeholder="Check if your app is already requested"
           />
         </label>
         {error ? (
-          <p className="form-error" role="alert">
-            {error}
+          <p role="alert" className="form-error">
+            {error} {loaded ? "Previously loaded requests are shown." : ""}
           </p>
         ) : null}
-        {loading && !board ? (
-          <p className="loading-state" role="status">
+        {account.error ? (
+          <p role="alert" className="form-error">
+            {account.error}{" "}
+            <button className="text-button" onClick={account.retry}>
+              Retry account
+            </button>
+          </p>
+        ) : null}
+        {busy && !loaded ? (
+          <p role="status" className="loading-state">
             Loading app requests…
           </p>
         ) : null}
-        {board ? (
-          <>
-            <ol className="request-list">
-              {visible.map((request, index) => (
-                <li key={request.number}>
-                  <span className="request-rank">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <div>
-                    <h3>
-                      <a
-                        href={`https://github.com/${REPOSITORY}/issues/${request.number}`}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {request.name}
-                        <span className="sr-only">
-                          {" "}
-                          on GitHub, opens a new tab
-                        </span>
-                      </a>
-                    </h3>
-                    <span>Request #{request.number}</span>
-                  </div>
-                  <a
-                    className="vote-link"
-                    href={`https://github.com/${REPOSITORY}/issues/${request.number}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`Vote for ${request.name} on GitHub, ${request.votes} votes, opens a new tab`}
-                  >
-                    <ThumbsUp size={16} />
-                    <strong>{request.votes}</strong>
-                    <ArrowUpRight size={14} />
-                  </a>
-                </li>
-              ))}
-            </ol>
-            {!visible.length ? (
-              <div className="empty-results">
+        <ol className="request-list">
+          {rows.map((row, index) => (
+            <li key={row.id} id={`request-${row.id}`}>
+              <span className="request-rank">
+                {String(offset + index + 1).padStart(2, "0")}
+              </span>
+              <div>
                 <h3>
-                  {query
-                    ? "No matching requests."
-                    : "The next app could be yours."}
+                  <a href={row.website} target="_blank" rel="noreferrer">
+                    {row.name}
+                    <span className="sr-only">
+                      {" "}
+                      official website, opens a new tab
+                    </span>
+                  </a>
                 </h3>
-                <p>
-                  {query
-                    ? "Try another spelling, or suggest the app on GitHub."
-                    : "No open app requests yet. Start the list with an app you use."}
-                </p>
-                <a
-                  className="text-button"
-                  href={REQUEST_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Request an app <ArrowUpRight size={16} />
-                </a>
+                <span>
+                  {row.status === "included"
+                    ? "Included in the catalog"
+                    : "Open for votes"}
+                </span>
               </div>
-            ) : null}
-            <p className="fine-print">
-              {error ? "Showing previously loaded votes. " : ""}Last updated{" "}
-              {new Date(board.fetchedAt).toLocaleTimeString([], {
-                hour: "numeric",
-                minute: "2-digit",
-              })}
-              . {board.truncated ? "Showing the first 500 open requests. " : ""}
-              New visits reuse votes for up to five minutes.
+              <button
+                className="vote-link"
+                aria-pressed={account.account?.votes.includes(row.id) || false}
+                aria-label={`${account.account?.votes.includes(row.id) ? "Remove vote for" : "Vote for"} ${row.name}, ${row.votes} votes`}
+                disabled={
+                  row.status === "included" ||
+                  !!voting ||
+                  !account.isLoaded ||
+                  !!(account.isSignedIn && !account.account)
+                }
+                onClick={() => void vote(row)}
+              >
+                <ThumbsUp size={16} />
+                <strong>{row.votes}</strong>
+              </button>
+            </li>
+          ))}
+        </ol>
+        {loaded && !busy && !rows.length ? (
+          <div className="empty-results">
+            <h3>
+              {query ? "No matching requests." : "The next app could be yours."}
+            </h3>
+            <p>
+              {query
+                ? "Try another spelling, or send a request below."
+                : "Reviewed requests will appear here. Start with an app you use."}
             </p>
-          </>
+          </div>
         ) : null}
-        <a
-          className="text-button"
-          href={BOARD_URL}
-          target="_blank"
-          rel="noreferrer"
-        >
-          View all requests on GitHub <ArrowUpRight size={16} />
-        </a>
-      </section>
-      <section className="request-note">
-        <h2>A small contribution goes a long way.</h2>
-        <p>
-          Add the app’s website and, if you have it, a PNG of its icon to your
-          request. Esteban reviews requests and adds icons to the collection.
+        <p className="status-message" role="status">
+          {notice}
         </p>
-        <a href="/contribute" className="text-button">
-          How to export an app icon <ArrowUpRight size={16} />
-        </a>
+        <div className="pagination">
+          {offset > 0 ? (
+            <button
+              className="button"
+              disabled={busy}
+              onClick={() => setOffset((value) => Math.max(0, value - 50))}
+            >
+              Previous
+            </button>
+          ) : null}
+          {more ? (
+            <button
+              className="button"
+              disabled={busy}
+              onClick={() => setOffset((value) => value + 50)}
+            >
+              Next requests
+            </button>
+          ) : null}
+        </div>
       </section>
+      <RequestForm onSaved={() => setRevision((value) => value + 1)} />
     </main>
+  );
+}
+export default function Requests() {
+  return (
+    <AuthProvider>
+      <RequestsPage />
+    </AuthProvider>
   );
 }

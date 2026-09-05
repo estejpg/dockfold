@@ -10,7 +10,6 @@ import {
   moveApp,
   parseDock,
 } from "../src/lib/dock";
-import { parseIssues, rankRequests } from "../src/lib/requests";
 const dock = {
   v: 2 as const,
   a: ["safari", "figma", "notion"],
@@ -57,38 +56,4 @@ test("reordering preserves selection without moving beyond either end", () => {
 test("all examples can be shared", () => {
   for (const { dock } of examples)
     assert.deepEqual(decodeDock(encodeDock(dock)), dock);
-});
-test("GitHub board counts thumbs-up only and excludes pull requests and unrelated issues", () => {
-  const issue = {
-    number: 8,
-    title: "[App request] Test app",
-    labels: [{ name: "app-request" }],
-    created_at: "2026-09-04",
-    reactions: { "+1": 7, total_count: 30 },
-  };
-  assert.deepEqual(
-    parseIssues([
-      issue,
-      { ...issue, number: 9, pull_request: {} },
-      { ...issue, number: 10, labels: [] },
-    ]),
-    [{ number: 8, name: "Test app", votes: 7, createdAt: "2026-09-04" }],
-  );
-  assert.equal(
-    parseIssues([{ ...issue, reactions: { "+1": -1 } }])[0].votes,
-    0,
-  );
-  assert.throws(() => parseIssues({}));
-});
-test("leaderboard sorts by votes with stable creation-order ties", () => {
-  const item = (number: number, votes: number) => ({
-    number,
-    votes,
-    name: "app",
-    createdAt: "",
-  });
-  assert.deepEqual(
-    rankRequests([item(3, 0), item(2, 2), item(1, 2)]).map((r) => r.number),
-    [1, 2, 3],
-  );
 });
