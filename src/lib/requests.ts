@@ -53,7 +53,13 @@ export function rankRequests(requests: AppRequest[]) {
 }
 let memory: RequestBoard | undefined;
 export function cachedBoard(): RequestBoard | undefined {
-  if (memory) return memory;
+  if (
+    memory &&
+    Number.isFinite(memory.fetchedAt) &&
+    memory.fetchedAt <= Date.now()
+  )
+    return memory;
+  memory = undefined;
   try {
     const raw = JSON.parse(sessionStorage.getItem(CACHE_KEY) ?? "null");
     if (
@@ -70,7 +76,9 @@ export function cachedBoard(): RequestBoard | undefined {
           r.votes >= 0 &&
           typeof r.createdAt === "string",
       ) &&
-      typeof raw.fetchedAt === "number" &&
+      Number.isFinite(raw.fetchedAt) &&
+      raw.fetchedAt > 0 &&
+      raw.fetchedAt <= Date.now() &&
       typeof raw.truncated === "boolean"
     )
       memory = raw;
@@ -87,38 +95,58 @@ export async function fetchBoard(
   if (!force && cached && Date.now() - cached.fetchedAt < CACHE_MS)
     return cached;
   const requests: AppRequest[] = [];
-  let truncated = false;
-  for (let page = 1; page <= 5; page++) {
-    const response = await fetch(
-      `https://api.github.com/repos/${REPOSITORY}/issues?labels=app-request&state=open&sort=created&direction=asc&per_page=100&page=${page}`,
-      {
-        signal,
-        headers: { Accept: "application/vnd.github+json" },
-        credentials: "omit",
-        referrerPolicy: "no-referrer",
-      },
-    );
-    if (!response.ok)
-      throw new Error(
-        response.status === 403 || response.status === 429
-          ? "GitHub’s request limit was reached. Try later, or open the board on GitHub."
-          : "The request board is unavailable right now. You can still open it on GitHub.",
-      );
-    const json: unknown = await response.json();
-    requests.push(...parseIssues(json));
-    if (!response.headers.get("link")?.includes('rel="next"')) break;
-    if (page === 5) truncated = true;
-  }
-  const board = {
-    requests: rankRequests(requests),
-    fetchedAt: Date.now(),
-    truncated,
-  };
-  memory = board;
+  const deadline = new AbortController();
+  const cancel = () => deadline.abort(signal.reason);
+  if (signal.aborted) cancel();
+  signal.addEventListener("abort", cancel, { once: true });
+  const timeout = setTimeout(
+    () =>
+      deadline.abort(
+        new Error(
+          "The request board took too long to respond. Try again, or open it on GitHub.",
+        ),
+      ),
+    10_000,
+  );
   try {
-    sessionStorage.setItem(CACHE_KEY, JSON.stringify(board));
-  } catch {
-    /* requests still display without storage */
+    let truncated = false;
+    for (let page = 1; page <= 5; page++) {
+      const response = await fetch(
+        `https://api.github.com/repos/${REPOSITORY}/issues?labels=app-request&state=open&sort=created&direction=asc&per_page=100&page=${page}`,
+        {
+          signal: deadline.signal,
+          headers: { Accept: "application/vnd.github+json" },
+          credentials: "omit",
+          referrerPolicy: "no-referrer",
+        },
+      );
+      if (!response.ok)
+        throw new Error(
+          response.status === 403 || response.status === 429
+            ? "GitHub’s request limit was reached. Try later, or open the board on GitHub."
+            : "The request board is unavailable right now. You can still open it on GitHub.",
+        );
+      const json: unknown = await response.json();
+      requests.push(...parseIssues(json));
+      if (!response.headers.get("link")?.includes('rel="next"')) break;
+      if (page === 5) truncated = true;
+    }
+    const board = {
+      requests: rankRequests([
+        ...new Map(requests.map((item) => [item.number, item])).values(),
+      ]),
+      fetchedAt: Date.now(),
+      truncated,
+    };
+    memory = board;
+    try {
+      sessionStorage.setItem(CACHE_KEY, JSON.stringify(board));
+    } catch {
+      /* requests still display without storage */
+    }
+    return board;
+  } finally {
+    clearTimeout(timeout);
+    signal.removeEventListener("abort", cancel);
   }
-  return board;
 }

@@ -1,5 +1,5 @@
 blank_issues_enabled: true
 contact_links:
   - name: Vote for an existing app request
-    url: https://dockfold.vercel.app/#/requests
+    url: https://dockfold.vercel.app/requests
     about: See the request leaderboard before suggesting a duplicate.

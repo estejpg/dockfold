@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ArrowUpRight, Copy } from "lucide-react";
-import { byId, encodeDock, examples, type Dock } from "../lib/dock";
+import { byId, shareURL, customizeURL, type Dock } from "../lib/dock";
 import { REQUEST_URL } from "../lib/requests";
 import { DockStrip } from "./common";
 export function SharedDock({
@@ -12,7 +12,7 @@ export function SharedDock({
 }) {
   const [notice, setNotice] = useState("");
   return (
-    <main id="main" className="shared-page">
+    <main id="main" tabIndex={-1} className="shared-page">
       <section className="page-intro">
         <p className="example-label">
           {example
@@ -36,9 +36,7 @@ export function SharedDock({
             className="button"
             onClick={async () => {
               try {
-                await navigator.clipboard.writeText(
-                  `${location.origin}${location.pathname}#/dock/${encodeDock(dock)}`,
-                );
+                await navigator.clipboard.writeText(shareURL(dock));
                 setNotice("Link copied.");
               } catch {
                 setNotice("Copy this page’s address from your browser.");
@@ -48,10 +46,7 @@ export function SharedDock({
             <Copy size={15} />
             Copy link
           </button>
-          <a
-            className="button button-dark"
-            href={`#/build/${encodeDock(dock)}`}
-          >
+          <a className="button button-dark" href={customizeURL(dock)}>
             Make it yours <ArrowUpRight size={15} />
           </a>
         </div>
@@ -66,34 +61,9 @@ export function SharedDock({
     </main>
   );
 }
-export function Examples() {
-  return (
-    <main id="main">
-      <section className="page-intro">
-        <h1>A little inspiration.</h1>
-        <p>A few example Docks. Open one, then make it your own.</p>
-      </section>
-      <section className="example-list" aria-label="Example Docks">
-        {examples.map(({ dock, category }, index) => (
-          <article className="example-row" key={dock.n}>
-            <div>
-              <h2>{dock.n}</h2>
-              <p>{category}</p>
-              <p>{dock.t}</p>
-              <a className="text-button" href={`#/example/${index}`}>
-                Open example <ArrowUpRight size={15} />
-              </a>
-            </div>
-            <DockStrip ids={dock.a} />
-          </article>
-        ))}
-      </section>
-    </main>
-  );
-}
 export function Contribute() {
   return (
-    <main id="main" className="reading-page">
+    <main id="main" tabIndex={-1} className="reading-page">
       <h1>Bring an app to the collection.</h1>
       <p>
         Start with its name and website. A clear PNG of the icon helps us add it
@@ -156,7 +126,7 @@ export function Contribute() {
 }
 export function Privacy() {
   return (
-    <main id="main" className="reading-page">
+    <main id="main" tabIndex={-1} className="reading-page">
       <h1>A Dock, shared on your terms.</h1>
       <h2>Your draft stays in this browser</h2>
       <p>
@@ -178,6 +148,13 @@ export function Privacy() {
         shared link cannot be revoked or edited for everyone. Keep personal or
         sensitive details out of the name and note. Browser history, synced
         bookmarks, and services you paste the link into may retain it.
+      </p>
+      <h2>Collection submissions are public</h2>
+      <p>
+        Creating a share link does not add it to the collection. If you choose
+        “Suggest for the collection,” GitHub opens a submission you can review
+        before posting. Posted submissions and their Dock links are public.
+        Esteban reviews them before adding a Dock to Home and Latest.
       </p>
       <h2>App requests are public</h2>
       <p>
@@ -208,14 +185,14 @@ export function Privacy() {
 }
 export function MissingDock() {
   return (
-    <main id="main" className="reading-page">
+    <main id="main" tabIndex={-1} className="reading-page">
       <h1>This Dock didn’t quite unfold.</h1>
       <p>
         The link may be incomplete, use an unavailable app, or belong to the
         earlier capture prototype. Try copying the full link again.
       </p>
-      <a className="button button-dark" href="#/">
-        Build a Dock
+      <a className="button button-dark" href="/">
+        Explore Docks
       </a>
     </main>
   );

@@ -1,0 +1,394 @@
+[
+  {
+    "id": "antigravity-ide",
+    "source": "Antigravity IDE.png",
+    "sha256": "a2ddf8a63db9adf43d46022b388d218fe37587dfed3a5ede76dd069f230219a4",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "antigravity",
+    "source": "Antigravity.png",
+    "sha256": "739aa0468d59d9ec7056fe0d708b3cdfaddb5fea0a14599b1e616f2baea5ec3a",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "app-store",
+    "source": "App Store.png",
+    "sha256": "14abb405033c6b79fc849a27a9905a14059b5ba5aa965977727b66b9d4ffa7ac",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "arc",
+    "source": "Arc.png",
+    "sha256": "2a958f18662b33e9b0e2c6814b35893ffa3c926b9fcc18e681dfb8d27bed84b5",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "aside",
+    "source": "Aside.png",
+    "sha256": "3f5c132208098c2615c62eb4e0ebe70aaff0f3cbb6718ac6b4464743f587f837",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "atat",
+    "source": "AtAT.png",
+    "sha256": "81ba6b3041d0443272ab6b9ba85e80237aa46a3038ff290b5afaf1e986e50320",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "bitrig",
+    "source": "Bitrig.png",
+    "sha256": "02674d33c903af4c6cc4253d6a4583900dae8666dd79513b619d29046eab092f",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "books",
+    "source": "Books.png",
+    "sha256": "e3618e83ad37d159e86aa1fa5abe4966654446b04c0f81195e4f78e9a1130ee6",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "calendar",
+    "source": "Calendar.png",
+    "sha256": "accb5fe601e21ec59be505975f27a13c9246d756f2a680d5b1c2bd276986f0ab",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "capcut",
+    "source": "CapCut.png",
+    "sha256": "556ad0274c11291db757a8e2c3303db7473c663367e59ad253439b6e9d63aad2",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "chatgpt-atlas",
+    "source": "ChatGPT Atlas.png",
+    "sha256": "24255a3f0623295ca0d7e7fe4a5d62b56c9514895b60f322123980cac6c04735",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "chatgpt",
+    "source": "ChatGPT.png",
+    "sha256": "d3cb6a1b8107de9c9e843549b8b02ccdaa6307857812213a9001c2c6c97bb1ed",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "claude",
+    "source": "Claude.png",
+    "sha256": "be5d96d60e3c154c4f6edd1647bd864ced482e3ec776c871bd9e8f3a37c87533",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "coast-local",
+    "source": "Coast Local.png",
+    "sha256": "312de5c302662ac98905e89d4fe655a46c038346dca9570ec92cc57174cc0222",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "comet",
+    "source": "Comet.png",
+    "sha256": "35cac116f3d553d155b8407127aaf358f20a9c117797dd619e8d0b4b1fa3d734",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "dia-early-birds",
+    "source": "Dia (Early Birds).png",
+    "sha256": "b9a7f37a9b111ed01fde961fc3e67dd0f0430ed77dead1eac237c5787d823c1e",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "dia",
+    "source": "Dia.png",
+    "sha256": "6bbd3b89364e6d527f7d5beab1f291e7ae18bb74022b797a871d3af2bfba9175",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "discord",
+    "source": "Discord.png",
+    "sha256": "bd667b18c6c96134280595a429ad846004483b26167e5a7923ad4b9fa11a147c",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "figma",
+    "source": "Figma.png",
+    "sha256": "8c445d0647541f6262c7f47939f48b08b599955aa434425ee8cf7dcd502e1194",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "finder",
+    "source": "Finder.png",
+    "sha256": "3e1642aabfa786e2609dea93b63c42da07d527c7499051e2109313455ea45938",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "framer",
+    "source": "Framer.png",
+    "sha256": "70517fdefce8426bae6ad325215eb6350ad5402756ba364530aa9cb9e9e510a8",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "gemini",
+    "source": "Gemini.png",
+    "sha256": "e9295cb8aac114419a00503828dae8c40c2b9c587acf63a7a255625ae88eb2ae",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "github",
+    "source": "GitHub.png",
+    "sha256": "ac7fca8d02479c212dcbea2a74336672616c8da4f3dd05b6b58030cf77d17ba4",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "grok-bot",
+    "source": "Grok Bot.png",
+    "sha256": "abff2a1d6e68550ff7467a9592ccf7f2e95f0dc3776a7234367b48db7296508b",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "hermes",
+    "source": "Hermes.png",
+    "sha256": "00f0c9b6f62bb82d37d5149c3aa0964c76c28be446e253c60fa71c31e418df52",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "illustrator",
+    "source": "Illustrator.png",
+    "sha256": "4bd36d3dbeae5ec76bc118795d0606b2ee80607755880545e7d739766cd01771",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "keeby",
+    "source": "Keeby.png",
+    "sha256": "eb35791015bd76220111a87ff08b495a224867cd4c5b40c5d2df6c070e77ecd8",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "kimi",
+    "source": "Kimi.png",
+    "sha256": "166a984dedf34c5a395e51175cd7cf17e76001d2a2832147989968677ee37b15",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "lazy",
+    "source": "Lazy.png",
+    "sha256": "332dc29601ae9e645bccf945ba3247fcf479fff2f5f9b90fab4752ab245c385e",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "lightroom",
+    "source": "Lightroom.png",
+    "sha256": "4a327f680f0ec49e2a7300566c7ea65b9fff225ad24f89bcf5e8fc2bd34221c0",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "mail",
+    "source": "Mail.png",
+    "sha256": "63cd7115c01b720c3f1e2c142e1b4fb9d77c656a837e25e04a47c9ce9813be84",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "manus",
+    "source": "Manus 6.40.06 PM.png",
+    "sha256": "e818f53b7178e02abe238087378f0e6d7bd4377ad117dbbfdf50fa1b7dc3c97f",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "markdown-preview",
+    "source": "Markdown Preview.png",
+    "sha256": "0de08cd56118cda4a334052be36b1b79b6a8531f08ed0fba5e2dde1f3a5cb955",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "messages",
+    "source": "Messages.png",
+    "sha256": "aa997c2d84f56635f9d51ee4979a448dbae7b5adcb1d0d3a5a51fca45d0383eb",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "minimax",
+    "source": "Minimax.png",
+    "sha256": "cf254f180f08987dd173350cb5e1a12daf8af25ca8eb591bd7891360266f9db4",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "music",
+    "source": "Music.png",
+    "sha256": "cf25b21858df78dca8e51d78105673e8c72368f8d1e9d77e4b1b5032e21e318b",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "notes",
+    "source": "Notes.png",
+    "sha256": "ce059652718fd6059d11ab2d100082b0751df9870f52bd48e0d33c921eda0894",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "notion",
+    "source": "Notion.png",
+    "sha256": "4ae2018baeb1d2a069b8b281b3bbe2c19de40b26dec37d69ba39f0e690e710d4",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "opencode",
+    "source": "OpenCode.png",
+    "sha256": "8a4fac43e37297116aba5f878451e50102f8b830e5f5f5dd2c30f36c47f2a33b",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "paper",
+    "source": "Paper.png",
+    "sha256": "6e45f2aa0a22409feead074729e676f9d3425ad5df765f2d90e89e3f6a3ece75",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "perplexity",
+    "source": "Perplexity.png",
+    "sha256": "519d7923406200197e5dbec49e21832a4d2c2fc3e9802e94d434fd19c476c881",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "photoshop",
+    "source": "Photoshop.png",
+    "sha256": "8dadfec1d26c9ed1663a5602f3f7cb230efba66c6b28def26eed08938ff72810",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "premiere",
+    "source": "Premiere.png",
+    "sha256": "acddf4bf7ad41d78b2bd655d792b54e447cebeeb3ae56b8fe7242f1962a6a0b5",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "qwen",
+    "source": "Qwen.png",
+    "sha256": "c67df7cf7381bffb97ca96ebb34c09c2214fb8d11425cf22fa195d16e80e10b8",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "raycast",
+    "source": "Raycast.png",
+    "sha256": "28d29c64cabfad62fd3d456976de0a940b3d8b79a6b0c8776a541add4affc33d",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "resurf",
+    "source": "Resurf.png",
+    "sha256": "5462135e464ec83dc0076f69ad4384729b0d4e9a194f3fc91cafe4eaddfb44f0",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "setapp",
+    "source": "Setapp.png",
+    "sha256": "775b6d7a502ccf73755c5ce44e8403719eb9b2a359cddd9d12e325f6f7af8938",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "shotbase",
+    "source": "Shotbase.png",
+    "sha256": "9666e3d827d5d1ae7a88d002bebf0285119a6fcf97f637afc99c7f220e7d273a",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "slack",
+    "source": "Slack.png",
+    "sha256": "5f39c2836f60fa18e61f76c0191283ef00783d4d758c951e197f2b86c2cd05bf",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "spotify",
+    "source": "Spotify.png",
+    "sha256": "6ed91fdd657f4b7973b106e5845280e5c0681809b80931f3163902b519ff18da",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "surf",
+    "source": "Surf.png",
+    "sha256": "4f42c311cf06630657d67342fb79a563b9eb0b4c4b5faa62debc6b35eb7a2ddf",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "t3-code-nightly",
+    "source": "T3 Code (Nightly).png",
+    "sha256": "2bd9e42853338d0e466a6a75e73f671b2573e107e310c482dd6e8da01f08fa2e",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "xcode",
+    "source": "Xcode.png",
+    "sha256": "ca85ce9ae562fa820a02e548a19df5a68ff3445609b27123e62c5d7da0e0c9e4",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "zcode",
+    "source": "ZCode.png",
+    "sha256": "4c75bba6b94fc860cd77ea4f83bd0654be3bd58dfcf4ebdcc00b27886792752f",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "zotero",
+    "source": "Zotero.png",
+    "sha256": "2df54a18860cd81e269a62498478869e2291056e4a07ffc0a80ec3a0563254ef",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  },
+  {
+    "id": "superwhisper",
+    "source": "superwhisper.png",
+    "sha256": "d1b7a9ca8cd216a855f9480320c3dcd8a02e489be7d63906851201803b842a53",
+    "sourceWidth": 1024,
+    "sourceHeight": 1024
+  }
+]
