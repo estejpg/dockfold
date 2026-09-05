@@ -21,6 +21,8 @@ Required server variables:
 | `DOCKFOLD_REVIEWER_EMAILS` | Comma-separated verified owner emails; server-side authorization |
 | `ICON_INBOX_STORE_ID` | Private Blob store ID |
 
+Optional Clerk optimisation: in the Clerk dashboard, Sessions → Customize session token, add `{"email": "{{user.primary_email_address}}", "email_verified": "{{user.email_verified}}"}`. `server/auth.ts` then reads the verified email from the signed token and skips the per-request user lookup that the review page otherwise performs once per private icon. Without the claims the lookup still runs, so this can be enabled per instance at any time.
+
 Vercel supplies rotating OIDC Blob credentials. Managed integration keys remain server-side except the explicitly named Clerk publishable key. Never expose all environment variables through Vite. The configured reviewer email matches the verified Vercel owner. Its value is kept in server configuration.
 
 ## Community availability
