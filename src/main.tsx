@@ -12,7 +12,12 @@ import "./styles.css";
 import { Header, Footer } from "./components/common";
 import { Directory, Latest } from "./components/directory";
 import { CollectionDetail } from "./components/collection-detail";
-import { MissingDock, Privacy, SharedDock } from "./components/pages";
+import {
+  MissingDock,
+  PageFallback,
+  Privacy,
+  SharedDock,
+} from "./components/pages";
 import { examples } from "./lib/dock";
 import { CatalogGate } from "./components/catalog-gate";
 import { collectionById } from "./lib/collections";
@@ -39,6 +44,9 @@ function Application() {
   let route = path;
   let page: ReactNode;
   let title = "DockFold — A curated collection of macOS Docks";
+  // Lazy pages render their own heading while loading so a document transition
+  // lands on the right page instead of a placeholder.
+  let fallback: ReactNode = <PageFallback />;
   try {
     // Old fragment links remain readable after the directory gains ordinary page URLs.
     if (hash.startsWith("#/dock/")) {
@@ -50,7 +58,7 @@ function Application() {
       );
       title = "A shared Dock · DockFold";
     } else if (hash.startsWith("#/build/")) {
-      route = "/submit";
+      route = "/create";
       page = (
         <CatalogGate payload={hash.slice(8)}>
           {(dock) => <Composer key={hash} initial={dock} />}
@@ -69,7 +77,9 @@ function Application() {
         </CatalogGate>
       );
       title = "A shared Dock · DockFold";
-    } else if (path === "/submit") {
+    } else if (path === "/create" || path === "/submit") {
+      // /submit remains an alias so existing "Make it yours" links keep working.
+      route = "/create";
       page = (
         <CatalogGate
           payload={hash.startsWith("#dock=") ? hash.slice(6) : undefined}
@@ -87,9 +97,24 @@ function Application() {
     } else if (path === "/review") {
       page = <Review />;
       title = "Review submissions · DockFold";
+      fallback = (
+        <PageFallback
+          className="review-page"
+          heading="Review submissions"
+          copy="A private inbox for requests and icons. You decide what joins the collection."
+        />
+      );
     } else if (path === "/sign-in" || path === "/sign-up") {
-      page = <Authentication signUp={path === "/sign-up"} />;
+      const signUp = path === "/sign-up";
+      page = <Authentication signUp={signUp} />;
       title = "Sign in · DockFold";
+      fallback = (
+        <PageFallback
+          className="auth-page"
+          heading={signUp ? "Join with your email" : "Welcome back"}
+          copy="One account, one vote per app. Your email stays private."
+        />
+      );
     } else if (path === "/latest") {
       page = <Latest />;
       title = "Latest additions · DockFold";
@@ -101,6 +126,13 @@ function Application() {
       route = "/requests";
       page = <Requests />;
       title = "App requests · DockFold";
+      fallback = (
+        <PageFallback
+          className="requests-page"
+          heading="What belongs in the Dock next?"
+          copy="Request an app. Vote for your favorites. Help the collection grow."
+        />
+      );
     } else if (path === "/contribute" || hash === "#/contribute") {
       route = "/contribute";
       page = <Contribute />;
@@ -135,15 +167,10 @@ function Application() {
         Skip to content
       </a>
       <Header route={route} />
-      <Suspense
-        fallback={
-          <main id="main" tabIndex={-1} className="reading-page">
-            <p role="status">Loading…</p>
-          </main>
-        }
-      >
-        {page}
-      </Suspense>
+      {/* Full-width wrapper named for document transitions; see styles.css. */}
+      <div className="page-content">
+        <Suspense fallback={fallback}>{page}</Suspense>
+      </div>
       <Footer />
     </>
   );

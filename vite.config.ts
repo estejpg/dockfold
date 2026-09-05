@@ -10,8 +10,14 @@ export default defineConfig(({ mode }) => ({
       // Keep first paint behind React so document transitions capture the page.
       transformIndexHtml: {
         order: "post",
-        handler: (html) =>
-          html.replace('<script type="module" ', '<script type="module" blocking="render" '),
+        handler: (html) => {
+          const entry = '<script type="module" ';
+          if (!html.includes(entry))
+            throw new Error(
+              "render-ready-entry: Vite's entry script tag changed; update the blocking=render injection.",
+            );
+          return html.replace(entry, `${entry}blocking="render" `);
+        },
       },
     },
   ],

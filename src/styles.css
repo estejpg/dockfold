@@ -271,11 +271,14 @@ main {
 @media (prefers-reduced-motion: no-preference) {
   @view-transition { navigation: auto; }
 
-  main { view-transition-name: page-content; }
+  /* The named element must span the full viewport width. Each page constrains
+     its own <main>, and a snapshot of a narrower or wider box would be scaled
+     into the incoming page's column while it fades. */
+  .page-content { view-transition-name: page-content; }
   .site-header { view-transition-name: site-header; }
 
   /* Also works on first arrival and in browsers without document transitions. */
-  :root:not([data-native-page-transition]):not([data-page-motion="off"]) main {
+  :root:not([data-native-page-transition]) .page-content {
     animation: page-arrive 180ms var(--ease) backwards;
   }
   ::view-transition-group(*) { animation: none; }
@@ -289,11 +292,6 @@ main {
   ::view-transition-new(page-content) {
     animation: page-arrive 180ms var(--ease) both;
   }
-}
-:root[data-page-motion="off"] main,
-:root[data-page-motion="off"]::view-transition-old(*),
-:root[data-page-motion="off"]::view-transition-new(*) {
-  animation: none;
 }
 @media (prefers-reduced-motion: reduce) {
   @view-transition { navigation: none; }
