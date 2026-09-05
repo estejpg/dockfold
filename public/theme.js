@@ -7,5 +7,7 @@
         : matchMedia("(prefers-color-scheme: dark)").matches
           ? "dark"
           : "light";
-  } catch (e) {}
+  } catch {
+    // A blocked preference store should not prevent the page from loading.
+  }
 })();

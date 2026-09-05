@@ -8,6 +8,7 @@ export default ts.config(
   },
   js.configs.recommended,
   ...ts.configs.recommended,
+  { files: ["public/**/*.js"], languageOptions: { globals: globals.browser } },
   {
     files: ["**/*.{ts,tsx}"],
     languageOptions: { globals: { ...globals.browser, ...globals.node } },
