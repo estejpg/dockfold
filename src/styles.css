@@ -12,7 +12,9 @@
   --tint: #f8eef5;
   --danger: #ae2936;
   --max: 1280px;
-  --ease: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --duration-press: 120ms;
+  --duration-state: 150ms;
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
@@ -150,16 +152,22 @@ svg {
   font-size: 12px;
   font-weight: 550;
   transition:
-    transform 120ms var(--ease),
-    background-color 150ms ease;
+    transform var(--duration-press) var(--ease-out),
+    background-color var(--duration-state) ease;
 }
 .button-dark {
   background: var(--ink);
   color: var(--paper);
   border-color: var(--ink);
 }
-.button:active:not(:disabled) {
-  transform: scale(0.98);
+.button:active:not(:disabled):not(:focus-visible),
+.theme-toggle:active:not(:disabled):not(:focus-visible),
+.category-links button:active:not(:disabled):not(:focus-visible),
+.app-choice:active:not(:disabled):not(:focus-visible),
+.order-controls button:active:not(:disabled):not(:focus-visible),
+.icon-remove:active:not(:disabled):not(:focus-visible),
+.vote-link:active:not(:disabled):not(:focus-visible) {
+  transform: scale(0.97);
 }
 .text-button,
 .back-link {
@@ -246,6 +254,9 @@ svg {
   background: none;
   border: 1px solid var(--line);
   border-radius: 50%;
+  transition:
+    transform var(--duration-press) var(--ease-out),
+    background-color var(--duration-state) ease;
 }
 .site-description {
   font-size: 11px;
@@ -258,46 +269,6 @@ main {
   margin: auto;
   padding: 0 24px;
   min-height: calc(100dvh - 230px);
-}
-/* A short fade and 5px settle, inspired by estejpg's route transitions. */
-@keyframes page-arrive {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes page-leave {
-  from { opacity: 1; transform: translateY(0); }
-  to { opacity: 0; transform: translateY(5px); }
-}
-@media (prefers-reduced-motion: no-preference) {
-  @view-transition { navigation: auto; }
-
-  /* The named element must span the full viewport width. Each page constrains
-     its own <main>, and a snapshot of a narrower or wider box would be scaled
-     into the incoming page's column while it fades. */
-  .page-content { view-transition-name: page-content; }
-  .site-header { view-transition-name: site-header; }
-
-  /* Also works on first arrival and in browsers without document transitions. */
-  :root:not([data-native-page-transition]) .page-content {
-    animation: page-arrive 180ms var(--ease) backwards;
-  }
-  ::view-transition-group(*) { animation: none; }
-  ::view-transition-old(root),
-  ::view-transition-new(root),
-  ::view-transition-old(site-header),
-  ::view-transition-new(site-header) { animation: none; }
-  ::view-transition-old(page-content) {
-    animation: page-leave 150ms var(--ease) both;
-  }
-  ::view-transition-new(page-content) {
-    animation: page-arrive 180ms var(--ease) both;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  @view-transition { navigation: none; }
-  ::view-transition-group(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) { animation: none; }
 }
 .directory-intro {
   display: flex;
@@ -360,6 +331,9 @@ main {
   font-size: 11px;
   color: var(--muted);
   text-underline-offset: 5px;
+  transition:
+    color var(--duration-state) ease,
+    transform var(--duration-press) var(--ease-out);
 }
 .category-links button[aria-pressed="true"] {
   color: var(--ink);
@@ -411,7 +385,7 @@ main {
   border-radius: 7px;
   padding: 12px 9px 10px;
   margin: 0 -9px;
-  transition: background-color 150ms ease;
+  transition: background-color var(--duration-state) ease;
 }
 .row-title {
   display: flex;
@@ -426,7 +400,7 @@ main {
 .row-title svg {
   color: var(--faint);
   opacity: 0;
-  transition: opacity 150ms ease;
+  transition: opacity var(--duration-state) ease;
 }
 .directory-row > p {
   font-size: 11px;
@@ -461,7 +435,7 @@ main {
   position: relative;
   flex-shrink: 0;
   transform-origin: bottom center;
-  transition: transform 140ms var(--ease);
+  transition: transform var(--duration-state) var(--ease-out);
 }
 .app-icon {
   object-fit: contain;
@@ -487,7 +461,8 @@ main {
   position: absolute;
   bottom: calc(100% + 9px);
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) scale(0.97);
+  transform-origin: bottom center;
   pointer-events: none;
   opacity: 0;
   z-index: 5;
@@ -499,6 +474,9 @@ main {
   font-size: 10px;
   white-space: nowrap;
   box-shadow: 0 2px 10px #00000008;
+  transition:
+    opacity 125ms var(--ease-out),
+    transform 125ms var(--ease-out);
 }
 .compact-dock .dock-tooltip {
   display: none;
@@ -605,7 +583,7 @@ footer nav {
   padding: 16px 10px;
   border-bottom: 1px solid var(--line);
   border-radius: 6px;
-  transition: background-color 150ms ease;
+  transition: background-color var(--duration-state) ease;
 }
 .latest-copy {
   min-width: 0;
@@ -787,6 +765,7 @@ footer nav {
   text-align: center;
   font-size: 10px;
   line-height: 1.45;
+  transition: transform var(--duration-press) var(--ease-out);
 }
 .choice-icon {
   position: relative;
@@ -798,8 +777,8 @@ footer nav {
   border: 1px solid transparent;
   border-radius: 9px;
   transition:
-    background-color 150ms ease,
-    border-color 150ms ease;
+    background-color var(--duration-state) ease,
+    border-color var(--duration-state) ease;
 }
 .choice-icon .app-icon {
   width: 52px;
@@ -930,6 +909,10 @@ footer nav {
   border-radius: 5px;
   background: none;
   color: var(--muted);
+  transition:
+    color var(--duration-state) ease,
+    background-color var(--duration-state) ease,
+    transform var(--duration-press) var(--ease-out);
 }
 .dock-details {
   padding: 20px;
@@ -1109,8 +1092,8 @@ footer nav {
   background: var(--card);
   color: var(--muted);
   transition:
-    border-color 160ms ease-out,
-    background-color 160ms ease-out;
+    border-color var(--duration-state) var(--ease-out),
+    background-color var(--duration-state) var(--ease-out);
 }
 .icon-upload:focus-within {
   outline: 2px solid var(--accent);
@@ -1157,6 +1140,7 @@ footer nav {
   background: var(--soft);
   margin-left: auto;
   flex-shrink: 0;
+  transition: transform var(--duration-press) var(--ease-out);
 }
 .field-help {
   font-size: 12px;
@@ -1374,6 +1358,11 @@ kbd {
   flex-shrink: 0;
   font-size: 12px;
   font-variant-numeric: tabular-nums;
+  transition:
+    color var(--duration-state) ease,
+    background-color var(--duration-state) ease,
+    border-color var(--duration-state) ease,
+    transform var(--duration-press) var(--ease-out);
 }
 .vote-link strong {
   font-weight: 550;
@@ -1445,6 +1434,7 @@ kbd {
   }
   .dock-app:hover .dock-tooltip {
     opacity: 1;
+    transform: translateX(-50%) scale(1);
   }
 }
 @media (min-width: 1120px) {
@@ -1871,16 +1861,23 @@ kbd {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  html {
     scroll-behavior: auto !important;
-    transition: none !important;
-    animation: none !important;
   }
-  .button:active:not(:disabled),
+  .button:active:not(:disabled):not(:focus-visible),
+  .theme-toggle:active:not(:disabled):not(:focus-visible),
+  .category-links button:active:not(:disabled):not(:focus-visible),
+  .app-choice:active:not(:disabled):not(:focus-visible),
+  .order-controls button:active:not(:disabled):not(:focus-visible),
+  .icon-remove:active:not(:disabled):not(:focus-visible),
+  .vote-link:active:not(:disabled):not(:focus-visible),
   .dock-app:hover {
     transform: none;
+  }
+  .dock-tooltip,
+  .dock-app:hover .dock-tooltip {
+    transform: translateX(-50%);
+    transition-property: opacity;
   }
 }
 @media (prefers-contrast: more) {
