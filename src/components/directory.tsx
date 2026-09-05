@@ -46,7 +46,7 @@ export function Directory() {
             yours.
           </p>
         </div>
-        <a className="button button-dark" href="/submit">
+        <a className="button button-dark" href="/create">
           Create your Dock <ArrowUpRight size={14} />
         </a>
       </section>
@@ -131,7 +131,7 @@ export function Directory() {
             points. Your workflow is the interesting part.
           </p>
         </div>
-        <a className="text-button" href="/submit">
+        <a className="text-button" href="/create">
           Suggest a Dock <ArrowRight size={15} />
         </a>
       </section>

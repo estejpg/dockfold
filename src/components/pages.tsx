@@ -142,6 +142,55 @@ export function Privacy() {
     </main>
   );
 }
+export function CommunityUnavailable() {
+  return (
+    <main id="main" tabIndex={-1} className="reading-page">
+      <h1>Requests and contributions are coming soon.</h1>
+      <p>
+        DockFold is preparing its app request board, email voting and icon
+        review. Until then, browse the curated Docks or create and share your
+        own.
+      </p>
+      <div className="share-actions">
+        <a className="button button-dark" href="/">
+          Explore Docks
+        </a>
+        <a className="button" href="/create">
+          Create your Dock
+        </a>
+      </div>
+    </main>
+  );
+}
+export function PageFallback({
+  className = "reading-page",
+  heading,
+  copy,
+}: {
+  className?: string;
+  heading?: string;
+  copy?: string;
+}) {
+  // The sign-in page lays out its heading as direct flex children.
+  const intro = heading ? (
+    <>
+      <h1>{heading}</h1>
+      {copy ? <p>{copy}</p> : null}
+    </>
+  ) : null;
+  return (
+    <main id="main" tabIndex={-1} className={className}>
+      {className === "auth-page" ? (
+        intro
+      ) : intro ? (
+        <section className="page-intro">{intro}</section>
+      ) : null}
+      <p role="status" className="loading-state">
+        Loading…
+      </p>
+    </main>
+  );
+}
 export function MissingDock() {
   return (
     <main id="main" tabIndex={-1} className="reading-page">

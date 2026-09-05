@@ -4,7 +4,7 @@ A compact directory of macOS Docks. Browse 18 curated starting points, or create
 
 [Open DockFold](https://dockfold.vercel.app) · [App requests](https://dockfold.vercel.app/requests) · [Contribute an icon](https://dockfold.vercel.app/contribute)
 
-This branch replaces GitHub Issues and reactions with on-site requests, email voting, and a private review area. It is prepared for preview and development; see [production activation](docs/deployment.md) before merging.
+On-site requests, email voting, icon contributions and the private review area replace GitHub Issues and reactions. These community pages appear only in environments whose build had the database and Clerk configured; elsewhere the header, footer and their URLs show a single "coming soon" notice while browsing, creating and sharing Docks keep working. See [production activation](docs/deployment.md).
 
 ## What visitors can do
 
@@ -32,7 +32,7 @@ npm ci
 npm run dev
 ```
 
-This previews the frontend. For real local community features, pull the **development** environment from the linked Vercel project into ignored `.env.local`, then:
+This previews the frontend with community pages hidden. For real local community features, pull the **development** environment from the linked Vercel project into ignored `.env.local` (the build reads `DATABASE_URL` and `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` from it to enable them), then:
 
 ```sh
 npm run db:migrate
@@ -53,7 +53,8 @@ See [deployment and verification](docs/deployment.md), [owner review](docs/maint
 ## Repository map
 
 - `src/components/directory.tsx`, `collection-detail.tsx`, `src/lib/collections.ts`: Home, Latest and curated Docks.
-- `src/components/composer.tsx`, `src/lib/dock.ts`: builder, browser draft and bounded version-2 share links.
+- `src/components/composer.tsx`, `src/lib/dock.ts`: builder at `/create` (`/submit` remains an alias), browser draft and bounded version-2 share links.
+- `src/lib/availability.ts`, `vite.config.ts`: build-time flag that hides community pages where the service is not configured.
 - `src/lib/catalog.json`, `legacy-catalog.json`: bundled apps and compatibility IDs.
 - `src/lib/live-catalog.ts`, `src/components/catalog-gate.tsx`: validated community catalog and draft/link recovery.
 - `src/components/requests.tsx`, `auth.tsx`, `review.tsx`: requests, email access, voting and owner review.

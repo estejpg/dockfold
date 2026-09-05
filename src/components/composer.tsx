@@ -24,6 +24,7 @@ import {
   loadCatalog,
   subscribeCatalog,
 } from "../lib/live-catalog";
+import { communityEnabled } from "../lib/availability";
 export function Composer({ initial }: { initial?: Dock }) {
   const catalogState = useSyncExternalStore(subscribeCatalog, catalogSnapshot);
   const filters = ["All apps", ...new Set(catalog.map((app) => app.category))];
@@ -176,10 +177,17 @@ export function Composer({ initial }: { initial?: Dock }) {
             </div>
           ) : null}
           <p className="catalog-foot">
-            Missing an app?{" "}
-            <a href="/requests">
-              Request it or vote for what comes next. <ArrowUpRight size={16} />
-            </a>
+            {communityEnabled ? (
+              <>
+                Missing an app?{" "}
+                <a href="/requests">
+                  Request it or vote for what comes next.{" "}
+                  <ArrowUpRight size={16} />
+                </a>
+              </>
+            ) : (
+              "Missing an app? App requests are coming soon."
+            )}
           </p>
         </section>
         <section className="dock-panel" aria-labelledby="dock-title">

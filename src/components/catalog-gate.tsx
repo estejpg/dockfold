@@ -3,8 +3,10 @@ import { byId, decodeDock, readDraft, type Dock } from "../lib/dock";
 import {
   catalogSnapshot,
   loadCatalog,
+  settleCatalog,
   subscribeCatalog,
 } from "../lib/live-catalog";
+import { communityEnabled } from "../lib/availability";
 import { MissingDock } from "./pages";
 export function CatalogGate({
   payload,
@@ -17,7 +19,8 @@ export function CatalogGate({
 }) {
   const state = useSyncExternalStore(subscribeCatalog, catalogSnapshot);
   useEffect(() => {
-    void loadCatalog();
+    if (communityEnabled) void loadCatalog();
+    else settleCatalog();
   }, []);
   try {
     const dock =

@@ -46,6 +46,11 @@ export function parseCatalog(value: unknown): CatalogApp[] {
     return { id, name, category, icon, active };
   });
 }
+// Used when the community service is not configured for this deployment: the
+// bundled catalog is complete, so gates and pickers can proceed without a request.
+export function settleCatalog() {
+  if (state.status === "idle") update("ready");
+}
 export async function loadCatalog(force = false) {
   if (state.status === "loading" || (!force && state.status === "ready"))
     return;

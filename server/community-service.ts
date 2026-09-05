@@ -82,6 +82,19 @@ export async function addRequest(value: Record<string, unknown>) {
   const fields = requestFields(value);
   return getDatabase().transaction(async (tx) => {
     const row = await findRequest(tx, fields);
+    // A repeat request keeps the new requester's private notes for review instead
+    // of dropping them; the column stays within its 1000-character check.
+    if (
+      fields.notes &&
+      row.notes !== fields.notes &&
+      ["pending", "open"].includes(row.status)
+    )
+      await tx
+        .update(requests)
+        .set({
+          notes: sql`left(case when ${requests.notes} = '' then ${fields.notes} else ${requests.notes} || ${"\n\n"} || ${fields.notes} end, 1000)`,
+        })
+        .where(eq(requests.id, row.id));
     // Pending and declined submissions remain private, including their identifiers.
     return {
       received: true,
@@ -403,7 +416,15 @@ export async function publishIcon(
 ) {
   if (!APP_CATEGORIES.some((value) => value === category))
     throw new HttpError("Choose an app category.");
-  const [candidate] = await getDatabase()
+  const db = getDatabase();
+  // Reject stale reviews before the optimized image is generated and stored;
+  // the locked check inside the transaction below remains authoritative.
+  const [current] = await db
+    .select()
+    .from(requests)
+    .where(eq(requests.id, id));
+  checkRevision(current, revision);
+  const [candidate] = await db
     .select()
     .from(icons)
     .where(and(eq(icons.id, iconId), eq(icons.requestId, id)));
