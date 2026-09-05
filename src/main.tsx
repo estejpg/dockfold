@@ -47,7 +47,6 @@ const Authentication = lazy(() =>
 // instead of loading forms and boards that can only fail.
 const communityRoutes = new Set([
   "/requests",
-  "/contribute",
   "/review",
   "/sign-in",
   "/sign-up",
