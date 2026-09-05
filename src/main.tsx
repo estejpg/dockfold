@@ -182,11 +182,11 @@ function Application() {
         Skip to content
       </a>
       <Header route={route} />
-      {/* Full-width wrapper named for document transitions; see styles.css. */}
-      <div className="page-content">
+      {/* Full-width route shell keeps document-transition snapshots unscaled. */}
+      <div className="route-shell">
         <Suspense fallback={fallback}>{page}</Suspense>
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 }
