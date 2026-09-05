@@ -139,5 +139,5 @@ export function shareURL(dock: Dock, origin: string = location.origin) {
   return `${origin}/dock#dock=${encodeDock(dock)}`;
 }
 export function customizeURL(dock: Dock) {
-  return `/submit#dock=${encodeDock(dock)}`;
+  return `/create#dock=${encodeDock(dock)}`;
 }

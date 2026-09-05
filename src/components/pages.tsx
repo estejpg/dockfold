@@ -142,6 +142,35 @@ export function Privacy() {
     </main>
   );
 }
+export function PageFallback({
+  className = "reading-page",
+  heading,
+  copy,
+}: {
+  className?: string;
+  heading?: string;
+  copy?: string;
+}) {
+  // The sign-in page lays out its heading as direct flex children.
+  const intro = heading ? (
+    <>
+      <h1>{heading}</h1>
+      {copy ? <p>{copy}</p> : null}
+    </>
+  ) : null;
+  return (
+    <main id="main" tabIndex={-1} className={className}>
+      {className === "auth-page" ? (
+        intro
+      ) : intro ? (
+        <section className="page-intro">{intro}</section>
+      ) : null}
+      <p role="status" className="loading-state">
+        Loading…
+      </p>
+    </main>
+  );
+}
 export function MissingDock() {
   return (
     <main id="main" tabIndex={-1} className="reading-page">

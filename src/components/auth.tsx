@@ -10,7 +10,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         <h1>Sign-in is temporarily unavailable.</h1>
         <p>
           Please try again later. You can still{" "}
-          <a href="/submit">create and share a Dock</a>.
+          <a href="/create">create and share a Dock</a>.
         </p>
       </main>
     );
