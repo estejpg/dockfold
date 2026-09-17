@@ -1,6 +1,6 @@
 # DockFold restart plan
 
-DockFold should be a small public gallery of macOS Docks: visitors browse lots of setups, and later someone can pay to promote a Dock or an app. This document is the plan for that restart. It does not change the running site yet.
+DockFold should be a small public gallery of macOS Docks: visitors browse lots of setups, and later someone can pay to promote a Dock or an app. Phase 1 of that restart is implemented in this branch: Clerk/Neon/community routes are gone, Submit is a Dock suggestion form, and Home is seeded well past the original 18 Docks.
 
 ## What went wrong
 
@@ -153,10 +153,10 @@ Do not rebuild the review dashboard, icon inbox, or email voting to support ads.
 Do these as separate, reviewable steps. Stop after Phase 1 until Home feels busy.
 
 1. Write this plan (this document).
-2. Remove visitor-facing Clerk/Neon/community routes and restore a static Vite site. Keep the icon catalog and directory UI.
-3. Point **Submit** at a Dock suggestion form. Keep `/create` as an optional builder.
-4. Seed the gallery to 50–80 Docks and make Latest show real addition dates.
-5. Add the email inbox for suggestions.
+2. Remove visitor-facing Clerk/Neon/community routes and restore a static Vite site. Keep the icon catalog and directory UI. **Done in this branch.**
+3. Point **Submit** at a Dock suggestion form. Keep `/create` as an optional builder. **Done in this branch.**
+4. Seed the gallery to 50–80 Docks and make Latest show real addition dates. **Done in this branch (~81 Docks).**
+5. Add the email inbox for suggestions. **The form posts to `/api/suggest`.** Set `SUGGESTION_INBOX` and optional Resend keys to email; otherwise visitors get mailto or copyable text.
 6. Only then: featured slots and Stripe.
 
 Step 2 is a deletion and a routing cleanup, not a rewrite. Production already runs without community env vars; the restart makes that the only mode.

@@ -1020,6 +1020,119 @@ footer nav {
   max-width: 496px;
   padding-bottom: 32px;
 }
+.suggest-page {
+  max-width: 496px;
+  padding-bottom: 40px;
+}
+.suggest-intro,
+.suggest-success {
+  margin: 5px 0 28px;
+}
+.suggest-intro h1,
+.suggest-success h1 {
+  font-size: 20px;
+  letter-spacing: -0.025em;
+}
+.suggest-intro p,
+.suggest-success p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+.suggest-success .button {
+  margin-top: 20px;
+}
+.suggest-form {
+  display: grid;
+  gap: 22px;
+}
+.suggest-field {
+  display: grid;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.suggest-field .optional-label {
+  font-weight: 400;
+  color: var(--faint);
+}
+.suggest-field > input,
+.suggest-field > select,
+.suggest-field > textarea {
+  width: 100%;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  min-height: 42px;
+  padding: 10px 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--ink);
+  background: var(--card);
+}
+.suggest-field > textarea {
+  resize: vertical;
+  min-height: 96px;
+}
+.suggest-apps {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+.suggest-apps legend {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  padding: 0;
+}
+.suggest-apps .dock-preview {
+  margin: 12px 0;
+}
+.suggest-apps .search-control {
+  width: 100%;
+  margin: 16px 0 12px;
+}
+.suggest-app-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  gap: 8px;
+  max-height: 320px;
+  overflow: auto;
+  padding: 4px 2px 8px;
+}
+.suggest-app-grid .app-choice {
+  min-height: 0;
+  padding: 8px 4px;
+}
+.suggest-app-grid .app-choice > span:last-child {
+  font-size: 10px;
+}
+.suggest-fallback {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.suggest-fallback h2 {
+  font-size: 14px;
+}
+.suggest-fallback p {
+  margin: 8px 0 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.suggest-fallback textarea {
+  width: 100%;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 12px;
+  line-height: 1.5;
+  resize: vertical;
+  background: var(--soft);
+}
 .contribute-intro {
   margin: 5px 0 28px;
 }

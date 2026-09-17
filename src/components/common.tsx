@@ -1,11 +1,6 @@
 import { Moon, Sun } from "lucide-react";
 import { useSyncExternalStore } from "react";
 import { byId, type App } from "../lib/dock";
-import { communityEnabled } from "../lib/availability";
-const subscribeTheme = (cb: () => void) => {
-  window.addEventListener("dockfold-theme", cb);
-  return () => window.removeEventListener("dockfold-theme", cb);
-};
 export function AppIcon({ app, size = 54 }: { app: App; size?: number }) {
   return (
     <img
@@ -79,7 +74,7 @@ export function Header({ route }: { route: string }) {
           {[
             ["/", "Home"],
             ["/latest", "Latest"],
-            ["/contribute", "Submit"],
+            ["/submit", "Submit"],
           ].map(([href, label]) => (
             <a
               key={href}
@@ -100,11 +95,15 @@ export function Header({ route }: { route: string }) {
         </button>
       </div>
       <p className="site-description">
-        Curated macOS Docks for work, ideas, and everything in between.
+        macOS Docks for work, ideas, and everything in between.
       </p>
     </header>
   );
 }
+const subscribeTheme = (cb: () => void) => {
+  window.addEventListener("dockfold-theme", cb);
+  return () => window.removeEventListener("dockfold-theme", cb);
+};
 export function Footer() {
   return (
     <footer>
@@ -113,7 +112,7 @@ export function Footer() {
           DockFold
         </a>
         <p>
-          A small directory of considered Docks.
+          A directory of considered Docks.
           <br />
           Made by <a href="https://www.estejpg.com/">estejpg</a>.
         </p>
@@ -121,13 +120,8 @@ export function Footer() {
       <nav aria-label="Footer navigation">
         <a href="/">Home</a>
         <a href="/latest">Latest</a>
+        <a href="/submit">Submit</a>
         <a href="/create">Create your Dock</a>
-        {communityEnabled ? (
-          <>
-            <a href="/requests">App requests</a>
-            <a href="/contribute">Contribute an icon</a>
-          </>
-        ) : null}
         <a href="/privacy">Privacy</a>
         <a href="https://github.com/estejpg/dockfold">Source</a>
       </nav>

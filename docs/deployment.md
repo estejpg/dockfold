@@ -1,89 +1,41 @@
 # Deployment and operations
 
-## Provisioned preview and development services
+Vercel project `dockfold`, team `estejpgs-projects`. Node 24 builds `npm run build`; static output is `dist`. One Node function lives at `api/suggest.ts`.
 
-Vercel project `dockfold`, team `estejpgs-projects`. Node 24 builds `npm run build`; static output is `dist`. Three Node functions live in `api/`.
+Public Docks are committed in `src/lib/collections.ts`. Adding a Dock is a code change and a deploy. Production browsing does not need environment variables.
 
-- **Neon Free:** resource `dockfold-community`, `store_DqXXz1jpSmCuVhuO`, connected to preview/development only. Neon Auth is disabled because Clerk provides authentication.
-- **Clerk Hobby:** resource `dockfold-community`, `ir_uhX4NQbXDErMisRp`, connected to preview/development only. Email code sign-up/sign-in and verification are enabled; passwords are not required; social login is disabled. Bot protection remains enabled.
-- **Private Blob:** `dockfold-icons`, `store_b6vTim2xA3883Lbw`, connected to all environments. Preview paths are separate from production paths.
+## Optional suggestion inbox
 
-Clerk development dashboard: https://dashboard.clerk.com/apps/app_3ItNY0dgLSLUfh4Nn6tHYJLQZTm/instances/ins_3ItNY4TmV9E8vUT2K23DwmACy3u
-
-Required server variables:
+Set these only if you want Submit to email you instead of returning a mailto/copy fallback:
 
 | Name | Purpose |
 |---|---|
-| `DATABASE_URL` | Pooled Postgres runtime connection |
-| `DATABASE_URL_UNPOOLED` | Direct connection for versioned migrations |
-| `CLERK_SECRET_KEY` | Server session/user verification |
-| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | Public Clerk application identifier; the only key mapped into Vite |
-| `DOCKFOLD_REVIEWER_EMAILS` | Comma-separated verified owner emails; server-side authorization |
-| `ICON_INBOX_STORE_ID` | Private Blob store ID |
+| `SUGGESTION_INBOX` | Address that receives Dock suggestions |
+| `RESEND_API_KEY` | Optional. When set with `RESEND_FROM`, the function emails the inbox |
+| `RESEND_FROM` | Verified Resend from-address |
 
-Optional Clerk optimisation: in the Clerk dashboard, Sessions → Customize session token, add `{"email": "{{user.primary_email_address}}", "email_verified": "{{user.email_verified}}"}`. `server/auth.ts` then reads the verified email from the signed token and skips the per-request user lookup that the review page otherwise performs once per private icon. Without the claims the lookup still runs, so this can be enabled per instance at any time.
+Without Resend, a configured inbox still produces a `mailto:` link for the visitor. Without an inbox, the visitor can copy the validated suggestion text. Never put the inbox address in client code except as that mailto response.
 
-Vercel supplies rotating OIDC Blob credentials. Managed integration keys remain server-side except the explicitly named Clerk publishable key. Never expose all environment variables through Vite. The configured reviewer email matches the verified Vercel owner. Its value is kept in server configuration.
-
-## Community availability
-
-`vite.config.ts` decides at build time whether community actions are available. Submit always remains beside Home and Latest, and `/contribute` always renders the icon form to preserve the public layout; when the service is unavailable, the form is disabled and explains why. When both `DATABASE_URL` and `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` are present for the environment being built, the form activates, the footer links to requests and contributions, and `/requests`, `/review` and `/sign-in` render normally. When either is missing, those service-dependent URLs show one "coming soon" page, the builder does not call the catalog endpoint, and the three API functions keep answering 503 for anything that reaches them. Values never reach the client; only the boolean and the publishable key do.
-
-Production on `main` is currently built without these variables, so it shows the curated directory and builder only. Adding the variables requires a redeploy to take effect.
-
-## Before production activation
-
-Production is deployed from `main`. Requests, voting and review stay hidden there until the steps below are complete; the public contribution form remains visible but disabled. Do not add production database or Clerk variables before they are.
-
-Clerk production instances require a custom domain for the Frontend API (`clerk.<your-domain>`); a `*.vercel.app` hostname cannot carry the needed CNAME. Either attach a custom domain to the project before activation, or deliberately accept running the development instance in production with its user limits and development-mode behaviour, and record that decision here.
-
-1. Configure the intended production Clerk domain/instance and production keys, with the same email-only settings and bot protection. Development test keys are not production authentication.
-2. Connect an isolated production Neon database/branch and run the committed migrations against its direct URL. Preview/development data must not become production requests or voters.
-3. Set production `DOCKFOLD_REVIEWER_EMAILS`. Never include a QA/test account.
-4. Update the exact Clerk Frontend API hostname in `vercel.json`'s CSP. Keep Clerk's documented bot-protection hosts. For a custom app domain, ensure it is in `server/http.ts`'s exact origin list (normally supplied by Vercel deployment variables).
-5. Verify the owner sign-in, anonymous request/upload, private-image denial, public votes and full approve/publish/share flow in the intended environment.
-6. Inspect the existing inbox and public GitHub requests again at cutover. At initial migration inspection both were empty. New uploads can arrive while the old production site is live; import them before switching. Do not fabricate email-account votes from GitHub reactions.
-7. After review and authorization, merge/deploy. Keep the previous deployment available for rollback. The migration is additive; rollback does not require deleting data.
-
-The current Clerk CSP hostname is explicitly the development instance `civil-calf-9983.clerk.accounts.dev`. Its use here is intentional for the preview. Production activation is a separate configuration step.
-
-## Database migrations and local running
+Local:
 
 ```sh
-npx vercel env pull .env.local --environment development
+cp .env.example .env.local
 npm ci
-npm run db:migrate
-npm run dev:full
+npm run dev
 ```
 
-Open `http://127.0.0.1:3105`, stop with Control-C. This uses real preview/development services. `.env.local` is ignored. `npm run dev` serves only the frontend.
+Open `http://127.0.0.1:5173`. Vite serves `/api/suggest` during `npm run dev`.
 
-Change `server/schema.ts`, generate a reviewed migration with `npm run db:generate`, then apply it to the intended isolated environment with `npm run db:migrate`. The migrator uses `DATABASE_URL_UNPOOLED`, verifies TLS, and records applied migrations in Drizzle's history. Do not run schema changes in request handlers or in every build.
+## Abuse controls
 
-The runtime uses a bounded three-connection pool with connection/statement deadlines. Vercel's pool lifecycle helper releases idle connections during suspension. Votes have a composite database primary key `(request_id, user_id)`. Review operations lock rows and check revisions; merge locks use a consistent order.
+- JSON bodies are capped at 8 KB.
+- Fields are length-limited; app IDs must exist in the bundled catalog.
+- Writes require a matching Origin from DockFold.
+- The server does not fetch submitted websites or render submitted HTML.
+- A honeypot field rejects obvious bots.
 
-## Abuse controls and privacy boundaries
-
-- Existing Vercel firewall **Limit icon uploads** remains enabled: POST `/api/icon-submissions`, 10 requests per IP/600 seconds.
-- Shared database limits allow 20 anonymous form submissions per address/hour and 120 vote changes per account/hour. Only keyed address digests are retained; expired counters are pruned as submissions arrive. Vercel's forwarding headers provide the production client address.
-- Anonymous JSON bodies are capped at 8 KB. Uploads are capped at 2 MB plus bounded multipart overhead, with actual PNG decoding and pixel limits. No submitted website is fetched by the server.
-- Review reads/writes and original-image reads verify the session, verified primary email and reviewer allowlist. Public APIs omit notes, account identifiers, original files and storage paths.
-- Browser drafts and version-2 share fragments remain bounded to 40 apps and 4,096 encoded characters. The public catalog accepts at most 5,000 validated stable entries. Unavailable dynamic entries cause a retryable page without overwriting the draft.
-- Published icons can be cached publicly; original-image responses and authenticated JSON use `no-store`. Retiring an app only hides it from the picker so old links still work.
+A Vercel firewall rate limit on POST `/api/suggest` is worth adding once the form is public.
 
 ## Launch verification
 
-Run `npm test`, `npm run lint`, `npm run build` and `npm audit`. Check desktop/mobile and both themes, keyboard focus, error recovery and reduced motion.
-
-Against real preview services:
-
-1. Submit an app without signing in. Verify it stays off the public leaderboard until approved.
-2. Sign in with email as owner. Review its website and private notes; approve for votes.
-3. Sign in as a voter in two independent browser sessions. Vote concurrently; verify one saved vote. Remove it and verify both sessions agree after refresh.
-4. Check signed-out and ordinary signed-in users cannot read the review queue/original icons or perform moderation. Reject tampered tokens and mismatched origins.
-5. Upload the provided PNG through the form. Verify the same receipt on retry, private storage, owner preview, and successful publication into the picker.
-6. Create/share a Dock containing the new app in a fresh browser. Hide the app from the picker and verify the old share still opens.
-7. Exercise duplicate merge, stale review rejection, failed writes, catalog outage/retry, and the bundled/legacy Dock links.
-8. Remove only the temporary QA submissions/files/votes and development test accounts. Leave the PR open.
-
-Clerk test addresses with `+clerk_test` use the reserved email verification code without sending real email. Browser automation can use Clerk's documented testing tokens in development; never disable production bot protection for tests.
+Run `npm test`, `npm run lint` and `npm run build`. Check Home, Latest, a Dock page, Submit, Create, and an old share link at desktop and mobile widths, both themes.
