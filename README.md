@@ -2,6 +2,8 @@
 
 A compact directory of macOS Docks. Browse 18 curated starting points, or create and share a Dock from 141 bundled app icons and reviewed community additions.
 
+A simpler restart — browse many submitted Docks first, add paid promotions later — is planned in [docs/restart-plan.md](docs/restart-plan.md). The stack below describes the site as it runs today.
+
 [Open DockFold](https://dockfold.vercel.app) · [App requests](https://dockfold.vercel.app/requests) · [Contribute an icon](https://dockfold.vercel.app/contribute)
 
 On-site requests, email voting, icon contributions and the private review area replace GitHub Issues and reactions. These workflows activate only in environments whose build had the database and Clerk configured. The Submit navigation and contribution form remain visible for layout parity; without the service, the form is disabled with an availability notice while other community URLs show one "coming soon" page. Browsing, creating and sharing Docks keep working. See [production activation](docs/deployment.md).

@@ -1,5 +1,7 @@
 # DockFold
 
+A proposed restart (browse Docks first, paid promotions later) is in `docs/restart-plan.md`. Until that work lands, the rules below describe the current site.
+
 React/Vite on Vercel, Clerk email authentication, Neon Postgres/Drizzle, and private Vercel Blob icons.
 
 - Preserve stable bundled, legacy and published catalog IDs. Retire apps from the picker without breaking shared Docks.
