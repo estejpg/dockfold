@@ -27,8 +27,14 @@ export function origins() {
   ];
 }
 export function validateOrigin(request: Request) {
-  if (!origins().includes(request.headers.get("origin") || ""))
-    throw new HttpError("Please submit from DockFold.", 403);
+  const origin = request.headers.get("origin") || "";
+  if (origins().includes(origin)) return;
+  if (
+    (!process.env.VERCEL || process.env.VERCEL_ENV === "development") &&
+    /^http:\/\/(localhost|127\.0\.0\.1):\d+$/.test(origin)
+  )
+    return;
+  throw new HttpError("Please submit from DockFold.", 403);
 }
 export async function jsonBody(request: Request) {
   if (!request.headers.get("content-type")?.startsWith("application/json"))

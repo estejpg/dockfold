@@ -94,6 +94,17 @@ test("suggest endpoint validates origin and returns copyable text without an inb
   const body = await ok.json();
   assert.equal(body.delivered, "copy");
   assert.match(body.text, /Quiet morning/);
+  const otherPort = await handler(
+    new Request("http://127.0.0.1/api/suggest", {
+      method: "POST",
+      headers: {
+        origin: "http://127.0.0.1:5174",
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(valid),
+    }),
+  );
+  assert.equal(otherPort.status, 200);
   } finally {
     if (previous === undefined) delete process.env.SUGGESTION_INBOX;
     else process.env.SUGGESTION_INBOX = previous;
