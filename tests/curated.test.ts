@@ -40,6 +40,25 @@ test("every curated Dock uses supplied icons and can round-trip through sharing"
   for (const group of groups)
     assert.ok(collections.some((item) => item.group === group.id));
 });
+test("Finder is rare and always leftmost when present", () => {
+  const withFinder = collections.filter((item) => item.apps.includes("finder"));
+  assert.ok(withFinder.length > 0);
+  assert.ok(withFinder.length < collections.length / 4);
+  for (const item of withFinder) {
+    assert.equal(item.apps[0], "finder", item.id);
+    assert.equal(
+      item.apps.filter((id) => id === "finder").length,
+      1,
+      item.id,
+    );
+  }
+  assert.ok(
+    collections.some(
+      (item) =>
+        item.id === "research-trail" && !item.apps.includes("finder"),
+    ),
+  );
+});
 test("directory search includes app names and latest does not mutate curated ordering", () => {
   const before = collections.map((item) => item.id);
   assert.ok(
