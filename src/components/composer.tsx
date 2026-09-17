@@ -7,7 +7,7 @@ import {
   Search,
   Trash2,
 } from "lucide-react";
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   byId,
   catalog,
@@ -19,18 +19,16 @@ import {
   type Dock,
 } from "../lib/dock";
 import { AppIcon, DockStrip } from "./common";
-import {
-  catalogSnapshot,
-  loadCatalog,
-  subscribeCatalog,
-} from "../lib/live-catalog";
-import { communityEnabled } from "../lib/availability";
+function knownDock(dock: Dock): Dock {
+  return { ...dock, a: dock.a.filter((id) => byId.has(id)) };
+}
 export function Composer({ initial }: { initial?: Dock }) {
-  const catalogState = useSyncExternalStore(subscribeCatalog, catalogSnapshot);
   const filters = ["All apps", ...new Set(catalog.map((app) => app.category))];
   const [previousDraft] = useState(() => (initial ? readDraft() : null));
   const [canUndo, setCanUndo] = useState(Boolean(initial));
-  const [dock, setDock] = useState<Dock>(() => initial ?? readDraft());
+  const [dock, setDock] = useState<Dock>(() =>
+    knownDock(initial ?? readDraft()),
+  );
   const [query, setQuery] = useState(""),
     [filter, setFilter] = useState("All apps");
   const [saved, setSaved] = useState(true),
@@ -91,7 +89,7 @@ export function Composer({ initial }: { initial?: Dock }) {
             type="button"
             className="text-button"
             onClick={() => {
-              change(previousDraft);
+              change(knownDock(previousDraft));
               setCanUndo(false);
             }}
           >
@@ -105,17 +103,6 @@ export function Composer({ initial }: { initial?: Dock }) {
             <h2 id="catalog-title">Choose your apps</h2>
             <span>{catalog.length} apps available</span>
           </div>
-          {catalogState.status === "error" ? (
-            <p className="fine-print">
-              Showing bundled apps. Recent additions couldn’t load.{" "}
-              <button
-                className="text-button"
-                onClick={() => void loadCatalog(true)}
-              >
-                Retry
-              </button>
-            </p>
-          ) : null}
           <label className="search-control">
             <Search size={18} />
             <span className="sr-only">Search apps</span>
@@ -177,17 +164,10 @@ export function Composer({ initial }: { initial?: Dock }) {
             </div>
           ) : null}
           <p className="catalog-foot">
-            {communityEnabled ? (
-              <>
-                Missing an app?{" "}
-                <a href="/requests">
-                  Request it or vote for what comes next.{" "}
-                  <ArrowUpRight size={16} />
-                </a>
-              </>
-            ) : (
-              "Missing an app? App requests are coming soon."
-            )}
+            Missing an app?{" "}
+            <a href="/submit">
+              Mention it when you suggest a Dock. <ArrowUpRight size={16} />
+            </a>
           </p>
         </section>
         <section className="dock-panel" aria-labelledby="dock-title">

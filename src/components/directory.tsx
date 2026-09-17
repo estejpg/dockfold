@@ -42,12 +42,12 @@ export function Directory() {
         <div>
           <h1>A Dock for the way you work.</h1>
           <p>
-            A curated collection of macOS Docks. Find a starting point, make it
-            yours.
+            Browse macOS Docks other people have put together. Find a starting
+            point, or submit yours.
           </p>
         </div>
-        <a className="button button-dark" href="/create">
-          Create your Dock <ArrowUpRight size={14} />
+        <a className="button button-dark" href="/submit">
+          Submit a Dock <ArrowUpRight size={14} />
         </a>
       </section>
       <section className="directory-controls" aria-label="Find a Dock">
@@ -76,10 +76,7 @@ export function Directory() {
               onClick={() => setGroup(item.id)}
               aria-pressed={group === item.id}
             >
-              {item.name
-                .replace(" Docks", "")
-                .replace("For the design desk", "Design")
-                .replace("Read, write & research", "Research")}
+              {item.shortName}
             </button>
           ))}
         </div>
@@ -125,13 +122,13 @@ export function Directory() {
       ) : null}
       <section className="directory-bottom">
         <div>
-          <h2>A small collection, made to grow.</h2>
+          <h2>A growing collection of Docks.</h2>
           <p>
-            {catalog.length} app icons. {collections.length} curated starting
-            points. Your workflow is the interesting part.
+            {catalog.length} app icons. {collections.length} setups. Suggest
+            yours — every submission gets a look.
           </p>
         </div>
-        <a className="text-button" href="/create">
+        <a className="text-button" href="/submit">
           Suggest a Dock <ArrowRight size={15} />
         </a>
       </section>

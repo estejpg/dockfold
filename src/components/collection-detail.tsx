@@ -32,7 +32,8 @@ export function CollectionDetail({ item }: { item: Collection }) {
           <h2>A place to start</h2>
           <p>{item.rationale}</p>
           <p className="fine-print">
-            Curated by DockFold · Added{" "}
+            {item.credit ? `${item.credit} · ` : "Curated by DockFold · "}
+            Added{" "}
             <time dateTime={item.addedOn}>{formatDate(item.addedOn)}</time>
           </p>
           <div className="share-actions">

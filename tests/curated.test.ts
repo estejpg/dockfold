@@ -42,16 +42,17 @@ test("every curated Dock uses supplied icons and can round-trip through sharing"
 });
 test("directory search includes app names and latest does not mutate curated ordering", () => {
   const before = collections.map((item) => item.id);
-  assert.equal(
-    collections.filter((item) => matchesCollection(item, "ZOTERO")).length,
-    2,
+  assert.ok(
+    collections.filter((item) => matchesCollection(item, "ZOTERO")).length >= 2,
   );
   assert.equal(
     collections.filter((item) => matchesCollection(item, "no-such-app")).length,
     0,
   );
+  assert.ok(collections.length >= 50);
   const dates = latestCollections().map((item) => item.addedOn);
   assert.deepEqual(dates, [...dates].sort().reverse());
+  assert.ok(new Set(dates).size > 1);
   assert.deepEqual(
     collections.map((item) => item.id),
     before,

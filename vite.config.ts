@@ -1,22 +1,61 @@
-import { defineConfig, loadEnv } from "vite";
+import { Readable } from "node:stream";
+import type { IncomingMessage, ServerResponse } from "node:http";
+import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
-export default defineConfig(({ mode }) => {
-  // Server values are read only to derive build flags; none are exposed to the
-  // client except the explicitly named Clerk publishable key.
-  const env = { ...loadEnv(mode, process.cwd(), ""), ...process.env };
-  const clerkKey = env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || "";
-  // Community pages need the database and Clerk. An environment without both
-  // (for example production before activation) hides them instead of shipping
-  // forms and boards that can only fail.
-  const communityEnabled = Boolean(clerkKey && env.DATABASE_URL);
+
+type SuggestModule = {
+  default: { fetch: (request: Request) => Promise<Response> };
+};
+
+async function proxySuggest(
+  req: IncomingMessage,
+  res: ServerResponse,
+  load: () => Promise<SuggestModule>,
+) {
+  try {
+    const mod = await load();
+    const url = new URL(
+      req.url || "/api/suggest",
+      `http://${req.headers.host}`,
+    );
+    const init: RequestInit & { duplex?: "half" } = {
+      method: req.method,
+      headers: req.headers as HeadersInit,
+    };
+    if (!["GET", "HEAD"].includes(req.method || "GET")) {
+      init.body = Readable.toWeb(
+        req as InstanceType<typeof Readable>,
+      ) as ReadableStream;
+      init.duplex = "half";
+    }
+    const response = await mod.default.fetch(new Request(url, init));
+    res.writeHead(response.status, Object.fromEntries(response.headers));
+    if (response.body)
+      Readable.fromWeb(
+        response.body as Parameters<typeof Readable.fromWeb>[0],
+      ).pipe(res);
+    else res.end();
+  } catch {
+    res.statusCode = 500;
+    res.end("The request could not be completed.");
+  }
+}
+
+function suggestApi(): Plugin {
   return {
-    plugins: [react()],
-    define: {
-      "import.meta.env.VITE_CLERK_PUBLISHABLE_KEY": JSON.stringify(clerkKey),
-      "import.meta.env.VITE_COMMUNITY_ENABLED": JSON.stringify(
-        String(communityEnabled),
-      ),
+    name: "suggest-api",
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        if (req.url?.split("?")[0] !== "/api/suggest") return next();
+        void proxySuggest(req, res, () =>
+          server.ssrLoadModule("/api/suggest.ts") as Promise<SuggestModule>,
+        );
+      });
     },
-    build: { sourcemap: false },
   };
+}
+
+export default defineConfig({
+  plugins: [react(), suggestApi()],
+  build: { sourcemap: false },
 });
