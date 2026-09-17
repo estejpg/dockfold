@@ -84,7 +84,7 @@ export const collections: Collection[] = [
     description: "Close the work tabs. Open something good.",
     group: "everyday",
     addedOn: "2026-09-04",
-    apps: ["finder","books","music","messages"],
+    apps: ["books","music","messages"],
     rationale: "A smaller evening Dock for reading, listening, and staying in touch.",
   },
   {
@@ -102,8 +102,8 @@ export const collections: Collection[] = [
     description: "Type, color, images, and the bigger picture.",
     group: "design",
     addedOn: "2026-09-04",
-    apps: ["illustrator","photoshop","figma","finder","resurf"],
-    rationale: "Move between vector work, image editing, layout, files, and the references that tie a visual identity together.",
+    apps: ["illustrator","photoshop","figma","resurf"],
+    rationale: "Move between vector work, image editing, layout, and the references that tie a visual identity together.",
   },
   {
     id: "design-handoff",
@@ -120,8 +120,8 @@ export const collections: Collection[] = [
     description: "From a first selection to the final image.",
     group: "photo-video",
     addedOn: "2026-09-04",
-    apps: ["lightroom","photoshop","finder","calendar","mail"],
-    rationale: "Editing sits beside file organization and the practical work of planning shoots and delivering photographs.",
+    apps: ["lightroom","photoshop","calendar","mail"],
+    rationale: "Editing sits beside the practical work of planning shoots and delivering photographs.",
   },
   {
     id: "edit-suite",
@@ -129,8 +129,8 @@ export const collections: Collection[] = [
     description: "A focused home for moving images.",
     group: "photo-video",
     addedOn: "2026-09-04",
-    apps: ["premiere","photoshop","finder","music","notes"],
-    rationale: "Keep the edit, supporting graphics, source files, and notes within reach without filling every spot in the Dock.",
+    apps: ["premiere","photoshop","music","notes"],
+    rationale: "Keep the edit, supporting graphics, and notes within reach without filling every spot in the Dock.",
   },
   {
     id: "short-form-studio",
@@ -138,7 +138,7 @@ export const collections: Collection[] = [
     description: "Small videos, considered from start to finish.",
     group: "photo-video",
     addedOn: "2026-09-04",
-    apps: ["capcut","lightroom","notion","finder","spotify"],
+    apps: ["capcut","lightroom","notion","spotify"],
     rationale: "A compact set for assembling short videos, working on images, and keeping track of the next idea.",
   },
   {
@@ -147,8 +147,8 @@ export const collections: Collection[] = [
     description: "An app idea, a project, and a place to start.",
     group: "development",
     addedOn: "2026-09-04",
-    apps: ["xcode","github","finder","notes"],
-    rationale: "A deliberately small starting point for native app work, with code, repositories, project files, and notes together.",
+    apps: ["xcode","github","notes"],
+    rationale: "A deliberately small starting point for native app work, with code, repositories, and notes together.",
   },
   {
     id: "ship-a-website",
@@ -228,7 +228,7 @@ export const collections: Collection[] = [
     description: "Open the day in a sensible order.",
     group: "everyday",
     addedOn: "2026-09-05",
-    apps: ["finder","calendar","mail","reminders","weather"],
+    apps: ["calendar","mail","reminders","weather"],
     rationale: "Calendar, mail, and reminders sit beside the weather so the first look at the Dock is the day ahead.",
   },
   {
@@ -246,7 +246,7 @@ export const collections: Collection[] = [
     description: "A lighter image editor, still close to Photos.",
     group: "photo-video",
     addedOn: "2026-09-05",
-    apps: ["pixelmator-pro","photos","finder","preview"],
+    apps: ["pixelmator-pro","photos","preview"],
     rationale: "Edit, compare, and file images without filling the Dock with every Creative Cloud icon.",
   },
   {
@@ -297,20 +297,20 @@ export const collections: Collection[] = [
   {
     id: "resolve-suite",
     title: "Resolve suite",
-    description: "Color, cut, and the files underneath.",
+    description: "Color, cut, and a place for notes.",
     group: "photo-video",
     addedOn: "2026-09-06",
-    apps: ["davinci-resolve","photos","finder","music","notes"],
-    rationale: "A finishing Dock for picture work that still leaves room for source files and notes.",
+    apps: ["davinci-resolve","photos","music","notes"],
+    rationale: "A finishing Dock for picture work that still leaves room for stills, music, and notes.",
   },
   {
     id: "xcode-and-sim",
-    title: "Xcode & files",
+    title: "Xcode desk",
     description: "The project, the terminal, a note.",
     group: "development",
     addedOn: "2026-09-06",
-    apps: ["xcode","terminal","finder","notes","safari"],
-    rationale: "Native work with documentation in the browser and the project folder one click away.",
+    apps: ["xcode","terminal","notes","safari"],
+    rationale: "Native work with a terminal, a note, and documentation in the browser.",
   },
   {
     id: "craft-notes",
@@ -345,8 +345,8 @@ export const collections: Collection[] = [
     description: "A layout before the meeting starts.",
     group: "design",
     addedOn: "2026-09-07",
-    apps: ["canva","photos","finder","safari","mail"],
-    rationale: "Fast visual work with the photo library, files, and a way to send the result.",
+    apps: ["canva","photos","safari","mail"],
+    rationale: "Fast visual work with the photo library, a browser, and a way to send the result.",
   },
   {
     id: "screenshot-day",
@@ -399,7 +399,7 @@ export const collections: Collection[] = [
     description: "Pixels at 1×, with Preview as a second pair of eyes.",
     group: "design",
     addedOn: "2026-09-08",
-    apps: ["affinity","preview","font-book","figma","finder"],
+    apps: ["affinity","preview","font-book","figma"],
     rationale: "Icon and small-graphic work needs an editor, a preview, type, and the file that will ship.",
   },
   {
@@ -408,7 +408,7 @@ export const collections: Collection[] = [
     description: "Import, sort, send a proof.",
     group: "photo-video",
     addedOn: "2026-09-08",
-    apps: ["photos","image-capture","finder","preview","mail"],
+    apps: ["photos","image-capture","preview","mail"],
     rationale: "A Dock for getting pictures off a phone and out to someone waiting on them.",
   },
   {
@@ -435,8 +435,8 @@ export const collections: Collection[] = [
     description: "The library you already paid for.",
     group: "music",
     addedOn: "2026-09-08",
-    apps: ["music","podcasts","finder","notes"],
-    rationale: "Music and podcasts as first-class apps, with files and a note for the occasional track list.",
+    apps: ["music","podcasts","notes"],
+    rationale: "Music and podcasts as first-class apps, with a note for the occasional track list.",
   },
   {
     id: "health-day",
@@ -462,7 +462,7 @@ export const collections: Collection[] = [
     description: "Downie, Permute, QuickTime.",
     group: "photo-video",
     addedOn: "2026-09-09",
-    apps: ["downie","permute","quicktime-player","finder","notes"],
+    apps: ["downie","permute","quicktime-player","notes"],
     rationale: "A utility Dock for getting a video off the web, into the right format, and onto disk.",
   },
   {
@@ -534,7 +534,7 @@ export const collections: Collection[] = [
     description: "Preview, TextEdit, a vault.",
     group: "research",
     addedOn: "2026-09-10",
-    apps: ["markdown-preview","textedit","obsidian","finder","github"],
+    apps: ["markdown-preview","textedit","obsidian","github"],
     rationale: "Plain-text writing with a preview, a vault, and the repo that will publish it.",
   },
   {
@@ -552,7 +552,7 @@ export const collections: Collection[] = [
     description: "The keychain, then the browser.",
     group: "everyday",
     addedOn: "2026-09-11",
-    apps: ["passwords","safari","mail","notes","finder"],
+    apps: ["passwords","safari","mail","notes"],
     rationale: "Sign-in days go better when Passwords is in the Dock instead of buried in Settings.",
   },
   {
@@ -561,7 +561,7 @@ export const collections: Collection[] = [
     description: "Keynote, Figma, the pictures.",
     group: "design",
     addedOn: "2026-09-11",
-    apps: ["keynote","figma","photos","finder","notes"],
+    apps: ["keynote","figma","photos","notes"],
     rationale: "A talk is slides, source layouts, images, and the outline you promised yourself.",
   },
   {
@@ -570,8 +570,8 @@ export const collections: Collection[] = [
     description: "The NLE, Photoshop, Shotbase.",
     group: "photo-video",
     addedOn: "2026-09-11",
-    apps: ["premiere","photoshop","finder","music","shotbase"],
-    rationale: "An Adobe-leaning edit Dock with stills, captures, and files in the same row.",
+    apps: ["premiere","photoshop","music","shotbase"],
+    rationale: "An Adobe-leaning edit Dock with stills, captures, and music in the same row.",
   },
   {
     id: "bitrig-build",
@@ -579,7 +579,7 @@ export const collections: Collection[] = [
     description: "A smaller tool, a real project.",
     group: "development",
     addedOn: "2026-09-11",
-    apps: ["bitrig","terminal","github","finder","notes"],
+    apps: ["bitrig","terminal","github","notes"],
     rationale: "Keep Bitrig beside the terminal and the repo so an experiment can still ship.",
   },
   {
@@ -594,10 +594,10 @@ export const collections: Collection[] = [
   {
     id: "one-browser",
     title: "One browser",
-    description: "Safari, Finder, Mail.",
+    description: "Safari, Notes, Mail.",
     group: "minimal",
     addedOn: "2026-09-11",
-    apps: ["safari","finder","mail"],
+    apps: ["safari","notes","mail"],
     rationale: "Three icons for a computer that is mostly a window onto the web and a mailbox.",
   },
   {
@@ -642,7 +642,7 @@ export const collections: Collection[] = [
     description: "Audio MIDI Setup and the library.",
     group: "music",
     addedOn: "2026-09-12",
-    apps: ["audio-midi-setup","music","voice-memos","finder"],
+    apps: ["audio-midi-setup","music","voice-memos"],
     rationale: "A small audio Dock for checking devices, recording a memo, and filing the result.",
   },
   {
@@ -669,8 +669,8 @@ export const collections: Collection[] = [
     description: "Voice, Spotify, a project doc.",
     group: "together",
     addedOn: "2026-09-13",
-    apps: ["discord","spotify","notion","safari","finder"],
-    rationale: "Community calls with music, a shared doc, and files for whatever you promised to send.",
+    apps: ["discord","spotify","notion","safari"],
+    rationale: "Community calls with music, a shared doc, and a browser for whatever you promised to send.",
   },
   {
     id: "opencode-solo",
@@ -759,7 +759,7 @@ export const collections: Collection[] = [
     description: "Culling, then Calendar for the deadline.",
     group: "photo-video",
     addedOn: "2026-09-15",
-    apps: ["lightroom","photos","finder","calendar","notes"],
+    apps: ["lightroom","photos","calendar","notes"],
     rationale: "A selection-day Dock: the catalog, the camera roll, and when the gallery is due.",
   },
   {
@@ -774,11 +774,11 @@ export const collections: Collection[] = [
   {
     id: "affinity-only",
     title: "Affinity only",
-    description: "One design suite, files, Preview.",
+    description: "One design suite, Preview, Photos.",
     group: "design",
     addedOn: "2026-09-16",
-    apps: ["affinity","finder","preview","font-book","photos"],
-    rationale: "Stay inside Affinity for the day and keep type, photos, and files at the edge of the Dock.",
+    apps: ["affinity","preview","font-book","photos"],
+    rationale: "Stay inside Affinity for the day and keep type and photos at the edge of the Dock.",
   },
   {
     id: "quicktime-review",
@@ -786,7 +786,7 @@ export const collections: Collection[] = [
     description: "Watch the export, then send it.",
     group: "photo-video",
     addedOn: "2026-09-17",
-    apps: ["quicktime-player","finder","mail","notes","messages"],
+    apps: ["quicktime-player","mail","notes","messages"],
     rationale: "A review Dock for watching a file all the way through before it leaves the machine.",
   },
 ];
