@@ -1,0 +1,15 @@
+{
+  "id": "brand-studio",
+  "title": "Brand studio",
+  "summary": "Type, color, images, and the bigger picture.",
+  "collection": "design",
+  "addedOn": "2026-09-04",
+  "apps": [
+    "illustrator",
+    "photoshop",
+    "figma",
+    "finder",
+    "resurf"
+  ],
+  "note": "Move between vector work, image editing, layout, files, and the references that tie a visual identity together."
+}

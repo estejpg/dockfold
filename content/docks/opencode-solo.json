@@ -1,0 +1,15 @@
+{
+  "id": "opencode-solo",
+  "title": "OpenCode solo",
+  "summary": "The agent, Cursor, git.",
+  "collection": "development",
+  "addedOn": "2026-09-13",
+  "apps": [
+    "opencode",
+    "cursor",
+    "github",
+    "notes",
+    "music"
+  ],
+  "note": "Two coding surfaces and a repo, with music for the stretches where you are only reading diffs."
+}

@@ -1,0 +1,13 @@
+{
+  "id": "quiet-writing",
+  "title": "Quiet writing",
+  "summary": "An open note, a good book, a little music.",
+  "collection": "research",
+  "addedOn": "2026-09-04",
+  "apps": [
+    "notes",
+    "books",
+    "music"
+  ],
+  "note": "Three simple places to spend an unhurried writing session. Add your preferred editor when you customize it."
+}

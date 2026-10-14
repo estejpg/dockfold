@@ -1,0 +1,12 @@
+{
+  "id": "writer-only",
+  "title": "Writer only",
+  "summary": "Notes and Books. Nothing else.",
+  "collection": "minimal",
+  "addedOn": "2026-09-09",
+  "apps": [
+    "notes",
+    "books"
+  ],
+  "note": "Two apps. If the session needs more, add them when you make it yours."
+}

@@ -1,0 +1,15 @@
+{
+  "id": "pages-writer",
+  "title": "Pages writer",
+  "summary": "A Mac document, a dictionary, a book.",
+  "collection": "research",
+  "addedOn": "2026-09-08",
+  "apps": [
+    "pages",
+    "books",
+    "notes",
+    "music",
+    "dictionary"
+  ],
+  "note": "Long-form writing in Pages with reference books and a dictionary in the same row."
+}

@@ -1,0 +1,15 @@
+{
+  "id": "ship-a-website",
+  "title": "Ship a website",
+  "summary": "From a blank canvas to a browser tab.",
+  "collection": "development",
+  "addedOn": "2026-09-04",
+  "apps": [
+    "figma",
+    "framer",
+    "github",
+    "arc",
+    "notion"
+  ],
+  "note": "Bring design, publishing, repositories, browser checks, and project notes into the same workspace."
+}

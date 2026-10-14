@@ -1,20 +1,21 @@
 # DockFold
 
-A directory of macOS Docks. Browse setups by category, see what was added last, or suggest a Dock for the gallery.
+A hand-picked directory of macOS Docks. Every Dock is chosen and arranged by us: the apps, their order, and a note on why they belong together. Nothing to install, nothing scanned.
 
-[Open DockFold](https://dockfold.vercel.app) · [Latest](https://dockfold.vercel.app/latest) · [Submit](https://dockfold.vercel.app/submit)
+[Open DockFold](https://dockfold.vercel.app) · [Latest](https://dockfold.vercel.app/latest) · [Collections](https://dockfold.vercel.app/collections) · [Suggest a Dock](https://dockfold.vercel.app/submit)
 
-The site is static: public Docks live in git. Submit emails the owner (or opens your mail app) after the form is validated. Listing is not automatic. Create-your-own share links still work and stay unlisted. See the [restart plan](docs/restart-plan.md) and [deployment](docs/deployment.md).
+“DockFold” is a working name. Change it in `src/lib/site.ts`; titles, metadata, the sitemap and the header follow.
 
 ## What visitors can do
 
-- **Browse:** Home groups Docks by category. Latest lists them by date. Each Dock has a page with its apps and a short rationale.
-- **Suggest a Dock:** a short form on `/submit` — name, description, category, apps from the catalog, optional note and credit. No account is needed. Every suggestion is reviewed before it can appear on Home.
-- **Create a private Dock:** `/create` still builds an unlisted share link in the browser. That link does not submit the Dock to the gallery.
+- **Browse:** Home shows a featured Dock and every published Dock, with search (`/`), collection and size filters, and a list or grid view. Latest lists Docks by publication date. Collections and Apps group them by purpose or by app.
+- **Look closely:** each Dock page shows the Dock as macOS would (magnifying under the pointer), the note, every app in order, related Docks, and newer/older navigation with the arrow keys.
+- **Suggest a Dock:** `/submit` is a short form. No account. Every suggestion is reviewed; nothing is listed automatically.
+- **Make it yours:** `/create` builds an unlisted share link in the browser. Share links (`/dock#dock=…`) never reach the server and never appear in the collection.
 
 ## Stack
 
-React 19, Vite 7, TypeScript, Inter and Lucide on Vercel. Public Docks are committed records. One Node function at `/api/suggest` validates suggestions. If `RESEND_API_KEY` is set it emails the owner; otherwise it returns a mailto or copyable text. No Clerk, Neon, or visitor accounts. No native macOS helper, analytics or image generation.
+React 19, Vite 7 and TypeScript on Vercel, with Inter and Lucide. Docks are committed JSON files in `content/`, validated at build time and prerendered to one HTML file per page. One Node function at `/api/suggest` validates suggestions and emails the owner (Resend) or returns a mailto or copyable text. No accounts, database, analytics or native helper.
 
 ## Run and verify
 
@@ -22,10 +23,9 @@ Node 22.13+ or Node 24:
 
 ```sh
 npm ci
-npm run dev
+npm run dev        # http://127.0.0.1:5173, client-rendered
+npm run preview    # builds, then serves dist/ like Vercel at http://127.0.0.1:4173
 ```
-
-Open `http://127.0.0.1:5173`. Stop with Control-C. Optional `.env.local` values from `.env.example` enable email delivery; without them the form still validates and offers copy/mailto.
 
 ```sh
 npm test
@@ -33,16 +33,22 @@ npm run lint
 npm run build
 ```
 
+After a deploy, `npm run smoke -- https://your-deployment` checks pages, a real 404 and the function. See [deployment](docs/deployment.md).
+
 ## Repository map
 
-- `src/components/directory.tsx`, `collection-detail.tsx`, `src/lib/collections.ts`: Home, Latest and published Docks.
-- `src/components/suggest.tsx`, `src/lib/suggestion.ts`, `api/suggest.ts`: Submit form and validation.
-- `src/components/composer.tsx`, `src/lib/dock.ts`: optional builder and bounded version-2 share links.
+- `content/docks/*.json`, `content/collections.json`: the collection. See [maintaining the collection](docs/maintaining-icons.md).
+- `src/lib/schema.ts`, `script/build-content.ts`: content validation; `npm run content:report` prints curation notes.
+- `src/app.tsx`: the route table shared by the browser (`src/main.tsx`) and the prerender step (`src/entry-server.tsx`, `script/prerender.mjs`).
+- `src/components/dock-view.tsx`: the Dock renderer. `home.tsx`, `dock-page.tsx`, `latest.tsx`, `browse.tsx`: pages.
+- `src/components/suggest.tsx`, `src/lib/suggestion.ts`, `api/suggest.ts`, `server/http.ts`: the suggestion form and function.
+- `src/components/composer.tsx`, `src/lib/dock.ts`: the optional builder and bounded v2 share links.
 - `src/lib/catalog.json`, `legacy-catalog.json`: bundled apps and compatibility IDs.
-- `tests/`: gallery, sharing and suggestion tests.
+- `tests/`: content, routes, sharing, suggestions and a check that the function loads under plain Node ESM.
+- [Design](docs/design.md): tokens, type and motion rules.
 
 ## Credits
 
-Primary reference: [Link Lowdown](https://www.linklowdown.com/) — Inter, Home / Latest / Submit navigation, compact forms, cool near-white surfaces and grouped lists. Secondary references: [estejpg](https://www.estejpg.com/), [Digital Creator Club](https://digitalcreator.club/), [Curated Supply](https://www.curated.supply/), [Macfolio](https://www.macfolio.com/), [benji.org](https://benji.org/) and [Resurf](https://resurf.so/).
+Structure and browsing follow [directoryyy (perfolios)](https://directoryyy.com/): one focal column, dense rows with hover previews, and quiet filters. Secondary references: [Link Lowdown](https://www.linklowdown.com/) (per-list sponsor slots, a dated Latest), [Macfolio](https://www.macfolio.com/) (rich detail pages) and [estejpg](https://www.estejpg.com/) (typography and timelines). Motion rules and the hover-preview timing are adapted from patterns in [cali.so](https://github.com/CaliCastle/cali.so) (MIT); no code, artwork or branding from it is used.
 
-The supplied icons are optimized to 192px WebP; originals remain untouched. Sources are recorded in `ASSET_SOURCES.md` and `docs/icon-provenance.json`. DockFold is independent of the app developers. The logo uses the supplied Link Icon SVG.
+The supplied icons are optimized to 192px WebP; originals remain untouched. Sources are recorded in `ASSET_SOURCES.md` and `docs/icon-provenance.json`. DockFold is independent of the app developers. The logo uses the supplied Link Icon SVG; the Downloads and Trash glyphs are drawn for this site.

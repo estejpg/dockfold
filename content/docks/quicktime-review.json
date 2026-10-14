@@ -1,0 +1,15 @@
+{
+  "id": "quicktime-review",
+  "title": "QuickTime review",
+  "summary": "Watch the export, then send it.",
+  "collection": "photo-video",
+  "addedOn": "2026-09-17",
+  "apps": [
+    "quicktime-player",
+    "finder",
+    "mail",
+    "notes",
+    "messages"
+  ],
+  "note": "A review Dock for watching a file all the way through before it leaves the machine."
+}

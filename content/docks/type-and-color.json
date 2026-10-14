@@ -1,0 +1,15 @@
+{
+  "id": "type-and-color",
+  "title": "Type & color",
+  "summary": "Letters, palettes, and the next layout.",
+  "collection": "design",
+  "addedOn": "2026-09-05",
+  "apps": [
+    "font-book",
+    "affinity",
+    "illustrator",
+    "figma",
+    "digital-color-meter"
+  ],
+  "note": "Keep type, color sampling, and layout tools together when a visual system is the work."
+}

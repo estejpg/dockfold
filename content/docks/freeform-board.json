@@ -1,0 +1,15 @@
+{
+  "id": "freeform-board",
+  "title": "Freeform board",
+  "summary": "A canvas, a sketch, and the photos you need.",
+  "collection": "design",
+  "addedOn": "2026-09-06",
+  "apps": [
+    "freeform",
+    "paper",
+    "notes",
+    "safari",
+    "photos"
+  ],
+  "note": "Spatial thinking with a sketching app, a browser, and the camera roll in easy reach."
+}

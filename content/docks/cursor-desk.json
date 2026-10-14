@@ -1,0 +1,16 @@
+{
+  "id": "cursor-desk",
+  "title": "Cursor desk",
+  "summary": "An editor, a terminal, and the repository.",
+  "collection": "development",
+  "addedOn": "2026-09-05",
+  "apps": [
+    "cursor",
+    "terminal",
+    "github",
+    "arc",
+    "notes"
+  ],
+  "note": "A software Dock that keeps the editor next to git, a browser, and a place for stray notes.",
+  "featured": 1
+}

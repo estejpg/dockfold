@@ -1,0 +1,15 @@
+{
+  "id": "errands",
+  "title": "Errands",
+  "summary": "Lists, maps, and the next appointment.",
+  "collection": "everyday",
+  "addedOn": "2026-09-06",
+  "apps": [
+    "reminders",
+    "maps",
+    "mail",
+    "calendar",
+    "notes"
+  ],
+  "note": "A practical outing Dock: what to do, where to go, and how to follow up."
+}

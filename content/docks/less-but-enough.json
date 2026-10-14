@@ -1,0 +1,14 @@
+{
+  "id": "less-but-enough",
+  "title": "Less, but enough",
+  "summary": "Four icons. A little more breathing room.",
+  "collection": "everyday",
+  "addedOn": "2026-09-04",
+  "apps": [
+    "finder",
+    "notes",
+    "mail",
+    "calendar"
+  ],
+  "note": "Keep only the daily essentials in view. Add the apps your current project needs when you make this Dock your own."
+}

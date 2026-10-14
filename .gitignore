@@ -2,6 +2,8 @@ node_modules/
 .next/
 .vercel/
 dist/
+dist-ssr/
+src/generated/
 .DS_Store
 *.log
 *.tsbuildinfo

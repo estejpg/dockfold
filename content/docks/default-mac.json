@@ -1,0 +1,16 @@
+{
+  "id": "default-mac",
+  "title": "Classic Mac",
+  "summary": "The Dock many people already have.",
+  "collection": "everyday",
+  "addedOn": "2026-09-10",
+  "apps": [
+    "finder",
+    "safari",
+    "mail",
+    "messages",
+    "photos",
+    "music"
+  ],
+  "note": "Finder, Safari, Mail, Messages, Photos, Music — the familiar Apple set, named so you can fork it."
+}

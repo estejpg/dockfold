@@ -1,0 +1,15 @@
+{
+  "id": "maps-weekend",
+  "title": "Maps weekend",
+  "summary": "Where to go, what the weather is.",
+  "collection": "everyday",
+  "addedOn": "2026-09-16",
+  "apps": [
+    "maps",
+    "weather",
+    "calendar",
+    "photos",
+    "safari"
+  ],
+  "note": "A wandering Dock: maps, weather, the plan, and the camera roll from last time."
+}

@@ -1,0 +1,15 @@
+{
+  "id": "agent-workshop",
+  "title": "Agent workshop",
+  "summary": "Code, compare, and keep a human in the loop.",
+  "collection": "development",
+  "addedOn": "2026-09-04",
+  "apps": [
+    "antigravity-ide",
+    "opencode",
+    "claude",
+    "github",
+    "notes"
+  ],
+  "note": "A place for trying assisted coding workflows while keeping project history and your own notes close."
+}

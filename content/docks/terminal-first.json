@@ -1,0 +1,15 @@
+{
+  "id": "terminal-first",
+  "title": "Terminal first",
+  "summary": "The prompt, then the editor.",
+  "collection": "development",
+  "addedOn": "2026-09-08",
+  "apps": [
+    "terminal",
+    "cursor",
+    "github",
+    "notes",
+    "music"
+  ],
+  "note": "For people who open a shell before they open a file, with music for the long compile."
+}

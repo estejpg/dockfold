@@ -1,0 +1,15 @@
+{
+  "id": "acrobat-paper",
+  "title": "Acrobat paper",
+  "summary": "PDFs, citations, a highlighter in spirit.",
+  "collection": "research",
+  "addedOn": "2026-09-11",
+  "apps": [
+    "acrobat",
+    "zotero",
+    "preview",
+    "notes",
+    "safari"
+  ],
+  "note": "Reading papers means a PDF app, a library, and a place to keep the sentence you might quote."
+}

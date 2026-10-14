@@ -1,0 +1,15 @@
+{
+  "id": "color-lab",
+  "title": "Color lab",
+  "summary": "Meters, profiles, and an editor.",
+  "collection": "design",
+  "addedOn": "2026-09-10",
+  "apps": [
+    "digital-color-meter",
+    "colorsync-utility",
+    "affinity",
+    "photoshop",
+    "notes"
+  ],
+  "note": "When color has to be right, keep the meters next to the editors that will use the number."
+}

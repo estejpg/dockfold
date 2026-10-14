@@ -1,0 +1,15 @@
+{
+  "id": "slack-hq",
+  "title": "Slack HQ",
+  "summary": "The workplace lives in one row.",
+  "collection": "together",
+  "addedOn": "2026-09-12",
+  "apps": [
+    "slack",
+    "calendar",
+    "mail",
+    "notion",
+    "safari"
+  ],
+  "note": "Chat, calendar, mail, and the doc that will be pasted into Slack in five minutes."
+}

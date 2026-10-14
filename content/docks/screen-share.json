@@ -1,0 +1,15 @@
+{
+  "id": "screen-share",
+  "title": "Screen share",
+  "summary": "Show the work, take the note.",
+  "collection": "together",
+  "addedOn": "2026-09-14",
+  "apps": [
+    "screen-sharing",
+    "slack",
+    "safari",
+    "notes",
+    "calendar"
+  ],
+  "note": "A support or pairing Dock: the share, the chat, and the calendar block you are in."
+}

@@ -1,0 +1,14 @@
+{
+  "id": "after-hours",
+  "title": "After hours",
+  "summary": "Close the work tabs. Open something good.",
+  "collection": "everyday",
+  "addedOn": "2026-09-04",
+  "apps": [
+    "finder",
+    "books",
+    "music",
+    "messages"
+  ],
+  "note": "A smaller evening Dock for reading, listening, and staying in touch."
+}

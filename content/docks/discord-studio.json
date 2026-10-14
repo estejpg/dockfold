@@ -1,0 +1,15 @@
+{
+  "id": "discord-studio",
+  "title": "Discord studio",
+  "summary": "Voice, Spotify, a project doc.",
+  "collection": "together",
+  "addedOn": "2026-09-13",
+  "apps": [
+    "discord",
+    "spotify",
+    "notion",
+    "safari",
+    "finder"
+  ],
+  "note": "Community calls with music, a shared doc, and files for whatever you promised to send."
+}

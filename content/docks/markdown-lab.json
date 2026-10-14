@@ -1,0 +1,15 @@
+{
+  "id": "markdown-lab",
+  "title": "Markdown lab",
+  "summary": "Preview, TextEdit, a vault.",
+  "collection": "research",
+  "addedOn": "2026-09-10",
+  "apps": [
+    "markdown-preview",
+    "textedit",
+    "obsidian",
+    "finder",
+    "github"
+  ],
+  "note": "Plain-text writing with a preview, a vault, and the repo that will publish it."
+}

@@ -1,0 +1,15 @@
+{
+  "id": "t3-nightly",
+  "title": "T3 nightly",
+  "summary": "An experimental editor beside git.",
+  "collection": "development",
+  "addedOn": "2026-09-09",
+  "apps": [
+    "t3-code-nightly",
+    "terminal",
+    "github",
+    "arc",
+    "notion"
+  ],
+  "note": "Trying a newer coding tool without abandoning the repository, browser, and notes."
+}

@@ -1,0 +1,14 @@
+{
+  "id": "journal-first",
+  "title": "Journal first",
+  "summary": "Private writing before the inbox.",
+  "collection": "research",
+  "addedOn": "2026-09-09",
+  "apps": [
+    "journal",
+    "notes",
+    "books",
+    "music"
+  ],
+  "note": "Start in Journal, keep Notes for the rest, and leave mail out of the row."
+}

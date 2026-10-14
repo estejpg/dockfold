@@ -1,0 +1,15 @@
+{
+  "id": "facetime-friday",
+  "title": "FaceTime Friday",
+  "summary": "Calls, messages, a calendar.",
+  "collection": "together",
+  "addedOn": "2026-09-12",
+  "apps": [
+    "facetime",
+    "messages",
+    "calendar",
+    "photos",
+    "music"
+  ],
+  "note": "A people-first Dock for catching up, with photos if someone says “wait, I’ll show you.”"
+}

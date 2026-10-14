@@ -1,0 +1,14 @@
+{
+  "id": "tv-evening",
+  "title": "TV evening",
+  "summary": "The living-room Mac.",
+  "collection": "music",
+  "addedOn": "2026-09-13",
+  "apps": [
+    "tv",
+    "music",
+    "podcasts",
+    "photos"
+  ],
+  "note": "Watch, listen, and flip through pictures. Work apps can wait until morning."
+}

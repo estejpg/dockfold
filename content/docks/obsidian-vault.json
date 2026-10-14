@@ -1,0 +1,15 @@
+{
+  "id": "obsidian-vault",
+  "title": "Obsidian vault",
+  "summary": "Notes that connect, with books nearby.",
+  "collection": "research",
+  "addedOn": "2026-09-05",
+  "apps": [
+    "obsidian",
+    "zotero",
+    "safari",
+    "books",
+    "music"
+  ],
+  "note": "A writing-and-reference Dock for people who think in linked notes rather than a single document."
+}

@@ -1,0 +1,15 @@
+{
+  "id": "resolve-suite",
+  "title": "Resolve suite",
+  "summary": "Color, cut, and the files underneath.",
+  "collection": "photo-video",
+  "addedOn": "2026-09-06",
+  "apps": [
+    "davinci-resolve",
+    "photos",
+    "finder",
+    "music",
+    "notes"
+  ],
+  "note": "A finishing Dock for picture work that still leaves room for source files and notes."
+}

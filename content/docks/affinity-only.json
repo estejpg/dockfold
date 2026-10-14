@@ -1,0 +1,15 @@
+{
+  "id": "affinity-only",
+  "title": "Affinity only",
+  "summary": "One design suite, files, Preview.",
+  "collection": "design",
+  "addedOn": "2026-09-16",
+  "apps": [
+    "affinity",
+    "finder",
+    "preview",
+    "font-book",
+    "photos"
+  ],
+  "note": "Stay inside Affinity for the day and keep type, photos, and files at the edge of the Dock."
+}

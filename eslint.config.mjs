@@ -4,7 +4,7 @@ import hooks from "eslint-plugin-react-hooks";
 import globals from "globals";
 export default ts.config(
   {
-    ignores: ["dist/**", "node_modules/**", ".next/**", "macos/**", "work/**"],
+    ignores: ["dist/**", "dist-ssr/**", "src/generated/**", "node_modules/**", ".next/**", "macos/**", "work/**"],
   },
   js.configs.recommended,
   ...ts.configs.recommended,

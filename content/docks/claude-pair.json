@@ -1,0 +1,15 @@
+{
+  "id": "claude-pair",
+  "title": "Claude pair",
+  "summary": "The model, the editor, the repo.",
+  "collection": "development",
+  "addedOn": "2026-09-12",
+  "apps": [
+    "claude",
+    "cursor",
+    "github",
+    "notes",
+    "safari"
+  ],
+  "note": "Assisted coding with a dedicated Claude app beside the editor you still have to own."
+}

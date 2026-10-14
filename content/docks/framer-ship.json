@@ -1,0 +1,15 @@
+{
+  "id": "framer-ship",
+  "title": "Framer ship",
+  "summary": "Design it, publish it, check it.",
+  "collection": "design",
+  "addedOn": "2026-09-09",
+  "apps": [
+    "framer",
+    "figma",
+    "safari",
+    "github",
+    "notion"
+  ],
+  "note": "A site that starts in Figma or Framer still needs a browser, a repo, and project notes."
+}

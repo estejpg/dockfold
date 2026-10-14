@@ -3,3 +3,5 @@ Allow: /
 Disallow: /d/
 Disallow: /p/
 Disallow: /api/
+
+Sitemap: https://dockfold.vercel.app/sitemap.xml

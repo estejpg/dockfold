@@ -1,0 +1,15 @@
+{
+  "id": "icon-desk",
+  "title": "Icon desk",
+  "summary": "Pixels at 1×, with Preview as a second pair of eyes.",
+  "collection": "design",
+  "addedOn": "2026-09-08",
+  "apps": [
+    "affinity",
+    "preview",
+    "font-book",
+    "figma",
+    "finder"
+  ],
+  "note": "Icon and small-graphic work needs an editor, a preview, type, and the file that will ship."
+}

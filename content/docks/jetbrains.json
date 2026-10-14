@@ -1,0 +1,15 @@
+{
+  "id": "jetbrains",
+  "title": "IntelliJ desk",
+  "summary": "A heavier IDE, still a small Dock.",
+  "collection": "development",
+  "addedOn": "2026-09-07",
+  "apps": [
+    "intellij-idea",
+    "terminal",
+    "github",
+    "slack",
+    "arc"
+  ],
+  "note": "JVM or Android work with chat and a browser close, without duplicating every utility."
+}

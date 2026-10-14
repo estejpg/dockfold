@@ -1,0 +1,14 @@
+{
+  "id": "voice-to-text",
+  "title": "Voice to text",
+  "summary": "Speak it, then file it.",
+  "collection": "research",
+  "addedOn": "2026-09-14",
+  "apps": [
+    "superwhisper",
+    "notes",
+    "safari",
+    "mail"
+  ],
+  "note": "Dictation first, then a note, a browser, and mail for the thing you just promised."
+}

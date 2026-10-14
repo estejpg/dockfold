@@ -1,0 +1,16 @@
+{
+  "id": "interface-workshop",
+  "title": "Interface workshop",
+  "summary": "Sketch, prototype, and put it on the web.",
+  "collection": "design",
+  "addedOn": "2026-09-04",
+  "apps": [
+    "figma",
+    "paper",
+    "framer",
+    "arc",
+    "resurf"
+  ],
+  "note": "An interface-focused set that puts design tools beside a browser and a place to keep visual references.",
+  "featured": 2
+}

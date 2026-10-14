@@ -1,0 +1,15 @@
+{
+  "id": "screenshot-day",
+  "title": "Screenshot day",
+  "summary": "Capture, crop, send.",
+  "collection": "photo-video",
+  "addedOn": "2026-09-07",
+  "apps": [
+    "screenshot",
+    "shotbase",
+    "preview",
+    "notes",
+    "messages"
+  ],
+  "note": "When the work is explaining a screen to someone else, keep capture and sharing beside each other."
+}

@@ -1,0 +1,15 @@
+{
+  "id": "short-form-studio",
+  "title": "Short-form studio",
+  "summary": "Small videos, considered from start to finish.",
+  "collection": "photo-video",
+  "addedOn": "2026-09-04",
+  "apps": [
+    "capcut",
+    "lightroom",
+    "notion",
+    "finder",
+    "spotify"
+  ],
+  "note": "A compact set for assembling short videos, working on images, and keeping track of the next idea."
+}
