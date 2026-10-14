@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "predev": "npm run content",
-    "build": "tsc --noEmit && vite build",
-    "preview": "vite preview --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node script/prerender.mjs",
+    "preview": "npm run build && tsx script/preview.ts",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "test": "tsx --test tests/*.test.ts",

@@ -46,6 +46,7 @@ export function Header({ route }: { route: string }) {
   const theme = useSyncExternalStore(
     subscribeTheme,
     () => document.documentElement.dataset.theme ?? "light",
+    () => "light",
   );
   function toggle() {
     const next = theme === "dark" ? "light" : "dark";
