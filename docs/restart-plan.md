@@ -1,5 +1,7 @@
 # DockFold restart plan
 
+> Status, October 2026: Phase 1 is complete and the site has since been rebuilt around content files, prerendered pages and a realistic Dock renderer. Current guides: [maintaining the collection](maintaining-icons.md), [deployment](deployment.md) and [design](design.md). This document is kept as the record of why the restart happened.
+
 DockFold should be a small public gallery of macOS Docks: visitors browse lots of setups, and later someone can pay to promote a Dock or an app. Phase 1 of that restart is implemented in this branch: Clerk/Neon/community routes are gone, Submit is a Dock suggestion form, and Home is seeded well past the original 18 Docks.
 
 ## What went wrong

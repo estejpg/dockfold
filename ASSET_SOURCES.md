@@ -4,6 +4,8 @@
 
 The header mark uses the user-supplied `Link Icon.svg`, preserved as `public/assets/link-icon.svg`. The favicon uses the same geometry with light/dark color rules for browser-tab contrast. The original supplied file is unchanged. No image generation was used.
 
+The Downloads folder and Trash glyphs in the Dock renderer (`src/components/dock-view.tsx`) are simple inline SVGs drawn for this site, not Apple artwork.
+
 ## Current supplied collection
 
 The supplied folder contains 147 PNG files as of September 5, 2026. The picker uses 141 distinct app entries, including 85 additions in the September 5 import. Four folder images were omitted. Byte-identical duplicates were consolidated: `iMessage.png` into `Messages.png`, and `Creative Cloud Desktop App.png` into `Creative Cloud.png`. Named variants such as Dia / Dia (Early Birds) remain distinct.
