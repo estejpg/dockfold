@@ -1,0 +1,16 @@
+{
+  "id": "read-write-cite",
+  "title": "Read, write, cite",
+  "summary": "For the long paper and the interesting footnote.",
+  "collection": "research",
+  "addedOn": "2026-09-04",
+  "apps": [
+    "zotero",
+    "books",
+    "notes",
+    "notion",
+    "resurf"
+  ],
+  "note": "A research-minded Dock that keeps reading, references, saved material, and writing in one view.",
+  "featured": 4
+}

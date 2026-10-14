@@ -2,11 +2,11 @@ import { ArrowLeft, ArrowUpRight, Copy } from "lucide-react";
 import { useState } from "react";
 import { byId, customizeURL } from "../lib/dock";
 import {
-  collectionDock,
+  shareableDock as collectionDock,
   formatDate,
-  groups,
-  type Collection,
-} from "../lib/collections";
+  collections as groups,
+  type DockRecord as Collection,
+} from "../lib/docks";
 import { AppIcon, DockStrip } from "./common";
 export function CollectionDetail({ item }: { item: Collection }) {
   const [notice, setNotice] = useState("");
@@ -20,9 +20,9 @@ export function CollectionDetail({ item }: { item: Collection }) {
       <div className="detail-heading">
         <div>
           <h1>{item.title}</h1>
-          <p>{item.description}</p>
+          <p>{item.summary}</p>
         </div>
-        <span>{groups.find((g) => g.id === item.group)?.name}</span>
+        <span>{groups.find((g) => g.id === item.collection)?.name}</span>
       </div>
       <div className="detail-preview">
         <DockStrip ids={item.apps} />
@@ -30,7 +30,7 @@ export function CollectionDetail({ item }: { item: Collection }) {
       <div className="detail-body">
         <section>
           <h2>A place to start</h2>
-          <p>{item.rationale}</p>
+          <p>{item.note}</p>
           <p className="fine-print">
             {item.credit ? `${item.credit} · ` : "Curated by DockFold · "}
             Added{" "}

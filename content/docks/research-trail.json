@@ -1,0 +1,15 @@
+{
+  "id": "research-trail",
+  "title": "Research trail",
+  "summary": "Follow a question. Keep what you find.",
+  "collection": "research",
+  "addedOn": "2026-09-04",
+  "apps": [
+    "perplexity",
+    "chatgpt-atlas",
+    "resurf",
+    "zotero",
+    "notes"
+  ],
+  "note": "Explore sources in the browser, collect the useful ones, and keep notes alongside your reference library."
+}

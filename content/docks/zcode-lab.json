@@ -1,0 +1,14 @@
+{
+  "id": "zcode-lab",
+  "title": "ZCode lab",
+  "summary": "Another editor, the same git habit.",
+  "collection": "development",
+  "addedOn": "2026-09-10",
+  "apps": [
+    "zcode",
+    "terminal",
+    "github",
+    "notes"
+  ],
+  "note": "A compact coding Dock for trying ZCode without extra chat or browsers in the way."
+}

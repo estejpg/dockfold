@@ -2,13 +2,13 @@ import { ArrowRight, ArrowUpRight, Search } from "lucide-react";
 import { useDeferredValue, useState } from "react";
 import { catalog } from "../lib/dock";
 import {
-  collections,
+  publishedDocks as collections,
   formatDate,
-  groups,
-  latestCollections,
-  matchesCollection,
-  type Collection,
-} from "../lib/collections";
+  collections as groups,
+  latestDocks as latestCollections,
+  matchesDock as matchesCollection,
+  type DockRecord as Collection,
+} from "../lib/docks";
 import { DockStrip } from "./common";
 function DockRow({ item }: { item: Collection }) {
   return (
@@ -21,7 +21,7 @@ function DockRow({ item }: { item: Collection }) {
         <h3>{item.title}</h3>
         <ArrowUpRight size={14} />
       </div>
-      <p>{item.description}</p>
+      <p>{item.summary}</p>
       <DockStrip ids={item.apps} compact />
       <span className="row-meta">{item.apps.length} apps · View Dock</span>
     </a>
@@ -33,7 +33,7 @@ export function Directory() {
   const deferred = useDeferredValue(query);
   const filtered = collections.filter(
     (item) =>
-      (group === "all" || item.group === group) &&
+      (group === "all" || item.collection === group) &&
       matchesCollection(item, deferred),
   );
   return (
@@ -86,7 +86,7 @@ export function Directory() {
       </section>
       <div className="collection-columns">
         {groups.map((g) => {
-          const items = filtered.filter((item) => item.group === g.id);
+          const items = filtered.filter((item) => item.collection === g.id);
           return items.length ? (
             <section
               key={g.id}
@@ -168,10 +168,10 @@ export function Latest() {
                       <div>
                         <h3>{item.title}</h3>
                         <span>
-                          {groups.find((g) => g.id === item.group)?.name}
+                          {groups.find((g) => g.id === item.collection)?.name}
                         </span>
                       </div>
-                      <p>{item.description}</p>
+                      <p>{item.summary}</p>
                     </div>
                     <DockStrip ids={item.apps} compact />
                     <ArrowUpRight size={15} />

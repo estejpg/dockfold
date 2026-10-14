@@ -1,0 +1,14 @@
+{
+  "id": "apple-music",
+  "title": "Apple Music",
+  "summary": "The library you already paid for.",
+  "collection": "music",
+  "addedOn": "2026-09-08",
+  "apps": [
+    "music",
+    "podcasts",
+    "finder",
+    "notes"
+  ],
+  "note": "Music and podcasts as first-class apps, with files and a note for the occasional track list."
+}

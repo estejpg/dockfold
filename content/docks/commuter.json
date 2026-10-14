@@ -1,0 +1,15 @@
+{
+  "id": "commuter",
+  "title": "Commuter",
+  "summary": "Maps, a podcast, the next message.",
+  "collection": "everyday",
+  "addedOn": "2026-09-12",
+  "apps": [
+    "maps",
+    "podcasts",
+    "messages",
+    "music",
+    "calendar"
+  ],
+  "note": "A leaving-the-house Dock: where you are going, what you will listen to, who might ping."
+}

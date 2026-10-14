@@ -1,0 +1,15 @@
+{
+  "id": "capture-and-collect",
+  "title": "Capture & collect",
+  "summary": "Save the thought before it disappears.",
+  "collection": "together",
+  "addedOn": "2026-09-04",
+  "apps": [
+    "aside",
+    "resurf",
+    "shotbase",
+    "notes",
+    "superwhisper"
+  ],
+  "note": "A browser, a reference library, screenshots, notes, and dictation for gathering the pieces of a new project."
+}

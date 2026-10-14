@@ -1,0 +1,14 @@
+{
+  "id": "podcast-morning",
+  "title": "Podcast morning",
+  "summary": "Walk, listen, jot one line.",
+  "collection": "music",
+  "addedOn": "2026-09-10",
+  "apps": [
+    "podcasts",
+    "safari",
+    "notes",
+    "calendar"
+  ],
+  "note": "A morning Dock for an episode, a follow-up link, and whatever the calendar says next."
+}

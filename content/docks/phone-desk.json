@@ -1,0 +1,15 @@
+{
+  "id": "phone-desk",
+  "title": "Phone desk",
+  "summary": "The Mac as a handset.",
+  "collection": "together",
+  "addedOn": "2026-09-13",
+  "apps": [
+    "phone",
+    "messages",
+    "facetime",
+    "calendar",
+    "notes"
+  ],
+  "note": "Calls and texts as Dock apps, with the calendar so you know why the phone is ringing."
+}

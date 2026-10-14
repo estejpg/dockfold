@@ -1,0 +1,14 @@
+{
+  "id": "gemini-search",
+  "title": "Gemini & Perplexity",
+  "summary": "Two research chats, then Notes.",
+  "collection": "research",
+  "addedOn": "2026-09-14",
+  "apps": [
+    "gemini",
+    "perplexity",
+    "notes",
+    "safari"
+  ],
+  "note": "Compare answers, keep the useful sentence, and still open the original page."
+}

@@ -1,0 +1,15 @@
+{
+  "id": "health-day",
+  "title": "Health day",
+  "summary": "Clock, reminders, a journal.",
+  "collection": "everyday",
+  "addedOn": "2026-09-09",
+  "apps": [
+    "clock",
+    "reminders",
+    "journal",
+    "music",
+    "weather"
+  ],
+  "note": "A gentler Dock for days that are more about pacing than producing."
+}

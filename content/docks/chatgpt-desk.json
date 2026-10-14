@@ -1,0 +1,14 @@
+{
+  "id": "chatgpt-desk",
+  "title": "ChatGPT desk",
+  "summary": "A chat, a browser, a note.",
+  "collection": "research",
+  "addedOn": "2026-09-13",
+  "apps": [
+    "chatgpt",
+    "safari",
+    "notes",
+    "notion"
+  ],
+  "note": "Use a chat app as a thinking partner without letting it replace the browser or your own notes."
+}

@@ -1,0 +1,15 @@
+{
+  "id": "calculator-lab",
+  "title": "Numbers lab",
+  "summary": "Calculator, Grapher, a spreadsheet.",
+  "collection": "minimal",
+  "addedOn": "2026-09-13",
+  "apps": [
+    "calculator",
+    "grapher",
+    "notes",
+    "preview",
+    "numbers"
+  ],
+  "note": "A small quantitative Dock for homework, a graph, and the spreadsheet that holds the table."
+}

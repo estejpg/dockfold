@@ -1,0 +1,14 @@
+{
+  "id": "native-workbench",
+  "title": "Native workbench",
+  "summary": "An app idea, a project, and a place to start.",
+  "collection": "development",
+  "addedOn": "2026-09-04",
+  "apps": [
+    "xcode",
+    "github",
+    "finder",
+    "notes"
+  ],
+  "note": "A deliberately small starting point for native app work, with code, repositories, project files, and notes together."
+}

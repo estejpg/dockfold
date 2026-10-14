@@ -1,0 +1,13 @@
+{
+  "id": "three-icons",
+  "title": "Three icons",
+  "summary": "Finder, Notes, Safari. That is the Dock.",
+  "collection": "minimal",
+  "addedOn": "2026-09-06",
+  "apps": [
+    "finder",
+    "notes",
+    "safari"
+  ],
+  "note": "A reminder that most days do not need a crowded row of tools."
+}

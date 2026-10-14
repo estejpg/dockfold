@@ -1,0 +1,15 @@
+{
+  "id": "premiere-cut",
+  "title": "Premiere cut",
+  "summary": "The NLE, Photoshop, Shotbase.",
+  "collection": "photo-video",
+  "addedOn": "2026-09-11",
+  "apps": [
+    "premiere",
+    "photoshop",
+    "finder",
+    "music",
+    "shotbase"
+  ],
+  "note": "An Adobe-leaning edit Dock with stills, captures, and files in the same row."
+}

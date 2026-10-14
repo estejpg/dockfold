@@ -1,0 +1,13 @@
+{
+  "id": "one-browser",
+  "title": "One browser",
+  "summary": "Safari, Finder, Mail.",
+  "collection": "minimal",
+  "addedOn": "2026-09-11",
+  "apps": [
+    "safari",
+    "finder",
+    "mail"
+  ],
+  "note": "Three icons for a computer that is mostly a window onto the web and a mailbox."
+}

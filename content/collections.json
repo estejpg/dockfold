@@ -1,0 +1,50 @@
+[
+  {
+    "id": "everyday",
+    "name": "Everyday Docks",
+    "shortName": "Everyday",
+    "description": "A few good essentials."
+  },
+  {
+    "id": "design",
+    "name": "For the design desk",
+    "shortName": "Design",
+    "description": "From the first sketch to the handoff."
+  },
+  {
+    "id": "photo-video",
+    "name": "Photo & video",
+    "shortName": "Photo & video",
+    "description": "Make room for the next edit."
+  },
+  {
+    "id": "development",
+    "name": "Build & ship",
+    "shortName": "Development",
+    "description": "Tools for making software."
+  },
+  {
+    "id": "research",
+    "name": "Read, write & research",
+    "shortName": "Research",
+    "description": "Follow an idea a little further."
+  },
+  {
+    "id": "together",
+    "name": "Working together",
+    "shortName": "Together",
+    "description": "Keep the conversation close."
+  },
+  {
+    "id": "music",
+    "name": "Listen & play",
+    "shortName": "Music",
+    "description": "What is playing while the rest happens."
+  },
+  {
+    "id": "minimal",
+    "name": "Small Docks",
+    "shortName": "Minimal",
+    "description": "As little as you can get away with."
+  }
+]

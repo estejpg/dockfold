@@ -1,0 +1,15 @@
+{
+  "id": "exam-week",
+  "title": "Exam week",
+  "summary": "Calendar, reminders, calculator.",
+  "collection": "minimal",
+  "addedOn": "2026-09-12",
+  "apps": [
+    "notes",
+    "calendar",
+    "reminders",
+    "books",
+    "calculator"
+  ],
+  "note": "Study logistics: what is due, what to remember, and a calculator that is not a phone."
+}

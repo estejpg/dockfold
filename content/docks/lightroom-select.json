@@ -1,0 +1,15 @@
+{
+  "id": "lightroom-select",
+  "title": "Lightroom select",
+  "summary": "Culling, then Calendar for the deadline.",
+  "collection": "photo-video",
+  "addedOn": "2026-09-15",
+  "apps": [
+    "lightroom",
+    "photos",
+    "finder",
+    "calendar",
+    "notes"
+  ],
+  "note": "A selection-day Dock: the catalog, the camera roll, and when the gallery is due."
+}

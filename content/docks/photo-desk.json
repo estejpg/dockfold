@@ -1,0 +1,15 @@
+{
+  "id": "photo-desk",
+  "title": "Photo desk",
+  "summary": "From a first selection to the final image.",
+  "collection": "photo-video",
+  "addedOn": "2026-09-04",
+  "apps": [
+    "lightroom",
+    "photoshop",
+    "finder",
+    "calendar",
+    "mail"
+  ],
+  "note": "Editing sits beside file organization and the practical work of planning shoots and delivering photographs."
+}

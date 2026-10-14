@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { ArrowLeft, ArrowRight, Check, Copy, Search, Trash2 } from "lucide-react";
 import { catalog, MAX_APPS, moveApp } from "../lib/dock";
-import { groups } from "../lib/collections";
+import { collections as groups } from "../lib/taxonomy";
 import {
   parseSuggestion,
   suggestionText,

@@ -1,0 +1,16 @@
+{
+  "id": "edit-suite",
+  "title": "Edit suite",
+  "summary": "A focused home for moving images.",
+  "collection": "photo-video",
+  "addedOn": "2026-09-04",
+  "apps": [
+    "premiere",
+    "photoshop",
+    "finder",
+    "music",
+    "notes"
+  ],
+  "note": "Keep the edit, supporting graphics, source files, and notes within reach without filling every spot in the Dock.",
+  "featured": 5
+}

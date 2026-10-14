@@ -1,0 +1,15 @@
+{
+  "id": "canva-quick",
+  "title": "Canva quick",
+  "summary": "A layout before the meeting starts.",
+  "collection": "design",
+  "addedOn": "2026-09-07",
+  "apps": [
+    "canva",
+    "photos",
+    "finder",
+    "safari",
+    "mail"
+  ],
+  "note": "Fast visual work with the photo library, files, and a way to send the result."
+}

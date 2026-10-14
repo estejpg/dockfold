@@ -1,0 +1,15 @@
+{
+  "id": "local-ai",
+  "title": "Local-ish AI",
+  "summary": "A few chat apps, one notes file.",
+  "collection": "development",
+  "addedOn": "2026-09-14",
+  "apps": [
+    "grok-bot",
+    "claude",
+    "chatgpt",
+    "notes",
+    "safari"
+  ],
+  "note": "Keep more than one assistant around, and a note so their answers do not vanish."
+}

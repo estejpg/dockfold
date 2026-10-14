@@ -1,0 +1,14 @@
+{
+  "id": "spotify-desk",
+  "title": "Spotify desk",
+  "summary": "A browser, a note, and something playing.",
+  "collection": "music",
+  "addedOn": "2026-09-05",
+  "apps": [
+    "spotify",
+    "safari",
+    "notes",
+    "messages"
+  ],
+  "note": "Listening stays in the Dock while you browse, jot, and answer the occasional message."
+}

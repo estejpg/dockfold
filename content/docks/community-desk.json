@@ -1,0 +1,15 @@
+{
+  "id": "community-desk",
+  "title": "Community desk",
+  "summary": "Stay in the loop without losing your place.",
+  "collection": "together",
+  "addedOn": "2026-09-04",
+  "apps": [
+    "discord",
+    "messages",
+    "calendar",
+    "notion",
+    "spotify"
+  ],
+  "note": "A casual collaboration Dock for community conversations, plans, shared notes, and background listening."
+}

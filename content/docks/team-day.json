@@ -1,0 +1,15 @@
+{
+  "id": "team-day",
+  "title": "Team day",
+  "summary": "The shared plans and everyday conversations.",
+  "collection": "together",
+  "addedOn": "2026-09-04",
+  "apps": [
+    "slack",
+    "calendar",
+    "mail",
+    "notion",
+    "figma"
+  ],
+  "note": "A workday set for shared projects, meetings, decisions, and the occasional design review."
+}

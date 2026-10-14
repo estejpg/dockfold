@@ -1,0 +1,15 @@
+{
+  "id": "presentation-deck",
+  "title": "Presentation deck",
+  "summary": "Keynote, Figma, the pictures.",
+  "collection": "design",
+  "addedOn": "2026-09-11",
+  "apps": [
+    "keynote",
+    "figma",
+    "photos",
+    "finder",
+    "notes"
+  ],
+  "note": "A talk is slides, source layouts, images, and the outline you promised yourself."
+}

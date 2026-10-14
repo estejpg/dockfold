@@ -1,0 +1,15 @@
+{
+  "id": "craft-notes",
+  "title": "Craft notes",
+  "summary": "A nicer document, a quieter desk.",
+  "collection": "research",
+  "addedOn": "2026-09-06",
+  "apps": [
+    "craft",
+    "safari",
+    "books",
+    "music",
+    "reminders"
+  ],
+  "note": "Documents, reading, and a reminder list for people who want the writing app to feel considered."
+}

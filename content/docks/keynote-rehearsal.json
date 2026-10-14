@@ -1,0 +1,15 @@
+{
+  "id": "keynote-rehearsal",
+  "title": "Keynote rehearsal",
+  "summary": "Slides, notes, a timer.",
+  "collection": "design",
+  "addedOn": "2026-09-15",
+  "apps": [
+    "keynote",
+    "notes",
+    "clock",
+    "preview",
+    "safari"
+  ],
+  "note": "Practice the deck with a clock in the Dock so you can see the time without a notification."
+}

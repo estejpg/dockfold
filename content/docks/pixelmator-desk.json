@@ -1,0 +1,14 @@
+{
+  "id": "pixelmator-desk",
+  "title": "Pixelmator desk",
+  "summary": "A lighter image editor, still close to Photos.",
+  "collection": "photo-video",
+  "addedOn": "2026-09-05",
+  "apps": [
+    "pixelmator-pro",
+    "photos",
+    "finder",
+    "preview"
+  ],
+  "note": "Edit, compare, and file images without filling the Dock with every Creative Cloud icon."
+}

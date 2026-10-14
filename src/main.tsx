@@ -19,7 +19,7 @@ import {
   SharedDock,
 } from "./components/pages";
 import { decodeDock, examples, readDraft } from "./lib/dock";
-import { collectionById } from "./lib/collections";
+import { findDock } from "./lib/docks";
 const Composer = lazy(() =>
   import("./components/composer").then((module) => ({
     default: module.Composer,
@@ -97,7 +97,7 @@ function Application() {
       page = <Latest />;
       title = "Latest additions · DockFold";
     } else if (path.startsWith("/docks/")) {
-      const item = collectionById.get(path.slice(7));
+      const item = findDock(path.slice(7))?.dock;
       page = item ? <CollectionDetail item={item} /> : <MissingDock />;
       title = item ? `${item.title} · DockFold` : "Dock not found · DockFold";
     } else if (path === "/privacy" || hash === "#/privacy") {

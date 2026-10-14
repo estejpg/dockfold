@@ -1,0 +1,16 @@
+{
+  "id": "apple-essentials",
+  "title": "Apple essentials",
+  "summary": "The familiar things, all in one place.",
+  "collection": "everyday",
+  "addedOn": "2026-09-04",
+  "apps": [
+    "finder",
+    "calendar",
+    "notes",
+    "mail",
+    "messages",
+    "music"
+  ],
+  "note": "A starting point for an ordinary day: files, plans, notes, messages, and something to listen to."
+}

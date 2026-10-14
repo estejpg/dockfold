@@ -1,0 +1,15 @@
+{
+  "id": "google-docs-day",
+  "title": "Docs day",
+  "summary": "The browser suite, used on purpose.",
+  "collection": "research",
+  "addedOn": "2026-09-07",
+  "apps": [
+    "google-docs",
+    "google-drive",
+    "safari",
+    "calendar",
+    "mail"
+  ],
+  "note": "A writing day that lives in Google’s apps, with calendar and mail for the surrounding logistics."
+}

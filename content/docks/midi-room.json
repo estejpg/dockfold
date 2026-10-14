@@ -1,0 +1,14 @@
+{
+  "id": "midi-room",
+  "title": "MIDI room",
+  "summary": "Audio MIDI Setup and the library.",
+  "collection": "music",
+  "addedOn": "2026-09-12",
+  "apps": [
+    "audio-midi-setup",
+    "music",
+    "voice-memos",
+    "finder"
+  ],
+  "note": "A small audio Dock for checking devices, recording a memo, and filing the result."
+}

@@ -1,0 +1,15 @@
+{
+  "id": "iphone-photos",
+  "title": "iPhone photos",
+  "summary": "Import, sort, send a proof.",
+  "collection": "photo-video",
+  "addedOn": "2026-09-08",
+  "apps": [
+    "photos",
+    "image-capture",
+    "finder",
+    "preview",
+    "mail"
+  ],
+  "note": "A Dock for getting pictures off a phone and out to someone waiting on them."
+}

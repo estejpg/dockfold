@@ -1,0 +1,15 @@
+{
+  "id": "design-handoff",
+  "title": "Design handoff",
+  "summary": "Share the details that make the difference.",
+  "collection": "design",
+  "addedOn": "2026-09-04",
+  "apps": [
+    "figma",
+    "shotbase",
+    "notion",
+    "slack",
+    "mail"
+  ],
+  "note": "A collaborative design Dock for the moment a design needs context, a screenshot, and a conversation."
+}

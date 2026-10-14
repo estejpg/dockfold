@@ -1,0 +1,15 @@
+{
+  "id": "xcode-and-sim",
+  "title": "Xcode & files",
+  "summary": "The project, the terminal, a note.",
+  "collection": "development",
+  "addedOn": "2026-09-06",
+  "apps": [
+    "xcode",
+    "terminal",
+    "finder",
+    "notes",
+    "safari"
+  ],
+  "note": "Native work with documentation in the browser and the project folder one click away."
+}

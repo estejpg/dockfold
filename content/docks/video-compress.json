@@ -1,0 +1,15 @@
+{
+  "id": "video-compress",
+  "title": "Convert & send",
+  "summary": "Downie, Permute, QuickTime.",
+  "collection": "photo-video",
+  "addedOn": "2026-09-09",
+  "apps": [
+    "downie",
+    "permute",
+    "quicktime-player",
+    "finder",
+    "notes"
+  ],
+  "note": "A utility Dock for getting a video off the web, into the right format, and onto disk."
+}

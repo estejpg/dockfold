@@ -7,6 +7,7 @@ import {
   encodeDock,
   emptyDock,
   examples,
+  MAX_APPS,
   moveApp,
   parseDock,
 } from "../src/lib/dock";
@@ -56,4 +57,16 @@ test("reordering preserves selection without moving beyond either end", () => {
 test("all examples can be shared", () => {
   for (const { dock } of examples)
     assert.deepEqual(decodeDock(encodeDock(dock)), dock);
+});
+test("maximum selection with full-length Unicode text remains shareable, 41 apps rejected", () => {
+  const full = {
+    v: 2 as const,
+    a: catalog.slice(0, MAX_APPS).map((app) => app.id),
+    n: "日".repeat(60),
+    t: "語".repeat(180),
+  };
+  assert.deepEqual(decodeDock(encodeDock(full)), full);
+  assert.throws(() =>
+    parseDock({ ...full, a: catalog.slice(0, MAX_APPS + 1).map((app) => app.id) }),
+  );
 });

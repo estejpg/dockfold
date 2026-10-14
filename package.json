@@ -5,13 +5,19 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
+    "predev": "npm run content",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "test": "tsx --test tests/*.test.ts",
     "import:icons": "node script/import-icons.mjs",
-    "smoke": "node script/smoke.mjs"
+    "smoke": "node script/smoke.mjs",
+    "content": "tsx script/build-content.ts",
+    "content:report": "tsx script/build-content.ts --report",
+    "pretest": "npm run content",
+    "prebuild": "npm run content",
+    "pretypecheck": "npm run content"
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.2.8",

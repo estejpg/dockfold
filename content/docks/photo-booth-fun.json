@@ -1,0 +1,14 @@
+{
+  "id": "photo-booth-fun",
+  "title": "Photo Booth",
+  "summary": "A silly camera, then Messages.",
+  "collection": "photo-video",
+  "addedOn": "2026-09-10",
+  "apps": [
+    "photo-booth",
+    "photos",
+    "messages",
+    "preview"
+  ],
+  "note": "Not every photo Dock is a studio. This one is for a quick picture and sending it along."
+}

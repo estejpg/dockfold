@@ -1,0 +1,15 @@
+{
+  "id": "student-core",
+  "title": "Student core",
+  "summary": "Notes, calendar, books, a paper.",
+  "collection": "minimal",
+  "addedOn": "2026-09-07",
+  "apps": [
+    "notes",
+    "calendar",
+    "safari",
+    "books",
+    "pages"
+  ],
+  "note": "A school Dock that covers reading, writing, and when the next thing is due."
+}

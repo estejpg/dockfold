@@ -1,0 +1,15 @@
+{
+  "id": "family-mac",
+  "title": "Family Mac",
+  "summary": "Photos, messages, a FaceTime, the calendar.",
+  "collection": "everyday",
+  "addedOn": "2026-09-08",
+  "apps": [
+    "photos",
+    "messages",
+    "facetime",
+    "calendar",
+    "tv"
+  ],
+  "note": "A shared computer Dock: the people, the pictures, and something to watch together."
+}

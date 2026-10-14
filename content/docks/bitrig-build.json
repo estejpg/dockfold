@@ -1,0 +1,15 @@
+{
+  "id": "bitrig-build",
+  "title": "Bitrig build",
+  "summary": "A smaller tool, a real project.",
+  "collection": "development",
+  "addedOn": "2026-09-11",
+  "apps": [
+    "bitrig",
+    "terminal",
+    "github",
+    "finder",
+    "notes"
+  ],
+  "note": "Keep Bitrig beside the terminal and the repo so an experiment can still ship."
+}

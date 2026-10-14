@@ -1,0 +1,15 @@
+{
+  "id": "weekend-home",
+  "title": "Weekend home",
+  "summary": "Photos, music, a show, a book.",
+  "collection": "everyday",
+  "addedOn": "2026-09-07",
+  "apps": [
+    "photos",
+    "music",
+    "tv",
+    "books",
+    "safari"
+  ],
+  "note": "An at-home Dock that trades mail and calendars for the things you actually open on Saturday."
+}

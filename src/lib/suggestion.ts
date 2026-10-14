@@ -1,9 +1,9 @@
 import { catalog, MAX_APPS } from "./dock.js";
-import { groups } from "./collections.js";
+import { collections } from "./taxonomy.js";
 
 export const MAX_SUGGESTION_APPS = MAX_APPS;
 const catalogIds = new Set(catalog.map((app) => app.id));
-const groupIds = new Set(groups.map((group) => group.id));
+const groupIds = new Set(collections.map((group) => group.id));
 
 export type Suggestion = {
   title: string;
@@ -84,7 +84,7 @@ export function suggestionText(suggestion: Suggestion) {
     .map((id) => catalog.find((app) => app.id === id)?.name ?? id)
     .join(", ");
   const groupName =
-    groups.find((group) => group.id === suggestion.group)?.name ??
+    collections.find((group) => group.id === suggestion.group)?.name ??
     suggestion.group;
   return [
     `Name: ${suggestion.title}`,
