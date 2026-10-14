@@ -1,5 +1,5 @@
-import { catalog, MAX_APPS } from "./dock";
-import { groups } from "./collections";
+import { catalog, MAX_APPS } from "./dock.js";
+import { groups } from "./collections.js";
 
 export const MAX_SUGGESTION_APPS = MAX_APPS;
 const catalogIds = new Set(catalog.map((app) => app.id));

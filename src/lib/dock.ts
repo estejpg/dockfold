@@ -1,5 +1,5 @@
-import catalogData from "./catalog.json";
-import legacyCatalog from "./legacy-catalog.json";
+import catalogData from "./catalog.json" with { type: "json" };
+import legacyCatalog from "./legacy-catalog.json" with { type: "json" };
 export const catalog = catalogData;
 export type App = (typeof catalog)[number];
 export const byId = new Map(

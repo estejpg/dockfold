@@ -1,4 +1,4 @@
-import { byId, type Dock } from "./dock";
+import { byId, type Dock } from "./dock.js";
 export type Collection = {
   id: string;
   title: string;
