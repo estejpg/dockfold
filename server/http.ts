@@ -34,11 +34,11 @@ export function validateOrigin(request: Request) {
     /^http:\/\/(localhost|127\.0\.0\.1):\d+$/.test(origin)
   )
     return;
-  throw new HttpError("Please submit from DockFold.", 403);
+  throw new HttpError("Please use the suggestion form on the site.", 403);
 }
 export async function jsonBody(request: Request) {
   if (!request.headers.get("content-type")?.startsWith("application/json"))
-    throw new HttpError("Send this request using the DockFold form.", 415);
+    throw new HttpError("Send this request using the suggestion form.", 415);
   const reader = request.body?.getReader();
   if (!reader) throw new HttpError("The form was empty.");
   const chunks: Uint8Array[] = [];

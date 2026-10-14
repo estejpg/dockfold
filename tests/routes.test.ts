@@ -63,6 +63,17 @@ test("hash links keep working: home variants hydrate, share links render on the 
   assert.equal(resolveRoute("/", "#/contribute").nav, "/submit");
 });
 
+test("collections and apps get pages; unknown or unused ones are 404s", () => {
+  const paths = new Set(staticPaths());
+  for (const path of ["/about", "/collections", "/collections/design", "/apps", "/apps/notes"])
+    assert.ok(paths.has(path), path);
+  assert.equal(resolveRoute("/collections/ads").status, 404);
+  assert.equal(resolveRoute("/apps/not-an-app").status, 404);
+  const unused = ["acrobat-distiller", "chrome"].find((id) => !publishedDocks.some((dock) => dock.apps.includes(id)))!;
+  assert.equal(resolveRoute(`/apps/${unused}`).status, 404);
+  assert.equal(paths.has(`/apps/${unused}`), false);
+});
+
 test("sitemap lists published Docks only", () => {
   const xml = sitemap();
   for (const dock of allDocks)

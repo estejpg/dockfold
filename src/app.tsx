@@ -1,16 +1,20 @@
 import { lazy, Suspense, type ReactNode } from "react";
 import { Footer, Header } from "./components/common";
-import { Directory, Latest } from "./components/directory";
-import { CollectionDetail } from "./components/collection-detail";
+import { AppPage, AppsIndex, CollectionPage, CollectionsIndex, usedApps } from "./components/browse";
+import { DockPage } from "./components/dock-page";
+import { Home } from "./components/home";
+import { Latest } from "./components/latest";
 import {
+  About,
   MissingDock,
   PageFallback,
   Privacy,
   RetiredCommunity,
   SharedDock,
 } from "./components/pages";
-import { decodeDock, examples } from "./lib/dock";
-import { allDocks, findDock, latestDocks, publishedDocks } from "./lib/docks";
+import { byId, decodeDock, examples } from "./lib/dock";
+import { allDocks, docksWithApp, findDock, latestDocks, publishedDocks } from "./lib/docks";
+import { collectionById, collections } from "./lib/taxonomy";
 import { pageTitle, SITE } from "./lib/site";
 
 const Composer = lazy(() =>
@@ -61,7 +65,7 @@ function home(key: string): RouteMatch {
     description: SITE.description,
     canonical: "/",
     status: 200,
-    element: <Directory />,
+    element: <Home />,
     jsonLd: {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
@@ -152,7 +156,7 @@ export function resolveRoute(rawPath: string, hash = ""): RouteMatch {
       key: path,
       nav: "/submit",
       title: pageTitle("Suggest a Dock"),
-      description: "Suggest a macOS Dock for the collection. No account needed; every suggestion is reviewed.",
+      description: "Suggest a macOS Dock for the collection. No account needed; we review every suggestion.",
       canonical: path,
       status: 200,
       element: <Suggest />,
@@ -178,6 +182,63 @@ export function resolveRoute(rawPath: string, hash = ""): RouteMatch {
       noindex: true,
       element: <RetiredCommunity />,
     };
+  if (path === "/about")
+    return {
+      key: path,
+      nav: "",
+      title: pageTitle("About"),
+      description: `How ${SITE.name} chooses and arranges Docks.`,
+      canonical: path,
+      status: 200,
+      element: <About />,
+    };
+  if (path === "/collections")
+    return {
+      key: path,
+      nav: "/collections",
+      title: pageTitle("Collections"),
+      description: "Shelves of macOS Docks that share a purpose: design, development, writing and more.",
+      canonical: path,
+      status: 200,
+      element: <CollectionsIndex />,
+    };
+  if (path.startsWith("/collections/")) {
+    const collection = collectionById.get(path.slice(13));
+    if (!collection) return notFound();
+    return {
+      key: path,
+      nav: "/collections",
+      title: pageTitle(collection.name),
+      description: `${collection.description} macOS Docks curated for ${collection.shortName.toLowerCase()}.`,
+      canonical: path,
+      status: 200,
+      element: <CollectionPage collection={collection} />,
+    };
+  }
+  if (path === "/apps")
+    return {
+      key: path,
+      nav: "",
+      title: pageTitle("Apps"),
+      description: "Every app that appears in a curated Dock, and the Docks it sits in.",
+      canonical: path,
+      status: 200,
+      element: <AppsIndex />,
+    };
+  if (path.startsWith("/apps/")) {
+    const id = path.slice(6);
+    const app = byId.get(id);
+    if (!app || docksWithApp(id).length === 0) return notFound();
+    return {
+      key: path,
+      nav: "",
+      title: pageTitle(`Docks with ${app.name}`),
+      description: `macOS Docks that include ${app.name}, curated and arranged by hand.`,
+      canonical: path,
+      status: 200,
+      element: <AppPage appId={id} />,
+    };
+  }
   if (path.startsWith("/docks/")) {
     const found = findDock(path.slice(7));
     if (!found) return notFound();
@@ -190,7 +251,7 @@ export function resolveRoute(rawPath: string, hash = ""): RouteMatch {
       canonical: `/docks/${dock.id}`,
       status: 200,
       noindex: dock.status !== "published",
-      element: <CollectionDetail item={dock} />,
+      element: <DockPage dock={dock} />,
     };
   }
   return notFound();
@@ -198,7 +259,19 @@ export function resolveRoute(rawPath: string, hash = ""): RouteMatch {
 
 export function staticPaths() {
   const docks = allDocks.flatMap((dock) => [dock.id, ...dock.aliases]).map((slug) => `/docks/${slug}`);
-  return ["/", "/latest", "/submit", "/privacy", ...retiredPaths, ...docks];
+  return [
+    "/",
+    "/latest",
+    "/submit",
+    "/about",
+    "/privacy",
+    "/collections",
+    ...collections.map((item) => `/collections/${item.id}`),
+    "/apps",
+    ...usedApps().map(({ app }) => `/apps/${app.id}`),
+    ...retiredPaths,
+    ...docks,
+  ];
 }
 export const clientShellPaths = ["/dock", "/create"];
 

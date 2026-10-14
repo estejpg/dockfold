@@ -59,7 +59,7 @@ export function parseSuggestion(value: unknown): Suggestion {
     ) ||
     new Set(body.apps).size !== body.apps.length
   )
-    throw new SuggestionError("Choose apps from the DockFold catalog.");
+    throw new SuggestionError("Choose apps from the catalog.");
   const notes = textField(body.notes ?? "", "notes", 1000, false);
   const credit = textField(body.credit ?? "", "credit", 80, false);
   const email = textField(body.email ?? "", "email", 200, false);

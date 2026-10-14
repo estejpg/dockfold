@@ -4,6 +4,7 @@ import { allDocks } from "./lib/docks";
 import { SITE } from "./lib/site";
 
 export { clientShellPaths, staticPaths };
+const retired = new Set(["/requests", "/review", "/sign-in", "/sign-up"]);
 
 function escapeHtml(value: string) {
   return value
@@ -55,7 +56,9 @@ export async function renderPage(
 }
 
 export function sitemap() {
-  const pages = ["/", "/latest", "/submit", "/privacy"].map((path) => ({ path, lastmod: "" }));
+  const pages = staticPaths()
+    .filter((path) => !path.startsWith("/docks/") && !retired.has(path))
+    .map((path) => ({ path, lastmod: "" }));
   for (const dock of allDocks)
     if (dock.status === "published")
       pages.push({ path: `/docks/${dock.id}`, lastmod: dock.updatedOn ?? dock.addedOn });

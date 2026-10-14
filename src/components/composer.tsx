@@ -18,7 +18,8 @@ import {
   readDraft,
   type Dock,
 } from "../lib/dock";
-import { AppIcon, DockStrip } from "./common";
+import { AppIcon } from "./common";
+import { DockView } from "./dock-view";
 function knownDock(dock: Dock): Dock {
   return { ...dock, a: dock.a.filter((id) => byId.has(id)) };
 }
@@ -180,7 +181,7 @@ export function Composer({ initial }: { initial?: Dock }) {
             </div>
             <div className={`dock-preview ${dock.a.length ? "" : "is-empty"}`}>
               {dock.a.length ? (
-                <DockStrip ids={dock.a} />
+                <DockView apps={dock.a} size="md" />
               ) : (
                 <p>
                   Choose your first app.<span>Your Dock takes shape here.</span>

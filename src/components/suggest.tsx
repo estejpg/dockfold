@@ -7,7 +7,8 @@ import {
   suggestionText,
   SuggestionError,
 } from "../lib/suggestion";
-import { AppIcon, DockStrip } from "./common";
+import { AppIcon } from "./common";
+import { DockView } from "./dock-view";
 
 type Result = {
   delivered: "email" | "mailto" | "copy";
@@ -133,13 +134,14 @@ export function Suggest() {
     return (
       <main id="main" tabIndex={-1} className="suggest-page">
         <div className="suggest-success" ref={success} tabIndex={-1}>
-          <h1>Suggestion received.</h1>
+          <h1>Thank you. We have it.</h1>
           <p>
-            Every Dock gets a look before it joins the collection. Listing is
-            not immediate.
+            We read every suggestion. If it fits, we will arrange it and add it
+            to the collection; that can take a while, and not every Dock makes
+            it in.
           </p>
           <a className="button button-dark" href="/">
-            Back to the gallery
+            Back to the collection
           </a>
         </div>
       </main>
@@ -148,10 +150,12 @@ export function Suggest() {
   return (
     <main id="main" tabIndex={-1} className="suggest-page">
       <section className="suggest-intro">
-        <h1>Submit a Dock</h1>
+        <h1>Suggest a Dock</h1>
         <p>
-          Know a setup that belongs in the gallery? Suggest it — every
-          submission gets a look. Listing is not immediate.
+          We arrange every Dock in the collection ourselves. If you have a
+          setup worth sharing, tell us what is in it and why. We read each
+          suggestion; the ones we add appear after review, with credit if you
+          would like it.
         </p>
       </section>
       <form className="suggest-form" onSubmit={(event) => void submit(event)}>
@@ -179,7 +183,7 @@ export function Suggest() {
           />
         </label>
         <label className="suggest-field">
-          Category
+          Collection
           <select
             name="group"
             value={group}
@@ -203,9 +207,9 @@ export function Suggest() {
             aria-hidden={apps.length === 0}
           >
             {apps.length ? (
-              <DockStrip ids={apps} compact />
+              <DockView apps={apps} size="md" />
             ) : (
-              <p>Choose your first app.</p>
+              <p>Pick apps below. Your Dock takes shape here.</p>
             )}
           </div>
           {apps.length ? (
@@ -345,7 +349,7 @@ export function Suggest() {
           <p>
             {result.delivered === "mailto"
               ? "Your mail app will carry the Dock name, category, and apps. Listing is not immediate."
-              : "This deployment has no inbox configured yet. Copy the text and send it to the DockFold owner."}
+              : "This deployment has no inbox configured yet. Copy the text and send it to the site owner."}
           </p>
           <textarea readOnly value={result.text} rows={8} />
           <div className="share-actions">
