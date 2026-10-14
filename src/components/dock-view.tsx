@@ -99,13 +99,7 @@ function useMagnify(enabled: boolean) {
         before += extras[index];
         item.el.style.setProperty("--dv-x", `${shift}px`);
         item.el.style.setProperty("--dv-s", String(scales[index]));
-        if (
-          x !== null &&
-          item.grows &&
-          item.name &&
-          Math.abs(x - item.center) <= item.width / 2 + 3 &&
-          (nearest < 0 || scales[index] > scales[nearest])
-        )
+        if (item.name && scales[index] > 1.3 && (nearest < 0 || scales[index] > scales[nearest]))
           nearest = index;
       });
       shelf.style.setProperty("--dv-shelf", String((row.offsetWidth + total) / row.offsetWidth));
